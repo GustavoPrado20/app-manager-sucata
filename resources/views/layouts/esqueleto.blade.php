@@ -9,6 +9,8 @@
         
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
         @yield('styles')
+
+        <script src="https://kit.fontawesome.com/cf6fa412bd.js" crossorigin="anonymous"></script>
     </head>
 
     <body>

@@ -1,0 +1,11 @@
+.container-1 {
+    display: flex;
+    width: 100%;
+    padding: 15px 5%;
+    justify-content: center;
+}
+
+
+.container-1 h1 {
+    font-size: 2.2rem;
+}
