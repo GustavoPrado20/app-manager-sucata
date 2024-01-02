@@ -31,21 +31,9 @@
                                 <td>Gustavo Prado</td>
                                 <td>Jogador</td>
                                 <td>2021</td>
-                            </tr>
-                            <tr>
-                                <td>Gustavo Prado</td>
-                                <td>Jogador</td>
-                                <td>2021</td>
-                            </tr>
-                            <tr>
-                                <td>Gustavo Prado</td>
-                                <td>Jogador</td>
-                                <td>2021</td>
-                            </tr>
-                            <tr>
-                                <td>Gustavo Prado</td>
-                                <td>Jogador</td>
-                                <td>2021</td>
+                                <td>
+                                    <livewire:ModalsEditarERemoverMembro />
+                                </td>
                             </tr>
                         </tbody>
                     </table>
