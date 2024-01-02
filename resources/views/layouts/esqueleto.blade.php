@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
         @yield('styles')
 
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+
         <script src="https://kit.fontawesome.com/cf6fa412bd.js" crossorigin="anonymous"></script>
     </head>
 

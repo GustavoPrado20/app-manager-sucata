@@ -3,29 +3,41 @@
     <button class="add-membro" wire:click="abrirModalAddMembro">Add New Membro</button>
 
     @if($showModalAddMembro)
-        <section class="modal-fade">
-            <section class="modal-add-membro">
-                <header id="header-modal">
-                    <h2>Registro Membro</h2>
-                    <button wire:click="fecharModalAddMembro">&times;</button>
-                </header>
-                
+        <x-jet-button wire:click="openModal">
+            Abrir Modal
+        </x-jet-button>
 
-                <form action="">
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name ="nome" placeholder="Ex. Eduardo da Silva" required>
+        <x-jet-dialog-modal wire:model="showModal">
+            <x-slot name="title">
+                Modal de Formulário
+            </x-slot>
 
-                    <label for="ocupacao">Ocupação:</label>
-                    <select name="ocupação" id="ocupacao" required>
-                        <option value="jogador">Jogador</option>
-                        <option value="socio">Sócio</option>
-                        <option value="diretor_e_jogador">Diretor e Jogador</option>
-                    </select>
+            <x-slot name="content">
+                <form wire:submit.prevent="submitForm">
+                    <div class="mb-4">
+                        <x-jet-label for="name" value="Nome" />
+                        <x-jet-input type="text" wire:model="name" id="name" />
+                        <x-jet-input-error for="name" />
+                    </div>
 
-                    <input type="submit" name="registrar" value="Registrar">
+                    <div class="mb-4">
+                        <x-jet-label for="email" value="Email" />
+                        <x-jet-input type="email" wire:model="email" id="email"/>
+                        <x-jet-input-error for="email" />
+                    </div>
+
+                    <div class="flex items-center justify-end mt-4">
+                        <x-jet-secondary-button wire:click="closeModal">
+                            Fechar
+                        </x-jet-secondary-button>
+
+                        <x-jet-button class="ml-2">
+                            Enviar
+                        </x-jet-button>
+                    </div>
                 </form>
-            </section>
-        </section>
+            </x-slot>
+        </x-jet-dialog-modal>
     @endif
     
 </div>
