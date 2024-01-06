@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.main-container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+}
+
+.left-container {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.left-container >h1 {
+    color: #2b4c7e;
+    font-size: 2.5em;
+}
+
+.left-img {
+    width: 40vw;
+}       
+
+.rigth-container {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container-form {
+    background-color: #f5f5f5;
+    padding: 6px;
+    width: 350px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0 #a9a9a9;
+}
+
+form {
+    position: absolute;
+    margin-top: 80px;
+    transition: .5s;
+    width: 300px;
+    height: 400px;
+}
+
+/* Estilização dos botoes de transição de formulario */
+.btn-form {
+    margin-top: 40px;
+    position: relative;
+    border-radius: 30px;
+    box-shadow: 0 0 7px 0 #567ebb;
+}
+
+.btn-form > button{
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    position: relative;
+    padding: 10px 27px;
+}
+
+.btn-color {
+    position: absolute;
+    width: 108px;   
+    height: 100%;
+    background: linear-gradient(to right, #2b4c7e, #567ebb);
+    border-radius: 30px;
+    transition: .3s;
+}
+
+/* Inputs dos formularios */
+.input-signIn {
+    border: none;
+    margin-top: 40px;
+    border-radius: 60px;
+    padding: 8px 0 8px 35px;
+    outline: none   ;
+    width: 100%;
+}
+
+.input-signUp {
+    border: none;
+    margin-top: 25px;
+    border-radius: 60px;
+    padding: 8px 0 8px 35px;
+    outline: none   ;
+    width: 100%;
+}
+
+/* Estilização dos botoes */
+input[type="submit"] {
+    background: #2b4c7e;
+    color: #ffffff;
+    border-radius: 30px;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 8px 0 8px 15px;
+    font-size: 15px;
+    margin-top: 40px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+input[type="submit"]:active {
+    transform: scale(0.96);
+}
+
+#signUp > input[type="submit"]{
+    margin-top: 25px;
+}
+
+/* containers dos checkbox */
+.container-check-login {
+    margin: 10px 0 0 5px;
+    width: 80%;
+    margin-top: 30px;
+    font-size: 13px;
+}
+
+.container-check-register {
+    margin: 5px 0 0 5px;
+    width: 80%;
+    font-size: 13px;
+}
+
+.container-check-register > input[type="checkbox"]
+{
+    cursor: pointer;
+    width: auto;
+    height: auto;
+    margin-top: 20px;
+}
+
+/* ------------ */
+
+#signIn {
+    left: 25px;
+}
+
+#signUp {
+    left: 450px;
+}
+
+/* estilização dos icones */
+i {
+    position: absolute;
+    left: 0;
+    padding: 10px 10px;
+}
+
+.iEmail {
+    top: 39px;
+}
+
+.iPassword {
+    top: 112px;
+}
+
+.iUser {
+    top: 37px;
+}
+
+.iEmail2 {
+    top: 98px;
+}
+
+.iPassword1 {
+    top: 156px;
+}
+
+.iPassword2 {
+    top: 215px;
+}
+
+/* Validação Login */
+.erro-validacao {
+    color: #2b4c7e;
+    position: absolute;
+    top: 75px;
+    font-size: .8rem;
+    display: none;
+}
+
+.erro-validacao2 {
+    color: #2b4c7e;
+    position: absolute;
+    top: 150px;
+    font-size: .8rem;
+    display: none;
+}
+
+/* Validação Registro */
+.erro-validacao-nome {
+    color: #2b4c7e;
+    position: absolute; 
+    top: 74px;
+    font-size: .8rem;
+    display: none;
+}
+
+.erro-validacao-email {
+    color: #2b4c7e;
+    position: absolute;
+    top: 132px;
+    font-size: .8rem;
+    display: none;
+}
+
+.erro-validacao-password {
+    color: #2b4c7e;
+    position: absolute; 
+    top: 190px;
+    font-size: .8rem;
+    display: none;
+}
+
+.erro-validacao-password-confirmation {
+    color: #2b4c7e;
+    position: absolute;
+    top: 250px;
+    font-size: .8rem;
+    display: none;
+}
+
+.template{
+    display: block;
+}
+
+@media only screen and (max-width: 950px) {
+    .container-form
+    {
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .main-container
+    {
+        flex-direction: column;
+    }
+
+    .left-container > h1
+    {
+        display: none;
+    }
+
+    .left-container
+    {
+        width: 100%;
+        height: auto;
+    }
+
+    .rigth-container
+    {
+        width: 100%;
+        height: auto;
+    }
+
+    .left-img
+    {
+        width: 50vw;
+    }
+
+    .container-form
+    {
+        width: 90%;
+    }
+}

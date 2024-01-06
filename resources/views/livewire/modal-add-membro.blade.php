@@ -1,6 +1,8 @@
 <div>
-    <button class="buscar-tarefa" wire:click="abrirModalBuscarMembro"><i class="fas fa-search iSearch"></i></button>
-    <button class="add-membro" wire:click="abrirModalAddMembro">Add New Membro</button>
+    {{-- <button class="buscar-tarefa" wire:click="abrirModalBuscarMembro"><i class="fas fa-search iSearch"></i></button> --}}
+    @if ($LoginAuth)
+        <button class="add-membro" wire:click="abrirModalAddMembro"><img class="icone" src="{{ asset('img/icones/icons8-adicionar-usuário-96.png') }}" alt="Adicionar Usuario"></button>
+    @endif
 
     @if($showModalAddMembro)
         <section class="modal-fade">
@@ -11,7 +13,8 @@
                 </header>
                 
 
-                <form action="{{  }}">
+                <form action="{{ route('registrar-membros') }}" method="POST">
+                    @csrf
                     <label for="nome">Nome:</label>
                     <input type="text" id="nome" name ="nome" placeholder="Ex. Eduardo da Silva" required>
 
@@ -41,16 +44,17 @@
                 
 
                 <form action="">
+                    @csrf
                     <label for="nome">Nome ou Apelido:</label>
                     <input type="text" id="nome" name ="nome_apelido" placeholder="Ex. Eduardo da Silva ou Buiu" required>
 
-                    <input type="submit" name="Buscar" value="Buscar">
+                    <input type="submit" name="Buscar" value="BUSCAR">
                 </form>
             </section>
         </section>
     @endif
 
-    @if($showModalLoginAuth)
+    {{-- @if($showModalLoginAuth)
         <section class="modal-fade">
             <section class="modal-remover-membro modal">
                 <header class="header-modal header-modal-remover">
@@ -66,6 +70,6 @@
                 </section>
             </section>
         </section>
-    @endif
+    @endif --}}
     
 </div>

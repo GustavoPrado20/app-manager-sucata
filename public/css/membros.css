@@ -265,6 +265,11 @@ tr:hover td{
     cursor: pointer;
 }
 
+.input-radio-edit {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 /* modal deletar membro */
 .header-modal-remover {
     justify-content: center;

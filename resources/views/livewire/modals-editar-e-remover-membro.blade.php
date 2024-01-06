@@ -12,6 +12,7 @@
                 
 
                 <form action="">
+                    @csrf
                     <label for="nome">Nome:</label>
                     <input type="text" id="nome" name ="nome" placeholder="Ex. Eduardo da Silva" value="{{ old('nome') }}" required>
 
@@ -25,6 +26,18 @@
                         <option value="diretor_e_jogador">Diretor e Jogador</option>
                     </select>
 
+                    <section class="input-radio-edit">
+                        <section>
+                            <input type="radio" name="status" value="{{ true }}" id="ativo" checked>
+                            <label for="ativo">Ativo</label>
+                        </section>
+                        
+                        <section>
+                            <input type="radio" name="status" value="{{ false }}" id="inativo">
+                            <label for="inativo">Inativo</label>
+                        </section>
+                    </section>
+                    
                     <input type="submit" name="editar" value="EDITAR">
                 </form>
             </section>
@@ -45,24 +58,6 @@
                 <section class="container-2-modal-remover">
                     <button wire:click="fecharModalRemoverMembro" class="btn-1">CANCELAR</button>
                     <button wire:click="fecharModalRemoverMembro" class="btn-2">CONFIRMAR</button>
-                </section>
-            </section>
-        </section>
-    @endif
-
-    @if($showModalLoginAuth)
-        <section class="modal-fade">
-            <section class="modal-remover-membro modal">
-                <header class="header-modal header-modal-remover">
-                    <h2>Não Autorizado</h2>
-                </header>
-                
-                <section class="container-1-modal-remover">
-                    <p>Você precisa estar logado como Diretor para realizar esta função!!</p>
-                </section>
-
-                <section class="container-2-modal-remover">
-                    <button wire:click="fecharModalLoginAuth" class="btn-2-auth">OK</button>
                 </section>
             </section>
         </section>

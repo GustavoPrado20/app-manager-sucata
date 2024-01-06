@@ -8,16 +8,10 @@ class ModalAddMembro extends Component
 {
     public $showModalAddMembro = false;
     public $showModalBuscarMembro = false;
-    public $showModalLoginAuth  = false;
+    public $LoginAuth;
 
     public function abrirModalAddMembro(){
-        if(Auth::check()){
-            $this->showModalAddMembro = true;
-        }
-        else {
-            $this->showModalLoginAuth =true;
-        }
-        
+        $this->showModalAddMembro = true;
     }
 
     public function fecharModalAddMembro(){
@@ -30,10 +24,6 @@ class ModalAddMembro extends Component
 
     public function fecharModalBuscarMembro(){
         $this->showModalBuscarMembro = false;
-    }
-
-    public function fecharModalLoginAuth(){
-        $this->showModalLoginAuth = false;
     }
 
     public function render()

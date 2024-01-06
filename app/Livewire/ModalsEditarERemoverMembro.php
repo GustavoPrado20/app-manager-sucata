@@ -9,17 +9,10 @@ class ModalsEditarERemoverMembro extends Component
 {
     public $showModalEditarMembro = false;
     public $showModalRemoverMembro = false;
-    public $showModalLoginAuth  = false;
 
     public function abrirModalEditarMembro()
     {
-        if(Auth::check()){
-            $this->showModalEditarMembro =  true;
-        }
-        else {
-            $this->showModalLoginAuth =true;
-        }
-        
+        $this->showModalEditarMembro =  true;
     }
 
     public function fecharModalEditarMembro()
@@ -29,22 +22,12 @@ class ModalsEditarERemoverMembro extends Component
 
     public function abrirModalRemoverMembro()
     {
-        if(Auth::check()){
-            $this->showModalRemoverMembro =  true;
-        }
-        else {
-            $this->showModalLoginAuth =true;
-        }
-        
+        $this->showModalRemoverMembro =  true;
     }
 
     public function fecharModalRemoverMembro()
     {
         $this->showModalRemoverMembro =  false;
-    }
-
-    public function fecharModalLoginAuth(){
-        $this->showModalLoginAuth = false;
     }
 
     public function render()

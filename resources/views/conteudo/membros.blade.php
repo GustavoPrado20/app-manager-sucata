@@ -11,7 +11,7 @@
                 <section class="table-header">
                     <h1>Membros</h1>
                     <section>
-                        <livewire:ModalAddMembro />
+                        @livewire('ModalAddMembro', ['LoginAuth' => $LoginAuth])
                     </section>
                 </section>
                 
@@ -22,7 +22,9 @@
                                 <th>Nome</th>
                                 <th>Ocupação</th>
                                 <th>Ano de Entrada</th>
-                                <th>Ações</th>
+                                @if ($LoginAuth)
+                                    <th>Ações</th>
+                                @endif
                             </tr>
                         </thead>
 
@@ -31,9 +33,11 @@
                                 <td>Gustavo Prado</td>
                                 <td>Jogador</td>
                                 <td>2021</td>
-                                <td>
-                                    <livewire:ModalsEditarERemoverMembro />
-                                </td>
+                                @if ($LoginAuth)
+                                    <td>
+                                        @livewire('ModalsEditarERemoverMembro')
+                                    </td>
+                                @endif
                             </tr>
                         </tbody>
                     </table>
