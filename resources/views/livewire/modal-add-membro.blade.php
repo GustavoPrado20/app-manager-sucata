@@ -1,5 +1,9 @@
-<div>
-    {{-- <button class="buscar-tarefa" wire:click="abrirModalBuscarMembro"><i class="fas fa-search iSearch"></i></button> --}}
+<div class="container-principal">
+    <form action="{{ route('buscar-membros') }}" class="search-box">
+        <input type="text" placeholder="Buscar Membro" name="nomeApelido" autocomplete="off">
+        <button type="submit"><img src="{{ asset('img/icones/icons8-pesquisar-50.png') }}" alt="Pesquisar"></button>
+    </form>
+    
     @if ($LoginAuth)
         <button class="add-membro" wire:click="abrirModalAddMembro"><img class="icone" src="{{ asset('img/icones/icons8-adicionar-usuário-96.png') }}" alt="Adicionar Usuario"></button>
     @endif
@@ -23,9 +27,9 @@
 
                     <label for="ocupacao">Ocupação:</label>
                     <select name="ocupação" id="ocupacao" required>
-                        <option value="jogador">Jogador</option>
-                        <option value="socio">Sócio</option>
-                        <option value="diretor_e_jogador">Diretor e Jogador</option>
+                        <option value="Jogador">Jogador</option>
+                        <option value="Sócio">Sócio</option>
+                        <option value="Diretor e Jogador">Diretor e Jogador</option>
                     </select>
 
                     <input type="submit" name="registrar" value="REGISTRAR">

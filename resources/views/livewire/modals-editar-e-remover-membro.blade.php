@@ -11,33 +11,21 @@
                 </header>
                 
 
-                <form action="">
+                <form action="{{ route('atualizar-membros') }}" method="POST">
                     @csrf
                     <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name ="nome" placeholder="Ex. Eduardo da Silva" value="{{ old('nome') }}" required>
+                    <input type="text" id="nome" name ="nome" placeholder="Ex. Eduardo da Silva" value="{{ $dadoMembro['nome'] }}" required>
 
                     <label for="apelido">Apelido:</label>
-                    <input type="text" id="apelido" name ="apelido" placeholder="Ex. Buiu" value="{{ old('apelido') }}">
+                    <input type="text" id="apelido" name ="apelido" placeholder="Ex. Buiu" value="{{ $dadoMembro['apelido'] }}">
 
                     <label for="ocupacao">Ocupação:</label>
                     <select name="ocupação" id="ocupacao" required>
-                        <option value="jogador">Jogador</option>
-                        <option value="socio">Sócio</option>
-                        <option value="diretor_e_jogador">Diretor e Jogador</option>
+                        <option value="Jogador">Jogador</option>
+                        <option value="Sócio">Sócio</option>
+                        <option value="Diretor e Jogador">Diretor e Jogador</option>
                     </select>
-
-                    <section class="input-radio-edit">
-                        <section>
-                            <input type="radio" name="status" value="{{ true }}" id="ativo" checked>
-                            <label for="ativo">Ativo</label>
-                        </section>
-                        
-                        <section>
-                            <input type="radio" name="status" value="{{ false }}" id="inativo">
-                            <label for="inativo">Inativo</label>
-                        </section>
-                    </section>
-                    
+                     <input type="hidden" name="idMembro" value="{{ $idMembro }}">
                     <input type="submit" name="editar" value="EDITAR">
                 </form>
             </section>
@@ -57,9 +45,9 @@
 
                 <section class="container-2-modal-remover">
                     <button wire:click="fecharModalRemoverMembro" class="btn-1">CANCELAR</button>
-                    <button wire:click="fecharModalRemoverMembro" class="btn-2">CONFIRMAR</button>
+                    <button wire:click="removerMembro" class="btn-2">CONFIRMAR</button>
                 </section>
-            </section>
+            </section>  
         </section>
     @endif
 </div>

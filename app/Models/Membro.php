@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Membro extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nome',
+        'apelido',
+        'ocupação',
+        'id_time',
+        'gols',
+        'faltas',
+        'data-entrada-time',
+        'status',
+    ];
 }

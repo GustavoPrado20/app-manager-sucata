@@ -30,15 +30,19 @@
     font-weight: 700;
 }
 
-.buscar-tarefa, .add-membro{
-    padding: 10px 20px;
+.add-membro{
+    padding: 5px 12px;
+    margin-left: 15px;
+    border-radius: 25px;
     color: #fefefe;
     background: #567ebb;
     cursor: pointer;
     transition: all 400ms ease;
+    border: none;
+    outline: none;
 }
 
-.buscar-tarefa:hover, .add-membro:hover{
+.add-membro:hover{
     background: transparent;
     color: #ffffff;
     box-shadow: inset 0 0 0 3px #ffffff;
@@ -157,7 +161,48 @@ tr:hover td{
     background: none;
     border: none;
 }
+
+.search-box {
+    width: 100%;
+    max-width: 700px;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    padding: 0px 10px;
+    backdrop-filter: blur(4px) saturate(180%);
+}
+
+.search-box input {
+    background: transparent;
+    flex: 1;
+    border: 0;
+    outline: none;
+    padding: 12px 10px;
+    font-size: 1.2rem;
+    color: #fefefe;
+}
+
+.search-box input::placeholder{
+    color: #fefefe;
+}
  
+.search-box button img {
+    width: 11px;
+}
+
+.search-box button {
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: #16325e;
+    cursor: pointer;
+}
+
+.container-principal {
+    display: flex;
+}
 /* janela modal add-membro */
 .modal-add-membro form {
     margin-top: 20px;
