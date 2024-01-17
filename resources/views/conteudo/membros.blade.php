@@ -32,7 +32,7 @@
                             @if (!empty($dadosMembros))
                                 @foreach ($dadosMembros as $dadoMembro)
                                     <tr>
-                                        <td>{{ $dadoMembro['nome'] }} @if (!empty()) ({{ $dadoMembro['apelido'] }}) @endif</td>
+                                        <td>{{ $dadoMembro['nome'] }} @if (!empty($dadoMembro['apelido'])) ({{ $dadoMembro['apelido'] }}) @endif</td>
                                         <td>{{ $dadoMembro['ocupação'] }}</td>
                                         <td>{{ $dadoMembro['data-entrada-time'] }}</td>
                                         @if ($LoginAuth)

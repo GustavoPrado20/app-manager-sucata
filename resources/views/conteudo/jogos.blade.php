@@ -12,7 +12,7 @@
                 <ul>
                     <li><a href="">Tabela</a></li>
                     <li><a href="">Partidas</a></li>
-                    <li><a href="">Jogadores</a></li>
+                    <li><a href="#Jogadores">Jogadores</a></li>
                     <li><a href="">Artilharia</a></li>
                     <li><a href="">Rank Cartões</a></li>
                 </ul>
@@ -43,7 +43,7 @@
                             <tbody>
                                 @foreach ($times as $time)
                                     <tr>
-                                        <td>{{ $posicao++ }}</td>
+                                        <td>{{ $posicao++ }}°</td>
                                         <td>{{ $time['nome'] }}</td>
                                         <td>{{ $time['pontos'] }}</td>
                                         <td>{{ $time['gols marcados'] }}</td>
@@ -87,7 +87,7 @@
         </section>
 
         <section class="container-principal-2">
-            <section class="container-2">
+            <section class="container-2" id="Jogadores">
                 <section class="table">
                     <section class="table-header" id="color-header-table">
                         <section class="titulo-table">
@@ -95,18 +95,13 @@
                             <h1>Jogadores</h1>
                         </section>
 
-                        <section class="btn-tabela">
-                            <section class="btn-color"></section>
-                            <button id="btnAzul">Azul</button>
-                            <button id="btnVermelho">Vermelho</button>
-                        </section>
+                        @livewire('ModalAddJogador', ['LoginAuth' => $LoginAuth])
                     </section>
                     
                     <section class="table-body-jogadores" id="Azul">
                         <table>
                             <thead>
-                                <tr>
-                                    <th>Cam</th>                                
+                                <tr>                                
                                     <th>Nome</th>
                                     <th>Gols</th>
                                     <th>Faltas</th>
@@ -116,7 +111,6 @@
                             <tbody>
                                 @foreach ($times as $time)
                                     <tr>
-                                        <td>{{ $posicao++ }}</td>
                                         <td>{{ $time['nome'] }}</td>
                                         <td>{{ $time['pontos'] }}</td>
                                         <td>{{ $time['gols marcados'] }}</td>
@@ -129,8 +123,7 @@
                     <section class="table-body-jogadores" id="Vermelho">
                         <table>
                             <thead id="color-thead-vermelho">
-                                <tr>
-                                    <th>Cam</th>                                
+                                <tr>                               
                                     <th>Nome</th>
                                     <th>Gols</th>
                                     <th>Faltas</th>
@@ -140,7 +133,6 @@
                             <tbody>
                                 @foreach ($times as $time)
                                     <tr>
-                                        <td>{{ $posicao++ }}</td>
                                         <td>{{ $time['nome'] }}</td>
                                         <td>{{ $time['pontos'] }}</td>
                                         <td>{{ $time['gols marcados'] }}</td>

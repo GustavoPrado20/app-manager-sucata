@@ -19,7 +19,6 @@ return new class extends Migration
             $table->unsignedBigInteger('id_time')->nullable();
             $table->integer('gols')->nullable();
             $table->integer('faltas')->nullable();
-            $table->integer('Camisa')->nullable();
             $table->date('data-entrada-time');
             $table->boolean('status');
             $table->boolean('acordo')->default(false);

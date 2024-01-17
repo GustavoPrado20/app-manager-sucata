@@ -1,5 +1,5 @@
 .container-principal-1 {
-    height: 100vh;
+    height: 89vh;
     width: 100%;
     background: #e0e0e0;
 }
@@ -227,8 +227,12 @@ tr:hover td{
     background-color: #f3f8ff;
 }
 
-.table-body-jogadores th:nth-child(4), td:nth-child(4), th:nth-child(3), td:nth-child(3) {
+.table-body-jogadores th:nth-child(3), td:nth-child(3), th:nth-child(2), td:nth-child(2) {
     width: 25%;
+}
+
+.table-body-jogadores th:nth-child(1), td:nth-child(1){
+    width: 50%;
 }
 
 .btn-tabela {
@@ -260,4 +264,77 @@ tr:hover td{
 
 #Vermelho {
     display: none;
+}
+
+.container-modal-add-jogador {
+    display: flex;
+}
+
+.add-jogador {
+    padding: 5px 12px;
+    margin-left: 15px;
+    border-radius: 25px;
+    color: #fefefe;
+    background: #567ebb;
+    cursor: pointer;
+    transition: all 400ms ease;
+    border: none;
+    outline: none;
+}
+
+.add-jogador:hover{
+    background: transparent;
+    color: #ffffff;
+    box-shadow: inset 0 0 0 3px #ffffff;
+}
+
+.icone {
+    max-width: 100%;
+    height: auto;
+    width: auto;
+}
+
+/* modal */
+/* Janela Modal */
+.modal-fade {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.modal {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+}
+
+.header-modal {
+    color: #000;
+    background: none;
+    font-size: 1.6rem;
+    padding: 0px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.header-modal button {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 2.8rem;
+    color: #ff0000ff;
+    background: none;
+    border: none;
 }
