@@ -216,7 +216,135 @@
         @if ($LoginAuth)
             <section class="container-principal-4">
                 <section class="container-4">
-                    
+                    <section class="half">
+                        <section class="container-registro">
+                            <section class="main-registro">
+                                <section class="header-registro">
+                                    <section class="titulo">
+                                        <img src="{{ asset('img/icones/icons8-absence-20 (1).png') }}" alt="">
+                                        <h1>Registro Faltas</h1>
+                                    </section>
+                                </section>
+                                
+                                <section class="body-registro">
+                                    <form action="">
+                                        <h3>Jogadores:</h3>
+                                        <section id="container-checkbox-registro">
+                                           
+                                        </section>
+
+                                        <section class="registro-form-data-motivo">
+                                            <section>
+                                                <label for="data">Data:</label>
+                                                <input type="date" name="data" id="data">
+                                            </section>
+                                        
+                                            <section>
+                                                <label for="motivo">Motivo:</label>
+                                                <select name="motivo" id="motivo">
+                                                    <option value="Não Justificado">Não Justificado</option>
+                                                    <option value="Atraso">Atraso</option>
+                                                    <option value="Trabalho">Trabalho</option>
+                                                    <option value="Licença">Licença</option>
+                                                </select>
+                                            </section>
+                                        </section>
+
+                                        <button type="submit">Registrar</button>
+                                    </form>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+
+                    <section class="half">
+                        <section class="container-registro">
+                            <section class="main-registro">
+                                <section class="header-registro">
+                                    <section class="titulo">
+                                        <img src="{{ asset('img/icones/icons8-futebol-de-praia-40.png') }}" alt="">
+                                        <h1>Registro Gols</h1>
+                                    </section>
+                                </section>
+                                
+                                <section class="body-registro">
+                                    <form action="">
+                                        <h3>Jogadores:</h3>
+                                        <section id="container-checkbox-registro">
+                                            
+                                        </section>
+
+                                        <label for="gols">Gols:</label>
+                                        <input type="number" id="gols" name="gols" min="1" value="1">
+
+                                        <button type="submit">Registrar</button>
+                                    </form>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+
+                    <section class="half">
+                        <section class="container-registro">
+                            <section class="main-registro">
+                                <section class="header-registro">
+                                    <section class="titulo">
+                                        <img src="{{ asset('img/icones/icons8-cartão-amarelo-de-futebol-40.png') }}" alt="">
+                                        <h1>Registro Cartões</h1>
+                                    </section>
+                                </section>
+                                
+                                <section class="body-registro">
+                                    <form action="">
+                                        <h3>Jogadores:</h3>
+                                        <section id="container-checkbox-registro">
+                                            
+                                        </section>
+
+                                        <label for="cartao">Cartão:</label>
+                                        <select name="motivo" id="cartao">
+                                            <option value="Amarelo">Amarelo</option>
+                                            <option value="Vermelho">Vermelho</option>
+                                        </select>
+
+                                        <button type="submit">Registrar</button>
+                                    </form>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+
+                    <section class="half">
+                        <section class="container-registro">
+                            <section class="main-registro">
+                                <section class="header-registro">
+                                    <section class="titulo">
+                                        <img src="{{ asset('img/icones/icons8-estádio-40.png') }}" alt="">
+                                        <h1>Registro Partida</h1>
+                                    </section>
+                                </section>
+                                
+                                <section class="body-registro">
+                                    <form action="">
+                                        <label for="placar">Placar:</label>
+                                        <input type="text" id="placar" name="placar" placeholder="Ex: 5 X 3">
+
+                                        <label for="resultado">Resultado</label>
+                                        <select name="motivo" id="resultado">
+                                            <option value="Time Azul">Time Azul</option>
+                                            <option value="Empate">Empate</option>
+                                            <option value="Time Vermelho">Time Vermelho</option>
+                                        </select>
+
+                                        <label for="data">Data:</label>
+                                        <input type="date" name="data" id="data">
+
+                                        <button type="submit">Registrar</button>
+                                    </form>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
                 </section>
             </section>
         @endif

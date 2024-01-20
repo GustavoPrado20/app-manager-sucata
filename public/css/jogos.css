@@ -65,9 +65,6 @@
     padding: 20px;
     background: linear-gradient(to right, #2b4c7e, #7e2b2b);
     border-radius: 8px 8px 0 0;
-}
-
-.table-header {
     color: #ffffff;
     font-size: 1.7rem;
     font-weight: 700;
@@ -82,6 +79,7 @@
 .titulo-table h1{
     font-size: 1.7rem;
     margin-top: 15px;
+    margin-left: 10px;
 }
 
 button{
@@ -225,9 +223,6 @@ tr:hover td{
     padding: 20px;
     background:#2b4c7e;
     border-radius: 8px 8px 0 0;
-}
-
-.table-header-jogadores {
     color: #ffffff;
     font-size: 1.7rem;
     font-weight: 700;
@@ -434,7 +429,7 @@ tr:hover td{
 }
 
 .table-artilharia {
-    width: 100vw;
+    width: 100%;
     overflow-x: auto;
 }
 
@@ -445,9 +440,6 @@ tr:hover td{
     padding: 20px;
     background: linear-gradient(to right, #2b4c7e, #7e2b2b);
     border-radius: 8px 8px 0 0;
-}
-
-.table-header-artilharia {
     color: #ffffff;
     font-size: 1.7rem;
     font-weight: 700;
@@ -462,6 +454,7 @@ tr:hover td{
 .titulo-table-artilharia h1{
     font-size: 1.7rem;
     margin-top: 15px;
+    margin-left: 10px;
 }
 
 .table-body-artilharia{
@@ -480,4 +473,141 @@ tr:hover td{
 
 .table-body-artilharia th:nth-child(1), td:nth-child(1){
     width: 80%;
+}
+
+/* registro geral jogos */
+.container-principal-4 {
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-4 {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+}
+
+.half {
+    padding: 40px;
+}
+
+/* formulario registro faltas */
+.container-registro {
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.main-registro{
+    width: 100%;
+    overflow-x: auto;
+}
+
+.header-registro{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(to right, #2b4c7e, #7e2b2b);
+    border-radius: 8px 8px 0 0;
+    color: #ffffff;
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.header-registro .titulo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-registro .titulo h1{
+    font-size: 1.7rem;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.body-registro {
+    height: 250px;
+}
+
+.body-registro form {
+    margin-top: 10px;
+}
+
+#container-checkbox-registro {
+    max-height: 90px;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    overflow: auto;
+}
+
+.body-registro form label{
+    display: block;
+    color: #000;
+    margin-bottom: 5px;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#container-checkbox-registro label {    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: #000;
+    font-weight: normal;
+    margin-top: 10px;
+}
+
+#container-checkbox-registro label input{
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.registro-form-data-motivo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.body-registro form select, .body-registro form input[type="number"], .body-registro form input[type="text"], .body-registro form input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #000;
+    background: transparent;
+    cursor: pointer;
+}
+
+.body-registro form select:focus, .body-registro form input[type="number"]:focus, .body-registro form input[type="text"]:focus, .body-registro form input[type="date"]:focus  {
+    outline: none;
+    border-bottom: 3px solid #567ebb;
+}
+
+.body-registro form button[type="submit"] {
+    background-color: #2b4c7e;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.body-registro form button[type="submit"]:hover {
+    background-color: #4167a0;
+    cursor: pointer;
 }
