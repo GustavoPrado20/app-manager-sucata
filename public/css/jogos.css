@@ -1,3 +1,4 @@
+/* tabela de pontos dos times */
 .container-principal-1 {
     height: 89vh;
     width: 100%;
@@ -62,7 +63,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #2b4c7e;
+    background: linear-gradient(to right, #2b4c7e, #7e2b2b);
     border-radius: 8px 8px 0 0;
 }
 
@@ -161,7 +162,6 @@ tr:hover td{
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 4px 4px 4px 4px rgba(141, 5, 5, 0.349);
 }
 
 .card-box-azul {
@@ -199,6 +199,8 @@ tr:hover td{
     margin-left: 20px;
 }
 
+
+/* tabela de jogadores em cada time */
 .container-principal-2 {
     background-color: #ffffff;
     padding: 40px;
@@ -214,6 +216,21 @@ tr:hover td{
     width: 90vw;
     margin: 40px auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-header-jogadores{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background:#2b4c7e;
+    border-radius: 8px 8px 0 0;
+}
+
+.table-header-jogadores {
+    color: #ffffff;
+    font-size: 1.7rem;
+    font-weight: 700;
 }
 
 .table-body-jogadores{
@@ -295,6 +312,7 @@ tr:hover td{
 }
 
 /* modal */
+
 /* Janela Modal */
 .modal-fade {
     display: none;
@@ -337,4 +355,129 @@ tr:hover td{
     color: #ff0000ff;
     background: none;
     border: none;
+}
+
+/* modal adicionar jogador */
+.container-checkbox {
+    max-height: 200px;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.container-checkbox label{
+    color: #000;
+    font-size: 1.1rem;
+}
+
+.container-checkbox label input{
+    cursor: pointer;
+}
+
+.container-radio-time {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.container-radio-time label{
+    color: #000;
+    font-size: 1.1rem;
+}
+
+.container-radio-time label input{
+    cursor: pointer;
+}
+
+.modal-add-jogador form input[type="submit"] {
+    background-color: #2b4c7e;
+    width: 100%;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.modal-add-jogador form input[type="submit"]:hover {
+    background-color: #4167a0;
+    cursor: pointer;
+}
+
+/* tabela de artilharia e cartoes */
+.container-principal-3 {
+    background: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-principal-3 .container-ranks {
+    flex: 1;
+    max-width: 50%;
+    padding: 40px;
+}
+
+.container-3 {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    margin: 40px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-artilharia {
+    width: 100vw;
+    overflow-x: auto;
+}
+
+.table-header-artilharia{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(to right, #2b4c7e, #7e2b2b);
+    border-radius: 8px 8px 0 0;
+}
+
+.table-header-artilharia {
+    color: #ffffff;
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.titulo-table-artilharia{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo-table-artilharia h1{
+    font-size: 1.7rem;
+    margin-top: 15px;
+}
+
+.table-body-artilharia{
+    height: 400px;
+    overflow: auto; 
+}
+
+.table-body-artilharia table{
+    width: 100%;
+    min-width: 100%; 
+}
+
+.table-body-artilharia th:nth-child(2), td:nth-child(2){
+    width: 20%;
+}
+
+.table-body-artilharia th:nth-child(1), td:nth-child(1){
+    width: 80%;
 }

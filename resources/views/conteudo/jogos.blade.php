@@ -86,10 +86,10 @@
            </section>
         </section>
 
-        <section class="container-principal-2">
-            <section class="container-2" id="Jogadores">
+        <section class="container-principal-2" id="Jogadores">
+            <section class="container-2">
                 <section class="table">
-                    <section class="table-header" id="color-header-table">
+                    <section class="table-header-jogadores" id="color-header-table">
                         <section class="titulo-table">
                             <img src="{{ asset('img/icones/icons8-football-player-64.png') }}" alt="">
                             <h1>Jogadores</h1>
@@ -144,6 +144,82 @@
                 </section>
            </section>
         </section>
+
+        <section class="container-principal-3">
+            <section class="container-ranks">
+                <section class="container-3">
+                    <section class="table-artilharia">
+                        <section class="table-header-artilharia">
+                            <section class="titulo-table-artilharia">
+                                <img src="{{ asset('img/icones/icons8-futebol-20.png') }}" alt="">
+                                <h1>Artilharia</h1>
+                            </section>
+                        </section>
+                        
+                        <section class="table-body-artilharia">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Jogador</th>                                
+                                        <th>Gols</th>
+                                    </tr>
+                                </thead>
+        
+                                <tbody>
+                                    @foreach ($times as $time)
+                                        <tr>
+                                            <td>Gustavo</td>
+                                            <td>50</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </section>
+                    </section>
+               </section>
+            </section>
+
+            <section class="container-ranks">
+                <section class="container-3">
+                    <section class="table-artilharia">
+                        <section class="table-header-artilharia">
+                            <section class="titulo-table-artilharia">
+                                <img src="{{ asset('img/icones/icons8-cartão-amarelo-de-futebol-40.png') }}" alt="">
+                                <h1>Rank Cartões (Amarelos)</h1>
+                            </section>
+                        </section>
+                        
+                        <section class="table-body-artilharia">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Jogador</th>                                
+                                        <th>Cartões</th>
+                                    </tr>
+                                </thead>
+        
+                                <tbody>
+                                    @foreach ($times as $time)
+                                        <tr>
+                                            <td>Gustavo</td>
+                                            <td>50</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </section>  
+                    </section>
+               </section>
+            </section>
+        </section>
+
+        @if ($LoginAuth)
+            <section class="container-principal-4">
+                <section class="container-4">
+                    
+                </section>
+            </section>
+        @endif
     </main>
 
     <script type="text/javascript" src="{{ asset('js/tabela-jogadores.js') }}"></script>

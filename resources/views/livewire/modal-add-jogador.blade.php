@@ -11,29 +11,35 @@
 
     @if($showModalAddJogador)
     <section class="modal-fade">
-        <section class="modal-add-membro modal">
+        <section class="modal-add-jogador modal">
             <header class="header-modal">
                 <h2>Adicionar Jogador</h2>
                 <button wire:click="fecharModalAddJogador">&times;</button>
             </header>
             
 
-            <form action="{{ route('registrar-membros') }}" method="POST">
+            <form action="" method="POST">
                 @csrf
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name ="nome" placeholder="Ex. Eduardo da Silva" required>
+                <section class="container-checkbox">
+                    <label for="checkbox">
+                        <input type="checkbox" id="checkox" name="">
+                        Exemplo
+                    </label>
+                </section>
 
-                <label for="apelido">Apelido:</label>
-                <input type="text" id="apelido" name ="apelido" placeholder="Ex. Buiu">
+                <section class="container-radio-time">
+                    <label for="timeAzul">
+                        <input type="radio" name="time" value="">
+                        Time Azul
+                    </label>
 
-                <label for="ocupacao">Ocupação:</label>
-                <select name="ocupação" id="ocupacao" required>
-                    <option value="Jogador">Jogador</option>
-                    <option value="Sócio">Sócio</option>
-                    <option value="Diretor e Jogador">Diretor e Jogador</option>
-                </select>
+                    <label for="timeVermelho">
+                        <input type="radio" name="time" value="">
+                        Time Vermelho
+                    </label>
+                </section>
 
-                <input type="submit" name="registrar" value="REGISTRAR">
+                <input type="submit" name="adicionar" value="ADICIONAR">
             </form>
         </section>
     </section>

@@ -17,13 +17,13 @@
                 </header>
                 
 
-                <form action="{{ route('registrar-membros') }}" method="POST">
+                <form action="" method="POST">
                     @csrf
                     <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name ="nome" placeholder="Ex. Eduardo da Silva" required>
+                    <input type="text" id="nome" name ="nome" placeholder="Ex. Eduardo da Silva" autocomplete="off" required>
 
                     <label for="apelido">Apelido:</label>
-                    <input type="text" id="apelido" name ="apelido" placeholder="Ex. Buiu">
+                    <input type="text" id="apelido" name ="apelido" placeholder="Ex. Buiu" autocomplete="off">
 
                     <label for="ocupacao">Ocupação:</label>
                     <select name="ocupação" id="ocupacao" required>
@@ -33,26 +33,6 @@
                     </select>
 
                     <input type="submit" name="registrar" value="REGISTRAR">
-                </form>
-            </section>
-        </section>
-    @endif
-
-    @if($showModalBuscarMembro)
-        <section class="modal-fade">
-            <section class="modal-add-membro modal">
-                <header class="header-modal">
-                    <h2>Buscar Membro</h2>
-                    <button wire:click="fecharModalBuscarMembro">&times;</button>
-                </header>
-                
-
-                <form action="">
-                    @csrf
-                    <label for="nome">Nome ou Apelido:</label>
-                    <input type="text" id="nome" name ="nome_apelido" placeholder="Ex. Eduardo da Silva ou Buiu" required>
-
-                    <input type="submit" name="Buscar" value="BUSCAR">
                 </form>
             </section>
         </section>
