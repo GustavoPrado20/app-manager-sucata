@@ -17,7 +17,7 @@
                 </header>
                 
 
-                <form action="" method="POST">
+                <form action="{{ route('registrar-membros') }}" method="POST">
                     @csrf
                     <label for="nome">Nome:</label>
                     <input type="text" id="nome" name ="nome" placeholder="Ex. Eduardo da Silva" autocomplete="off" required>
@@ -31,6 +31,13 @@
                         <option value="Sócio">Sócio</option>
                         <option value="Diretor e Jogador">Diretor e Jogador</option>
                     </select>
+
+                    <section class="checkbox-container">
+                        <label for="acordo">
+                            <input type="checkbox" id="acordo" value="{{ true }}" name="acordo">
+                            Acordo
+                        </label>
+                    </section>
 
                     <input type="submit" name="registrar" value="REGISTRAR">
                 </form>

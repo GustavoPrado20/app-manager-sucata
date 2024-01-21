@@ -25,7 +25,15 @@
                         <option value="Sócio">Sócio</option>
                         <option value="Diretor e Jogador">Diretor e Jogador</option>
                     </select>
-                     <input type="hidden" name="idMembro" value="{{ $idMembro }}">
+
+                    <section class="checkbox-container">
+                        <label for="acordo">
+                            <input type="checkbox" id="acordo" value="{{ true }}" name="acordo">
+                            Acordo
+                        </label>
+                    </section>
+                    
+                    <input type="hidden" name="idMembro" value="{{ $idMembro }}">
                     <input type="submit" name="editar" value="EDITAR">
                 </form>
             </section>

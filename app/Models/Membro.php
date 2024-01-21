@@ -18,5 +18,7 @@ class Membro extends Model
         'faltas',
         'data-entrada-time',
         'status',
+        'cartoes-amarelos',
+        'acordo',
     ];
 }

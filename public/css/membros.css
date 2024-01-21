@@ -357,3 +357,8 @@ tr:hover td{
 .container-2-modal-remover .btn-2-auth:hover {
     background-color: #16325e;
 }
+
+.checkbox-container label input{
+    width: auto;
+    cursor: pointer;
+}

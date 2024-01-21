@@ -7,6 +7,7 @@ use Livewire\Component;
 class ModalAddJogador extends Component
 {
     public $LoginAuth;
+    public $dadosJogadores;
     public $showModalAddJogador = false;
 
     public function abrirModalAddJogador(){

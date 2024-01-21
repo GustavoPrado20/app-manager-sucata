@@ -18,23 +18,27 @@
             </header>
             
 
-            <form action="" method="POST">
+            <form action="{{ route('adicionarJogador') }}" method="POST">
                 @csrf
                 <section class="container-checkbox">
-                    <label for="checkbox">
-                        <input type="checkbox" id="checkox" name="">
-                        Exemplo
-                    </label>
+                    @if (!empty($dadosJogadores))
+                        @foreach ($dadosJogadores as $dadoJogador)
+                            <label for="jogador{{ $dadoJogador['id'] }}">
+                                <input type="checkbox" id="jogador{{ $dadoJogador['id'] }}" name="Jogador[]" value="{{ $dadoJogador['id'] }}">
+                                {{ $dadoJogador['nome'] }} @if (!empty($dadoJogador['apelido'])) ({{ $dadoJogador['apelido'] }}) @endif
+                            </label>
+                        @endforeach
+                    @endif
                 </section>
 
                 <section class="container-radio-time">
                     <label for="timeAzul">
-                        <input type="radio" name="time" value="">
+                        <input type="radio" name="time" value="1">
                         Time Azul
                     </label>
 
                     <label for="timeVermelho">
-                        <input type="radio" name="time" value="">
+                        <input type="radio" name="time" value="2">
                         Time Vermelho
                     </label>
                 </section>

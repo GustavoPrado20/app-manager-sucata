@@ -32,3 +32,7 @@ Route::prefix('/login')->group(function(){
 });
 
 Route::get('/jogos', [Controllers\JogoController::class, 'index'])->name('jogos');
+
+Route::prefix('/jogos')->group(function(){
+    Route::post('/adicionarJogador', [Controllers\JogoController::class, 'adicionarJogador'])->name('adicionarJogador');
+});

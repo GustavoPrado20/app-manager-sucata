@@ -8,7 +8,7 @@
 @section('conteudo')
     <main>
         <section class="container-principal-1">
-            <nav class="menu-jogo">
+            {{-- <nav class="menu-jogo">
                 <ul>
                     <li><a href="">Tabela</a></li>
                     <li><a href="">Partidas</a></li>
@@ -16,7 +16,7 @@
                     <li><a href="">Artilharia</a></li>
                     <li><a href="">Rank Cartões</a></li>
                 </ul>
-           </nav>
+           </nav> --}}
            
            <section class="container-1">
                 <section class="table">
@@ -95,7 +95,7 @@
                             <h1>Jogadores</h1>
                         </section>
 
-                        @livewire('ModalAddJogador', ['LoginAuth' => $LoginAuth])
+                        @livewire('ModalAddJogador', ['LoginAuth' => $LoginAuth, 'dadosJogadores' => $dadosJogadores])
                     </section>
                     
                     <section class="table-body-jogadores" id="Azul">
@@ -109,11 +109,11 @@
                             </thead>
     
                             <tbody>
-                                @foreach ($times as $time)
+                                @foreach ($dadosJogadoresTimeAzul as $dadoJogador)
                                     <tr>
-                                        <td>{{ $time['nome'] }}</td>
-                                        <td>{{ $time['pontos'] }}</td>
-                                        <td>{{ $time['gols marcados'] }}</td>
+                                        <td>{{ $dadoJogador['nome'] }} @if (!empty($dadoJogador['apelido'])) ({{ $dadoJogador['apelido'] }})@endif</td>
+                                        <td>{{ $dadoJogador['gols'] }}</td>
+                                        <td>{{ $dadoJogador['faltas'] }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -131,11 +131,11 @@
                             </thead>
     
                             <tbody>
-                                @foreach ($times as $time)
+                                @foreach ($dadosJogadoresTimeVermelho as $dadoJogador)
                                     <tr>
-                                        <td>{{ $time['nome'] }}</td>
-                                        <td>{{ $time['pontos'] }}</td>
-                                        <td>{{ $time['gols marcados'] }}</td>
+                                        <td>{{ $dadoJogador['nome'] }} @if (!empty($dadoJogador['apelido'])) ({{ $dadoJogador['apelido'] }})@endif</td>
+                                        <td>{{ $dadoJogador['gols'] }}</td>
+                                        <td>{{ $dadoJogador['faltas'] }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -166,10 +166,10 @@
                                 </thead>
         
                                 <tbody>
-                                    @foreach ($times as $time)
+                                    @foreach ($artilheiros as $artilheiro)
                                         <tr>
-                                            <td>Gustavo</td>
-                                            <td>50</td>
+                                            <td>{{ $artilheiro['nome'] }} @if (!empty($artilheiro['apelido'])) ({{ $artilheiro['apelido'] }})@endif</td>
+                                            <td>{{ $artilheiro['gols'] }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -199,10 +199,10 @@
                                 </thead>
         
                                 <tbody>
-                                    @foreach ($times as $time)
+                                    @foreach ($jogadorCartoes as $jogadorCartao)
                                         <tr>
-                                            <td>Gustavo</td>
-                                            <td>50</td>
+                                            <td>{{ $jogadorCartao['nome'] }} @if (!empty($jogadorCartao['apelido'])) ({{ $jogadorCartao['apelido'] }})@endif</td>
+                                            <td>{{ $jogadorCartao['cartoes-amarelos'] }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -230,7 +230,14 @@
                                     <form action="">
                                         <h3>Jogadores:</h3>
                                         <section id="container-checkbox-registro">
-                                           
+                                            @if (!empty($dadosJogadoresTimes))
+                                                @foreach ($dadosJogadoresTimes as $dadoJogadorTime)
+                                                    <label for="jogador{{ $dadoJogadorTime['id'] }}">
+                                                        <input type="checkbox" id="jogador{{ $dadoJogadorTime['id'] }}" name="Jogador[]" value="{{ $dadoJogadorTime['id'] }}">
+                                                        {{ $dadoJogadorTime['nome'] }} @if (!empty($dadoJogadorTime['apelido'])) ({{ $dadoJogadorTime['apelido'] }}) @endif
+                                                    </label>
+                                                @endforeach
+                                            @endif
                                         </section>
 
                                         <section class="registro-form-data-motivo">
@@ -271,7 +278,14 @@
                                     <form action="">
                                         <h3>Jogadores:</h3>
                                         <section id="container-checkbox-registro">
-                                            
+                                            @if (!empty($dadosJogadoresTimes))
+                                                @foreach ($dadosJogadoresTimes as $dadoJogadorTime)
+                                                    <label for="jogador{{ $dadoJogadorTime['id'] }}">
+                                                        <input type="checkbox" id="jogador{{ $dadoJogadorTime['id'] }}" name="Jogador[]" value="{{ $dadoJogadorTime['id'] }}">
+                                                        {{ $dadoJogadorTime['nome'] }} @if (!empty($dadoJogadorTime['apelido'])) ({{ $dadoJogadorTime['apelido'] }}) @endif
+                                                    </label>
+                                                @endforeach
+                                            @endif
                                         </section>
 
                                         <label for="gols">Gols:</label>
@@ -298,7 +312,14 @@
                                     <form action="">
                                         <h3>Jogadores:</h3>
                                         <section id="container-checkbox-registro">
-                                            
+                                            @if (!empty($dadosJogadoresTimes))
+                                                @foreach ($dadosJogadoresTimes as $dadoJogadorTime)
+                                                    <label for="jogador{{ $dadoJogadorTime['id'] }}">
+                                                        <input type="checkbox" id="jogador{{ $dadoJogadorTime['id'] }}" name="Jogador[]" value="{{ $dadoJogadorTime['id'] }}">
+                                                        {{ $dadoJogadorTime['nome'] }} @if (!empty($dadoJogadorTime['apelido'])) ({{ $dadoJogadorTime['apelido'] }}) @endif
+                                                    </label>
+                                                @endforeach
+                                            @endif
                                         </section>
 
                                         <label for="cartao">Cartão:</label>

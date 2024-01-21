@@ -20,4 +20,59 @@ class MembroRepository extends AbstractRepository
             ->orWhere('apelido', 'like', '%' . $NomeApelido . '%');
         })->orderBy('nome')->get();
     }
+
+    public static function allJogadores()
+    {
+        return self::loadModel()::query()->where('status', '=', true)->where('id_time', '=', null)->where(function($query){
+            $query->where('ocupação', '=', 'Jogador')
+            ->orWhere('ocupação', '=', 'Diretor e Jogador');
+        })->orderBy('nome')->get();
+    }
+
+    public static function artilheiros()
+    {
+        return self::loadModel()::query()->where('status', '=', true)->where(function($query){
+            $query->where('ocupação', '=', 'Jogador')
+            ->orWhere('ocupação', '=', 'Diretor e Jogador');
+        })->orderBy('gols', 'desc')->take(10)->get();
+    }
+
+    public static function jogadoresComCartoes()
+    {
+        return self::loadModel()::query()->where('status', '=', true)->where(function($query){
+            $query->where('ocupação', '=', 'Jogador')
+            ->orWhere('ocupação', '=', 'Diretor e Jogador');
+        })->orderBy('cartoes-amarelos', 'desc')->take(10)->get();
+    }
+
+    public static function jogadoresTimes()
+    {
+        return self::loadModel()::query()->where('status', '=', true)->where(function($query){
+            $query->where('ocupação', '=', 'Jogador')
+            ->orWhere('ocupação', '=', 'Diretor e Jogador');
+        })->orderBy('nome')->get();
+    }
+
+    public static function jogadoresTimeAzul()
+    {
+        return self::loadModel()::query()->where('id_time', '=', 1)->orderBy('nome')->get();
+    }
+
+    public static function jogadoresTimeVermelho()
+    {
+        return self::loadModel()::query()->where('id_time', '=', 2)->orderBy('nome')->get();
+    }
+
+    public static function adicionarJogadorTime(array $data)
+    {
+        $idTime = $data['time'];
+
+        $idJogadores = $data['jogador'];
+        
+        foreach ($idJogadores as $idJogador){
+           MembroRepository::update(intval($idJogador), ['id_time' => $idTime]);
+        }
+
+        return true;
+    }
 }
