@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_jogador');
             $table->string('cor');
-            $table->date('data');
             $table->timestamps();
 
             //foreign keys

@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class RegistroFalta extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'id_jogador',
+        'motivo',
+        'data',
+    ];
 }

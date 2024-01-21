@@ -170,6 +170,10 @@ tr:hover td{
     box-shadow: 4px 4px 4px 4px rgba(141, 5, 5, 0.349);
 }
 
+.card-box-empate {
+    box-shadow: 4px 4px 4px 4px rgba(32, 31, 31, 0.349);
+}
+
 .card h5 {
     color: #000;
     font-size: 1.5rem;
@@ -567,7 +571,7 @@ tr:hover td{
 }
 
 #container-checkbox-registro label input{
-    margin-right: 10px;
+    margin-right: 5px;
     cursor: pointer;
 }
 

@@ -14,4 +14,8 @@ class TimeRepository extends AbstractRepository
     // public static function findByEmail(string $email){
     //     return self::loadModel()::query()->where( ['email' => $email])->first();  
     // }
+
+    public static function TimesOrdenado(){
+        return self::loadModel()::query()->orderBy('pontos', 'desc')->get();
+    }
 }

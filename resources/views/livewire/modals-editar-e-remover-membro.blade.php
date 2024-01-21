@@ -28,7 +28,7 @@
 
                     <section class="checkbox-container">
                         <label for="acordo">
-                            <input type="checkbox" id="acordo" value="{{ true }}" name="acordo">
+                            <input type="checkbox" id="acordo" value="{{ true }}" name="acordo" @if ($dadoMembro['acordo'] == true) checked @endif>
                             Acordo
                         </label>
                     </section>

@@ -59,29 +59,15 @@
     
            <section class="container-card-jogos">
                 <section class="card-jogos">
-                    <section class="card card-box-vermelho">
-                        <h5>28/01/2024</h5>
-    
-                        <p><img src="{{ asset('img/icones/icons8-camisa-de-jogador-50.png') }}" alt="Time Azul" class="time-azul"> 6 X 4 <img src="{{ asset('img/icones/icons8-camisa-de-jogador-20.png') }}" alt="Time Vermelho" class="time-vermelho"></p>
-                    </section>
-    
-                    <section class="card card-box-azul">
-                        <h5>28/01/2024</h5>
-    
-                        <p><img src="{{ asset('img/icones/icons8-camisa-de-jogador-50.png') }}" alt="Time Azul" class="time-azul"> 6 X 4 <img src="{{ asset('img/icones/icons8-camisa-de-jogador-20.png') }}" alt="Time Vermelho" class="time-vermelho"></p>
-                    </section>
-    
-                    <section class="card card-box-vermelho">
-                        <h5>28/01/2024</h5>
-    
-                        <p><img src="{{ asset('img/icones/icons8-camisa-de-jogador-50.png') }}" alt="Time Azul" class="time-azul"> 6 X 4 <img src="{{ asset('img/icones/icons8-camisa-de-jogador-20.png') }}" alt="Time Vermelho" class="time-vermelho"></p>
-                    </section>
-    
-                    <section class="card card-box-azul">
-                        <h5>28/01/2024</h5>
-    
-                        <p><img src="{{ asset('img/icones/icons8-camisa-de-jogador-50.png') }}" alt="Time Azul" class="time-azul"> 6 X 4 <img src="{{ asset('img/icones/icons8-camisa-de-jogador-20.png') }}" alt="Time Vermelho" class="time-vermelho"></p>
-                    </section>
+                    @if (!empty($ultimosJogos))
+                        @foreach ($ultimosJogos as $ultimoJogo)
+                            <section class="card @if($ultimoJogo['resultado'] == 'Time Azul') card-box-azul @elseif($ultimoJogo['resultado'] == 'Time Vermelho') card-box-vermelho @else card-box-empate @endif">
+                                <h5>{{ $ultimoJogo['data-partida'] }}</h5>
+            
+                                <p><img src="{{ asset('img/icones/icons8-camisa-de-jogador-50.png') }}" alt="Time Azul" class="time-azul"> {{ $ultimoJogo['placar'] }} <img src="{{ asset('img/icones/icons8-camisa-de-jogador-20.png') }}" alt="Time Vermelho" class="time-vermelho"></p>
+                            </section>
+                        @endforeach
+                    @endif
                 </section>
            </section>
         </section>
@@ -227,7 +213,8 @@
                                 </section>
                                 
                                 <section class="body-registro">
-                                    <form action="">
+                                    <form action="{{ route('registrarFalta') }}" method="POST">
+                                        @csrf
                                         <h3>Jogadores:</h3>
                                         <section id="container-checkbox-registro">
                                             @if (!empty($dadosJogadoresTimes))
@@ -275,7 +262,8 @@
                                 </section>
                                 
                                 <section class="body-registro">
-                                    <form action="">
+                                    <form action="{{ route('registrarGols') }}" method="POST">
+                                        @csrf
                                         <h3>Jogadores:</h3>
                                         <section id="container-checkbox-registro">
                                             @if (!empty($dadosJogadoresTimes))
@@ -309,7 +297,8 @@
                                 </section>
                                 
                                 <section class="body-registro">
-                                    <form action="">
+                                    <form action="{{ route('registrarCartoes') }}" method="POST">
+                                        @csrf
                                         <h3>Jogadores:</h3>
                                         <section id="container-checkbox-registro">
                                             @if (!empty($dadosJogadoresTimes))
@@ -323,7 +312,7 @@
                                         </section>
 
                                         <label for="cartao">Cartão:</label>
-                                        <select name="motivo" id="cartao">
+                                        <select name="cor" id="cartao">
                                             <option value="Amarelo">Amarelo</option>
                                             <option value="Vermelho">Vermelho</option>
                                         </select>
@@ -346,12 +335,13 @@
                                 </section>
                                 
                                 <section class="body-registro">
-                                    <form action="">
+                                    <form action="{{ route('registrarPartidas') }}" method="POST">
+                                        @csrf
                                         <label for="placar">Placar:</label>
                                         <input type="text" id="placar" name="placar" placeholder="Ex: 5 X 3">
 
                                         <label for="resultado">Resultado</label>
-                                        <select name="motivo" id="resultado">
+                                        <select name="resultado" id="resultado">
                                             <option value="Time Azul">Time Azul</option>
                                             <option value="Empate">Empate</option>
                                             <option value="Time Vermelho">Time Vermelho</option>

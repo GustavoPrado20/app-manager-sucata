@@ -35,4 +35,8 @@ Route::get('/jogos', [Controllers\JogoController::class, 'index'])->name('jogos'
 
 Route::prefix('/jogos')->group(function(){
     Route::post('/adicionarJogador', [Controllers\JogoController::class, 'adicionarJogador'])->name('adicionarJogador');
+    Route::post('/registrarFalta', [Controllers\JogoController::class, 'registrarFalta'])->name('registrarFalta');
+    Route::post('/registrarGols', [Controllers\JogoController::class, 'registrarGols'])->name('registrarGols');
+    Route::post('/registrarCartoes', [Controllers\JogoController::class, 'registrarCartoes'])->name('registrarCartoes');
+    Route::post('/registrarPartidas', [Controllers\JogoController::class, 'registrarPartidas'])->name('registrarPartidas');
 });

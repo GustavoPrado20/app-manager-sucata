@@ -28,7 +28,7 @@ class MembrosController extends Controller
     public function Registrar(Request $request){
         $dataAtual = Carbon::now(); 
 
-        $dados = ['nome' => $request['nome'],'apelido' => $request['apelido'], 'ocupação' => $request['ocupação'], 'data-entrada-time' => $dataAtual, 'status' => true];
+        $dados = ['nome' => $request['nome'],'apelido' => $request['apelido'], 'ocupação' => $request['ocupação'], 'data-entrada-time' => $dataAtual, 'status' => true, 'acordo' => $request['acordo']];
 
         $registrar = MembroRepository::create($dados);
 
@@ -40,7 +40,7 @@ class MembrosController extends Controller
     public function update(Request $request){
         $idMembro = $request['idMembro'];
 
-        $dados = ['nome' => $request['nome'], 'apelido' => $request['apelido'], 'ocupação' => $request['ocupação']];
+        $dados = ['nome' => $request['nome'], 'apelido' => $request['apelido'], 'ocupação' => $request['ocupação'], 'acordo' => $request['acordo']];
         
         $atualizarDados = MembroRepository::update($idMembro, $dados);
 

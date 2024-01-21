@@ -75,4 +75,18 @@ class MembroRepository extends AbstractRepository
 
         return true;
     }
+
+    public static function registrarGols($data)
+    {
+        $idJogadores = $data['jogador'];
+        $gols = $data['gols'];
+
+        foreach ($idJogadores as $idJogador)
+        {
+            $dadosJogador = MembroRepository::find(intval($idJogador));
+            MembroRepository::update(intval($idJogador), ['gols' => ($gols + $dadosJogador['gols'])]);
+        }
+
+        return true;
+    }
 }
