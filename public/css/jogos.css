@@ -4,42 +4,6 @@
     width: 100%;
     background: #e0e0e0;
 }
-.menu-jogo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #fff;
-    width: 65vw;
-    border-radius: 60px;
-    padding: 20px;
-    margin: 40px auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.menu-jogo ul {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.menu-jogo ul li {
-    display: inline-block;
-    color: #000;
-    list-style: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    margin-right: 30px;
-}
-
-.menu-jogo ul li a {
-    text-decoration: none;
-    color: #000;
-}
-
-.menu-jogo ul li a:hover {
-    color: #567ebb;
-    transition: 0.5s;
-}
-
 
 .container-1 {
     background-color: #ffffff;

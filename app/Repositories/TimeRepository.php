@@ -16,6 +16,6 @@ class TimeRepository extends AbstractRepository
     // }
 
     public static function TimesOrdenado(){
-        return self::loadModel()::query()->orderBy('pontos', 'desc')->get();
+        return self::loadModel()::query()->orderBy('pontos', 'desc')->orderBy('gols sofridos')->get();
     }
 }

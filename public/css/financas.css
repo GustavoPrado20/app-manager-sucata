@@ -1,0 +1,113 @@
+.container-principal-1 {
+    width: 100%;
+    height: 100%;
+    background: #e0e0e0;
+}
+
+.container-card-finanças {
+    width: 100%;
+    margin: 40px auto;
+}
+
+.card-finanças {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: space-around;
+}
+
+.card {
+    background-color: #fff;
+    height: 80px;
+    width: 250px;
+    border-radius: 20px;
+    padding: 20px 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.titulo-card {
+    margin-left: 40px;
+}
+
+.titulo-card h3{
+    color: #7e7e7e;
+    font-size: 1.0rem;
+    text-align: right;
+}
+
+.titulo-card p{
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+/* receitas e despesas */
+.container-duplo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.container-card {
+    padding: 40px;
+}
+
+.container-receitasDespesas {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-receitasDespesas {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.card-header-receitas{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(to right, #168316, #19c243);
+    border-radius: 8px 8px 0 0;
+    color: #ffffff;
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.titulo-card-receitasDespesas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo-card-receitasDespesas h1{
+    font-size: 1.7rem;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.card-body-receitas{
+    height: 400px;
+    overflow: auto; 
+}
+
+.card-header-despesas{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(to right, #831616, #c21919);
+    border-radius: 8px 8px 0 0;
+    color: #ffffff;
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+

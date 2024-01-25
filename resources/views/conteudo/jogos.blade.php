@@ -62,7 +62,7 @@
                     @if (!empty($ultimosJogos))
                         @foreach ($ultimosJogos as $ultimoJogo)
                             <section class="card @if($ultimoJogo['resultado'] == 'Time Azul') card-box-azul @elseif($ultimoJogo['resultado'] == 'Time Vermelho') card-box-vermelho @else card-box-empate @endif">
-                                <h5>{{ $ultimoJogo['data-partida'] }}</h5>
+                                <h5>{{ date('d-m-Y', strtotime($ultimoJogo['data-partida'])) }}</h5>
             
                                 <p><img src="{{ asset('img/icones/icons8-camisa-de-jogador-50.png') }}" alt="Time Azul" class="time-azul"> {{ $ultimoJogo['placar'] }} <img src="{{ asset('img/icones/icons8-camisa-de-jogador-20.png') }}" alt="Time Vermelho" class="time-vermelho"></p>
                             </section>

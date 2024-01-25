@@ -26,9 +26,18 @@ class MembrosController extends Controller
     }
 
     public function Registrar(Request $request){
-        $dataAtual = Carbon::now(); 
+        $dataAtual = Carbon::now();
 
-        $dados = ['nome' => $request['nome'],'apelido' => $request['apelido'], 'ocupação' => $request['ocupação'], 'data-entrada-time' => $dataAtual, 'status' => true, 'acordo' => $request['acordo']];
+        if(!empty($request['acordo']))
+        {
+            $acordo = $request['acordo'];
+        }
+        else
+        {
+            $acordo = false;
+        }
+
+        $dados = ['nome' => $request['nome'],'apelido' => $request['apelido'], 'ocupação' => $request['ocupação'], 'data-entrada-time' => $dataAtual, 'status' => true, 'acordo' => $acordo];
 
         $registrar = MembroRepository::create($dados);
 
