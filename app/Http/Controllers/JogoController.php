@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\MembroRepository;
 use App\Repositories\RegistroCartaoRepository;
+use App\Repositories\RegistroDividaRepository;
 use App\Repositories\RegistroFaltaRepository;
 use App\Repositories\RegistroPartidaRepository;
 use App\Repositories\TimeRepository;
@@ -53,6 +54,10 @@ class JogoController extends Controller
 
         if($registrarFaltas)
         {
+            foreach($dados['jogador'] as $idJogador)
+            {
+                RegistroDividaRepository::atualizar(intval($idJogador));
+            }
             return redirect()->back()->with('Registrado com Sucesso');
         }
     }
@@ -77,6 +82,10 @@ class JogoController extends Controller
 
         if($registrarCartao)
         {
+            foreach($data['jogador'] as $idJogador)
+            {
+                RegistroDividaRepository::atualizar(intval($idJogador));
+            }
             return redirect()->back()->with('Registrado com Sucesso');
         }
     }

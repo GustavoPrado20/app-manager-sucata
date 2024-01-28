@@ -10,7 +10,7 @@ class MembroRepository extends AbstractRepository
 {
     protected static $model = Membro::class;
 
-    public static function findByStatus(string $Status){
+    public static function findByStatus(bool $Status){
         return self::loadModel()::query()->where( ['status' => $Status])->orderBy('nome')->get();  
     }
 
@@ -19,6 +19,10 @@ class MembroRepository extends AbstractRepository
             $query->where('nome', 'like', '%' . $NomeApelido . '%')
             ->orWhere('apelido', 'like', '%' . $NomeApelido . '%');
         })->orderBy('nome')->get();
+    }
+
+    public static function findById(int $id){
+        return self::loadModel()::query()->where('status', '=', true)->where('id', '=', $id)->first();
     }
 
     public static function allJogadores()
@@ -34,7 +38,7 @@ class MembroRepository extends AbstractRepository
         return self::loadModel()::query()->where('status', '=', true)->where(function($query){
             $query->where('ocupação', '=', 'Jogador')
             ->orWhere('ocupação', '=', 'Diretor e Jogador');
-        })->orderBy('gols', 'desc')->take(10)->get();
+        })->where('id_time', '!=', null)->orderBy('gols', 'desc')->take(10)->get();
     }
 
     public static function jogadoresComCartoes()
@@ -42,7 +46,7 @@ class MembroRepository extends AbstractRepository
         return self::loadModel()::query()->where('status', '=', true)->where(function($query){
             $query->where('ocupação', '=', 'Jogador')
             ->orWhere('ocupação', '=', 'Diretor e Jogador');
-        })->orderBy('cartoes-amarelos', 'desc')->take(10)->get();
+        })->where('id_time', '!=', null)->orderBy('cartoes-amarelos', 'desc')->take(10)->get();
     }
 
     public static function jogadoresTimes()
@@ -50,7 +54,7 @@ class MembroRepository extends AbstractRepository
         return self::loadModel()::query()->where('status', '=', true)->where(function($query){
             $query->where('ocupação', '=', 'Jogador')
             ->orWhere('ocupação', '=', 'Diretor e Jogador');
-        })->orderBy('nome')->get();
+        })->where('id_time', '!=', null)->orderBy('nome')->get();
     }
 
     public static function jogadoresTimeAzul()
@@ -88,5 +92,21 @@ class MembroRepository extends AbstractRepository
         }
 
         return true;
+    }
+
+    public static function jogadoresSemAcordo()
+    {
+        return self::loadModel()::query()->where('status', '=', true)->where(function($query){
+            $query->where('ocupação', '=', 'Jogador')
+            ->orWhere('ocupação', '=', 'Diretor e Jogador');
+        })->where('acordo', '=', false)->orderBy('nome')->get();
+    }
+
+    public static function sociosEAcordo()
+    {
+        return self::loadModel()::query()->where('status', '=', true)->where(function($query){
+            $query->where('ocupação', '=', 'Jogador')->where('acordo', '=', true)
+            ->orWhere('ocupação', '=', 'Sócio');
+        })->orderBy('nome')->get();
     }
 }

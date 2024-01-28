@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repositories;
 
 use App\Models\RegistroCartao;
+use Carbon\Carbon;
 
 class RegistroCartaoRepository extends AbstractRepository
 {
@@ -22,11 +23,25 @@ class RegistroCartaoRepository extends AbstractRepository
     {
         $cor = $data['cor'];
         $idJogadores = $data['jogador'];
+        $dataHoje = Carbon::now();
 
         foreach($idJogadores as $idJogador)
         {
             $dados = ['id_jogador' => intval($idJogador), 'cor' => $cor];
             RegistroCartaoRepository::create($dados);
+
+            if($cor == 'Amarelo')
+            {
+                $data = ['id_membro' => $idJogador, 'referente' => 'Cartão Amarelo', 'valor' => 20, 'data' => $dataHoje];
+                DividaRepository::create($data);
+            }
+            else
+            {
+                $data = ['id_membro' => $idJogador, 'referente' => 'Cartão Vermelho', 'valor' => 25, 'data' => $dataHoje];
+                DividaRepository::create($data);
+            }
+
+            RegistroDividaRepository::atualizar(intval($idJogador));
         }
 
         foreach($idJogadores as $idJogador)

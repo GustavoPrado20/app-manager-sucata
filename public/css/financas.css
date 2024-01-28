@@ -1,6 +1,6 @@
 .container-principal-1 {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background: #e0e0e0;
 }
 
@@ -96,7 +96,10 @@
 
 .card-body-receitas{
     height: 400px;
-    overflow: auto; 
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .card-header-despesas{
@@ -111,3 +114,375 @@
     font-weight: 700;
 }
 
+.container-principal-2 {
+    width: 100%;
+    background: #ffffff;
+    padding: 40px;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.receitas-mes-body {
+    height: 800px;
+    overflow: auto;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.container-principal-3 {
+    width: 100%;
+    background: #e0e0e0;
+    padding: 40px;
+}
+
+.container-DR {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    padding: 20px;
+    width: 90vw;
+    margin: 40px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+    width: 100vw;
+    overflow-x: auto;
+}
+
+.table-header-despesas{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(to right, #831616, #c21919);
+    border-radius: 8px 8px 0 0;
+    color: #ffffff;
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.table-header-receitas{
+    background: linear-gradient(to right, #168316, #19c243);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px 8px 0 0;
+    color: #ffffff;
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.table-header-dividas{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(to right, #2b4c7e, #7e2b2b);
+    border-radius: 8px 8px 0 0;
+    color: #ffffff;
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.titulo-table{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo-table h1{
+    font-size: 1.7rem;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+button{
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 10px;
+    color: #fefefe;
+}
+
+.table-body{
+    height: 200px;
+    overflow: auto; 
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    min-width: 900px;
+    border-collapse: collapse;
+}
+
+.thead-despesas th {
+    top: 0;
+    background: #806060;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.thead-receitas th {
+    top: 0;
+    background: #648060;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.thead-dividas th {
+    top: 0;
+    background: #606d80;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+th:nth-child(2), td:nth-child(2){
+    width: 55%;
+}
+
+th:nth-child(1), td:nth-child(1){
+    width: 20%;
+}
+
+th, td {
+    border-bottom: 1px, solid #dddddd;
+    padding: 10px 20px;
+    word-break: break-all;  
+    text-align: center;
+}
+
+tr:hover td{
+    color: #567ebb;
+    cursor: pointer;
+    background-color: #dce0e6;
+}
+
+::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+/* btns-tabelas */
+.icone {
+    max-width: 100%;
+    height: auto;
+    width: auto;
+}
+
+.btn-add-receita {
+    padding: 5px 25px;
+    margin-left: 15px;
+    border-radius: 15px;
+    color: #fefefe;
+    background: #168316;
+    cursor: pointer;
+    transition: all 400ms ease;
+    border: none;
+    outline: none;
+}
+
+.btn-add-despesa {
+    padding: 5px 25px;
+    margin-left: 15px;
+    border-radius: 15px;
+    color: #fefefe;
+    background: #831616;
+    cursor: pointer;
+    transition: all 400ms ease;
+    border: none;
+    outline: none;
+}
+
+.btn-add-receita:hover, .btn-add-despesa:hover{
+    background: transparent;
+    color: #ffffff;
+    box-shadow: inset 0 0 0 3px #ffffff;
+}
+
+/* modal */
+
+/* Janela Modal */
+.modal-fade {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.modal {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+}
+
+.header-modal {
+    color: #000;
+    background: none;
+    font-size: 1.6rem;
+    padding: 0px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.header-modal button {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 2.8rem;
+    color: #ff0000ff;
+    background: none;
+    border: none;
+}
+
+/* modal-add-receita */
+.modal-add-receita form {
+    margin-top: 20px;
+}
+
+.modal-add-receita form label {
+    display: block;
+    color: #000;
+    margin-bottom: 5px;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.modal-add-receita form input, .modal-add-receita form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #000;
+}
+
+.modal-add-receita form input:focus, .modal-add-receita form select:focus {
+    outline: none;
+    border-bottom: 3px solid #567ebb;
+}
+
+.modal-add-receita form button[type="submit"] {
+    background-color: #2b4c7e;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.modal-add-receita form button[type="submit"]:hover {
+    background-color: #4167a0;
+    cursor: pointer;
+}
+
+.container-dividaJogador {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.table {
+    width: 100vw;
+    overflow-x: auto;
+}
+
+.table-header-divida-form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background: linear-gradient(to right, #2b4c7e, #7e2b2b);
+    border-radius: 8px 8px 0 0;
+    color: #ffffff;
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.titulo-table{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo-table h1{
+    font-size: 1.7rem;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.thead-dividas-form th {
+    top: 0;
+    background: #606d80;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.table-body-dividas-form {
+    height: auto;
+    max-height: 200px;
+    overflow: auto; 
+}
+
+.container-dividaJogador table {
+    min-width: auto;
+}
+
+.thead-dividas-form th:nth-child(1), .thead-dividas-form td:nth-child(1){
+    width: 10%;
+}
+
+.thead-dividas-form th:nth-child(2), .thead-dividas-form  td:nth-child(2){
+    width: 35%;
+}
+
+.tbody-dividas-form td:nth-child(1){
+    padding: 0;
+}
+
+.tbody-dividas-form td {
+    font-size: 0.9rem;
+    color: #000;
+}
+
+.thead-dividas-form th:nth-child(3), .thead-dividas-form  td:nth-child(3), .thead-dividas-form th:nth-child(4), .thead-dividas-form  td:nth-child(4){
+    width: auto;
+}
+
+.table-body-dividas-form input[type="checkbox"]{
+    cursor: pointer;
+}

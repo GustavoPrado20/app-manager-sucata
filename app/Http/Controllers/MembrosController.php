@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Membro;
+use App\Repositories\DividaRepository;
 use App\Repositories\MembroRepository;
+use App\Repositories\RegistroDividaRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Stmt\Return_;
@@ -27,6 +30,7 @@ class MembrosController extends Controller
 
     public function Registrar(Request $request){
         $dataAtual = Carbon::now();
+        $mesAtual = $dataAtual->month;
 
         if(!empty($request['acordo']))
         {
@@ -42,6 +46,21 @@ class MembrosController extends Controller
         $registrar = MembroRepository::create($dados);
 
         if($registrar){
+            if($mesAtual == 1)
+            {
+                $dadosMembro = MembroRepository::findById(intval($registrar->id));
+
+                if($dadosMembro['ocupação'] == 'Jogador' or $dadosMembro['ocupação'] == 'Diretor e Jogador')
+                {
+                    $data = ['id_membro' => $dadosMembro['id'], 'referente' => 'Mensalidade', 'valor' => 10, 'data' => $dataAtual];
+                    DividaRepository::create($data);
+                }
+            }
+
+            $dadosRegistroDivida = ['id_membro' => $registrar->id, 'ano' => $dataAtual->year];
+            RegistroDividaRepository::create($dadosRegistroDivida);
+            RegistroDividaRepository::atualizar(intval($registrar->id));
+
             return redirect(route('membros'));
         }
     }

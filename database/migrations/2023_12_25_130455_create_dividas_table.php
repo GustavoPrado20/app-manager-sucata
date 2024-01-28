@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('dividas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_membro');
-            $table->integer('divida')->default(0);
             $table->string('referente');
+            $table->integer('valor')->default(0);
+            $table->date('data');
+            $table->string('situação')->default('Pendente');
             $table->timestamps();
 
             //foreign keys

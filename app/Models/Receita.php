@@ -5,17 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Divida extends Model
+class Receita extends Model
 {
     use HasFactory;
 
-    protected $table = 'dividas';
+    protected $table = 'receitas';
 
     protected $fillable = [
-        'id_membro',
-        'referente',
+        'referencia',
         'valor',
-        'data'
+        'data',
     ];
-
 }

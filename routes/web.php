@@ -42,3 +42,8 @@ Route::prefix('/jogos')->group(function(){
 });
 
 Route::get('/finanças', [Controllers\FinancasController::class, 'index'])->name('financas');
+
+Route::prefix('/finanças')->group(function(){
+    Route::post('/adicionarReceitas', [Controllers\FinancasController::class, 'adicionarFinanças'])->name('adicionarFinanças');
+    Route::post('/adicionarDespesas', [Controllers\FinancasController::class, 'adicionarDespesas'])->name('adicionarDespesas');
+});

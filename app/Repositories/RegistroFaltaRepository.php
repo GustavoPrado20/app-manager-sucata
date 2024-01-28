@@ -16,6 +16,12 @@ class RegistroFaltaRepository extends AbstractRepository
         return self::loadModel()::query()->where( ['id_jogador' => $idJogador])->get();  
     }
 
+    public static function findFaltasCobradas(int $idJogador){
+        return self::loadModel()::query()->where( ['id_jogador' => $idJogador])->where(function($query){
+            $query->where('motivo', '=', 'Não Justificado')->orWhere('motivo', '=', 'Atraso');
+        })->get();  
+    }
+
     public static function registrarFalta($dados)
     {
         $data = date('Y-m-d', strtotime($dados['data']));
@@ -26,6 +32,14 @@ class RegistroFaltaRepository extends AbstractRepository
         {
             $dadosFaltas = ['data' => $data, 'motivo' => $motivo, 'id_jogador' => $idJogador];
             RegistroFaltaRepository::create($dadosFaltas);
+
+            if($motivo == 'Atraso' or $motivo == 'Não Justificado')
+            {
+                $data = ['id_membro' => $idJogador, 'referente' => 'Falta', 'valor' => 30, 'data' => $data];
+                DividaRepository::create($data);
+            }
+
+            RegistroDividaRepository::atualizar(intval($idJogador));
         }
 
         foreach($idJogadores as $idJogador)
@@ -33,7 +47,7 @@ class RegistroFaltaRepository extends AbstractRepository
             $faltas = ['faltas' => RegistroFaltaRepository::findByIdJogador(intval($idJogador))->count()];
             MembroRepository::update(intval($idJogador), $faltas);
         }
-
+        
         return true;
     }
 }

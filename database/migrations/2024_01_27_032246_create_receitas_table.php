@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('finanças', function (Blueprint $table) {
+        Schema::create('receitas', function (Blueprint $table) {
             $table->id();
-            $table->decimal('saldo-liquido-total')->default(0);
-            $table->integer('saldo-bruto-ganho')->default(0);
-            $table->decimal('dispesas')->default(0);
-            $table->year('ano');
+            $table->string('referencia');
+            $table->integer('valor');
+            $table->date('data');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('finanças');
+        Schema::dropIfExists('receitas');
     }
 };
