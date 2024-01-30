@@ -21,53 +21,29 @@ class FinancasController extends Controller
         $dadosReceitas = ReceitaRepository::all();
         $dadosDespesas = DespesaRepository::all();
 
+        // Dividas Pagas No Mês Atual - Receitas Pagas No Mês Atual
         $mes = Carbon::now()->month;
 
-        $faltasPagasMes = (DividaRepository::FaltasPagaMes($mes)->count() * 30);
-        $mensalidades = (DividaRepository::MensalidadesJogadoresPagaMes($mes)->count() * 40) + (DividaRepository::MensalidadesSociosPagaMes($mes)->count() * 20) + (DividaRepository::MensalidadesPagaJaneiro($mes)->count() * 10) ;
-        $cartoes = (DividaRepository::CartaoAmareloPagaMes($mes)->count() * 20) + (DividaRepository::CartaoVermelhoPagaMes($mes)->count() * 25);
+        $faltasPagasMes = DividaRepository::FaltasPagaMes($mes);
+        $totalPagoMensalidades = DividaRepository::mensalidadesPagasMes($mes);
+        $totalPagoCartoes = DividaRepository::cartoesPagosMes($mes);
+        //-------------------------------------------------------------
 
-        $dividasTotalDados = DividaRepository::dividasTotal();
-        $dividaTotal = 0;
-
-        foreach($dividasTotalDados as $dividaTotalDado)
-        {
-            $dividaTotal = $dividaTotalDado['valor'] + $dividaTotal;
-        }
-
-        $totalFuturo = $dividaTotal  + (MembroRepository::sociosEAcordo()->count() * 20) + (MembroRepository::jogadoresSemAcordo()->count() * 40);
+        $totalFuturo = DividaRepository::totalPrevsDez(); // Saldo total previsto para o Mês de Dezembro
         
-        $dividasPagas = DividaRepository::dividasPagas();
-        $receitas = 0;
+        $receitas = DividaRepository::receitaTotal(); // Valor total recebido até o momento atual
 
-        foreach($dividasPagas as $dividaPaga)
-        {
-            $receitas = $dividaPaga['valor'] + $receitas;
-        }
+        $despesaTotal = DespesaRepository::despesaTotal(); //Valor total gasto até o momento
 
-        $despesaTotal = 0;
+        //Despesas Do Mes Atual
+        $despesaJuizMes = (DespesaRepository::JuizDespesaMes($mes)->count() * 90); //Despesas Referente ao Pagamento do Juiz
 
-        foreach($dadosDespesas as $dadoDespesa)
-        {
-            $despesaTotal = $dadoDespesa['valor'] + $despesaTotal;
-        }
+        $totalOutraDespesaMes = DespesaRepository::totalOutrasDespesasMes($mes);
+        //---------------------------------------------------------------------------
 
-        $despesaJuizMes = (DespesaRepository::JuizDespesaMes($mes)->count() * 100);
-        $outrasDespesaMes = DespesaRepository::outrasDespesaMes($mes);
-        $totalOutraDespesaMes = 0;
-
-        foreach($outrasDespesaMes as $outraDespesa)
-        {
-            $totalOutraDespesaMes = $outraDespesa['valor'] + $totalOutraDespesaMes;
-        }
-
-        $mesJaneiro = 1;
-
-        $faltasPagasMesJaneiro = (DividaRepository::FaltasPagaMes($mesJaneiro)->count() * 30);
-        $mensalidadesJaneiro = (DividaRepository::MensalidadesJogadoresPagaMes($mesJaneiro)->count() * 40) + (DividaRepository::MensalidadesSociosPagaMes($mes)->count() * 20) + (DividaRepository::MensalidadesPagaJaneiro($mes)->count() * 10) ;
-        $cartoesJaneiro = (DividaRepository::CartaoAmareloPagaMes($mesJaneiro)->count() * 20) + (DividaRepository::CartaoVermelhoPagaMes($mes)->count() * 25);
-
-        $totalJaneiro = $faltasPagasMesJaneiro + $mensalidadesJaneiro + $cartoesJaneiro;
+        // Dividas Pagas No Mês de Janeiro - Receitas Pagas No Mês de Janeiro
+        $totalPagoMeses = DividaRepository::totalRecebidoNosMeses();
+        // //----------------------------------------------------------------------------------
 
         if(Auth::check())
         {
@@ -84,14 +60,14 @@ class FinancasController extends Controller
             'LoginAuth' => $LoginAuth, 
             'dadosDespesas' => $dadosDespesas,
             'FaltasPagasMes' => $faltasPagasMes,
-            'mensalidades' => $mensalidades,
-            'cartoes' => $cartoes,
+            'mensalidades' => $totalPagoMensalidades,
+            'cartoes' => $totalPagoCartoes,
             'receitas' => $receitas,
             'despesaTotal' => $despesaTotal,
             'despesaJuizMes' => $despesaJuizMes,
             'totalFuturo' => $totalFuturo,
             'totalOutraDespesaMes' => $totalOutraDespesaMes,
-            'totalJaneiro' => $totalJaneiro,
+            'totalPagoMeses' => $totalPagoMeses,
         ]);
     }
 

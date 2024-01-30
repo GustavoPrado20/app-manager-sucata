@@ -21,41 +21,106 @@ class DividaRepository extends AbstractRepository
 
     public static function FaltasPagaMes($mes)
     {
-        return self::loadModel()::query()->where('situação', '=', 'Paga')->whereMonth('data', $mes)->where('referente', '=', 'Falta')->get();
+        $faltas = self::loadModel()::query()->where('situação', '=', 'Paga')
+        ->whereMonth('data', $mes)
+        ->where('referente', '=', 'Falta')
+        ->get()->count();
+
+        $total = $faltas * 30;
+
+        return $total;
     }
 
-    public static function MensalidadesPagaJaneiro($mes)
+    public static function mensalidadesPagasMes($mes)
     {
-        return self::loadModel()::query()->where('situação', '=', 'Paga')->whereMonth('data', $mes)->where('referente', '=', 'Mensalidade')->where('valor', '=', 10)->get();
+        $pagasDeJaneiro = self::loadModel()::query()->where('situação', '=', 'Paga')
+        ->whereMonth('data', $mes)
+        ->where('referente', '=', 'Mensalidade')
+        ->where('valor', '=', 10)
+        ->get()->count();
+
+        $pagasJogadores = self::loadModel()::query()->where('situação', '=', 'Paga')
+        ->whereMonth('data', $mes)
+        ->where('referente', '=', 'Mensalidade')
+        ->where('valor', '=', 40)
+        ->get()->count();
+
+        $pagasSocios = self::loadModel()::query()->where('situação', '=', 'Paga')
+        ->whereMonth('data', $mes)
+        ->where('referente', '=', 'Mensalidade')
+        ->where('valor', '=', 20)
+        ->get()->count();
+
+        $total = ($pagasDeJaneiro * 10) + ($pagasJogadores * 40) + ($pagasSocios * 20);
+        
+        return $total;
     }
 
-    public static function MensalidadesJogadoresPagaMes($mes)
+    public static function cartoesPagosMes($mes)
     {
-        return self::loadModel()::query()->where('situação', '=', 'Paga')->whereMonth('data', $mes)->where('referente', '=', 'Mensalidade')->where('valor', '=', 40)->get();
+        $amarelos = self::loadModel()::query()->where('situação', '=', 'Paga')
+        ->whereMonth('data', $mes)
+        ->where('referente', '=', 'Cartão Amarelo')
+        ->get()->count();
+
+        $vermelhos = self::loadModel()::query()->where('situação', '=', 'Paga')
+        ->whereMonth('data', $mes)
+        ->where('referente', '=', 'Cartão Vermelho')
+        ->get()->count();
+
+        $total = ($amarelos * 20) + ($vermelhos * 25);
+
+        return $total;
     }
 
-    public static function MensalidadesSociosPagaMes($mes)
+    public static function receitaTotal()
     {
-        return self::loadModel()::query()->where('situação', '=', 'Paga')->whereMonth('data', $mes)->where('referente', '=', 'Mensalidade')->where('valor', '=', 20)->get();
+        $receitas = self::loadModel()::query()->where('situação', '=', 'Paga')->get();
+
+        $total = 0;
+
+        foreach($receitas as $receita)
+        {
+            $total = $receita['valor'] + $total;
+        }
+        
+        return $total;
     }
 
-    public static function CartaoAmareloPagaMes($mes)
+    public static function totalPrevsDez()
     {
-        return self::loadModel()::query()->where('situação', '=', 'Paga')->whereMonth('data', $mes)->where('referente', '=', 'Cartão Amarelo')->get();
+        $dividas = self::loadModel()::query()->where('referente', '!=', 'Mensalidade')->get();
+        $totalDivida = 0;
+
+        foreach ($dividas as $divida)
+        {
+            $totalDivida = $divida['valor'] + $totalDivida;
+        }
+
+        $socios = MembroRepository::sociosEAcordo()->count();
+
+        $jogadores = MembroRepository::jogadoresSemAcordo()->count();
+
+        $total = $totalDivida + ($socios * 11 * 20) + ($jogadores * 11 * 40) + ($jogadores * 10);
+
+        return $total;
     }
 
-    public static function CartaoVermelhoPagaMes($mes)
+    public static function totalRecebidoNosMeses()
     {
-        return self::loadModel()::query()->where('situação', '=', 'Paga')->whereMonth('data', $mes)->where('referente', '=', 'Cartão Vermelho')->get();
-    }
+        $meses = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-    public static function dividasPagas()
-    {
-        return self::loadModel()::query()->where('situação', '=', 'Paga')->get();
-    }
+        $totalMeses = [];
 
-    public static function dividasTotal()
-    {
-        return self::loadModel()::query()->where('referente', '!=', 'Mensalidade')->get();
+        for($count = 0; $count < 12; $count ++)
+        {
+            $faltasPagas = DividaRepository::FaltasPagaMes($meses[$count]);
+            $mensalidadesPagas = DividaRepository::mensalidadesPagasMes($meses[$count]);
+            $cartoesPagos = DividaRepository::cartoesPagosMes($meses[$count]);
+
+            $totalMeses[$count] = htmlspecialchars(strval($faltasPagas + $mensalidadesPagas + $cartoesPagos), ENT_QUOTES, 'UTF-8');
+        }
+
+        return $totalMeses;
     }
 }

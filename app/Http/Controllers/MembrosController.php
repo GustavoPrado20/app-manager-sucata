@@ -68,7 +68,16 @@ class MembrosController extends Controller
     public function update(Request $request){
         $idMembro = $request['idMembro'];
 
-        $dados = ['nome' => $request['nome'], 'apelido' => $request['apelido'], 'ocupação' => $request['ocupação'], 'acordo' => $request['acordo']];
+        if(!empty($request['acordo']))
+        {
+            $acordo = $request['acordo'];
+        }
+        else
+        {
+            $acordo = false;
+        }
+
+        $dados = ['nome' => $request['nome'], 'apelido' => $request['apelido'], 'ocupação' => $request['ocupação'], 'acordo' => $acordo];
         
         $atualizarDados = MembroRepository::update($idMembro, $dados);
 

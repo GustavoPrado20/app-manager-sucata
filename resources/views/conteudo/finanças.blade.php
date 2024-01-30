@@ -208,7 +208,20 @@
                             var data = {
                                 labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', ' Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
                                 datasets: [{
-                                    data: [{{ $totalJaneiro }}],
+                                    data: [
+                                        {{ $totalPagoMeses[0] }},
+                                        {{ $totalPagoMeses[1] }},
+                                        {{ $totalPagoMeses[2] }},
+                                        {{ $totalPagoMeses[3] }},
+                                        {{ $totalPagoMeses[4] }},
+                                        {{ $totalPagoMeses[5] }},
+                                        {{ $totalPagoMeses[6] }},
+                                        {{ $totalPagoMeses[7] }},
+                                        {{ $totalPagoMeses[8] }},
+                                        {{ $totalPagoMeses[9] }},
+                                        {{ $totalPagoMeses[10] }},
+                                        {{ $totalPagoMeses[11] }},
+                                    ],
                                     borderWidth: 1,
                                     backgroundColor: 'rgba(25, 194, 67, 0.4)',
                                     label: 'Valor Recebido  '

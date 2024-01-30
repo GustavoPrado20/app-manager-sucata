@@ -96,17 +96,24 @@ class MembroRepository extends AbstractRepository
 
     public static function jogadoresSemAcordo()
     {
-        return self::loadModel()::query()->where('status', '=', true)->where(function($query){
+        return self::loadModel()::query()->where('status', '=', true)
+        ->where(function($query){
             $query->where('ocupação', '=', 'Jogador')
             ->orWhere('ocupação', '=', 'Diretor e Jogador');
-        })->where('acordo', '=', false)->orderBy('nome')->get();
+        })
+        ->where('acordo', '=', false)
+        ->orderBy('nome')
+        ->get();
     }
 
     public static function sociosEAcordo()
     {
-        return self::loadModel()::query()->where('status', '=', true)->where(function($query){
+        return self::loadModel()::query()->where('status', '=', true)
+        ->where(function($query){
             $query->where('ocupação', '=', 'Jogador')->where('acordo', '=', true)
             ->orWhere('ocupação', '=', 'Sócio');
-        })->orderBy('nome')->get();
+        })
+        ->orderBy('nome')
+        ->get();
     }
 }
