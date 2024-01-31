@@ -31,7 +31,7 @@ class CriarMensalidades extends Command
         $membros = MembroRepository::findByStatus(true);
         $date = Carbon::now();
 
-        if($date->month == 1) 
+        if($date->month != 1) 
         {
             foreach($membros as $membro)
             {
