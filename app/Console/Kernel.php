@@ -12,7 +12,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command('app:criar-mensalidades')->monthlyOn(1);
+        $schedule->command('app:criar-mensalidades')->monthlyOn(3);
     }
 
     /**

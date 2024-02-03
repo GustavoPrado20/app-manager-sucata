@@ -23,4 +23,13 @@ class Membro extends Model
         'cartoes-amarelos',
         'acordo',
     ];
+
+    public static function findByStatus(bool $status)
+    {
+        return self::query()->where('status','=', $status)->orderBy('nome')->get();
+    }
+
+    public static function updateIdMember(int $id, array $attributes = []){
+        return self::query()->where(['id_membro' => $id])->update($attributes);
+    }
 }

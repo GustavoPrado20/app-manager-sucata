@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\CreateJanuaryMonthlyAction;
+use App\Actions\CreateMonthlyFeeAction;
+use App\Models\Divida;
 use App\Models\Membro;
+use App\Models\RegistroDivida;
 use App\Repositories\DividaRepository;
 use App\Repositories\MembroRepository;
 use App\Repositories\RegistroDividaRepository;
@@ -15,51 +19,47 @@ class MembrosController extends Controller
 {
     public function index()
     {
+        $LoginAuth = false;
         if(Auth::check()){
             $LoginAuth = true;
         }
-        else{
-            $LoginAuth = false;
-        }
 
-        $dadosMembros = MembroRepository::findByStatus(true);
-        $dadosMembrosInativos = MembroRepository::findByStatus(false);
+        $dadosMembros = Membro::findByStatus(true);
+        $dadosMembrosInativos = Membro::findByStatus(false);
 
-        return view('conteudo.membros',['LoginAuth' => $LoginAuth, 'dadosMembros' => $dadosMembros, 'dadosMembrosInativos' => $dadosMembrosInativos]);
+        return view('conteudo.membros',[
+            'LoginAuth' => $LoginAuth, 
+            'dadosMembros' => $dadosMembros, 
+            'dadosMembrosInativos' => $dadosMembrosInativos
+        ]);
     }
 
     public function Registrar(Request $request){
         $dataAtual = Carbon::now();
-        $mesAtual = $dataAtual->month;
+        $acordo = false;
 
         if(!empty($request['acordo']))
         {
             $acordo = $request['acordo'];
         }
-        else
+
+        $dados = [
+            'nome' => $request['nome'],
+            'apelido' => $request['apelido'], 
+            'ocupação' => $request['ocupação'], 
+            'data-entrada-time' => $dataAtual, 
+            'status' => true, 
+            'acordo' => $acordo
+        ];
+
+        $registrar = Membro::query()->create($dados);
+
+        if($registrar)
         {
-            $acordo = false;
-        }
-
-        $dados = ['nome' => $request['nome'],'apelido' => $request['apelido'], 'ocupação' => $request['ocupação'], 'data-entrada-time' => $dataAtual, 'status' => true, 'acordo' => $acordo];
-
-        $registrar = MembroRepository::create($dados);
-
-        if($registrar){
-            if($mesAtual == 1)
-            {
-                $dadosMembro = MembroRepository::findById(intval($registrar->id));
-
-                if($dadosMembro['ocupação'] == 'Jogador' or $dadosMembro['ocupação'] == 'Diretor e Jogador')
-                {
-                    $data = ['id_membro' => $dadosMembro['id'], 'referente' => 'Mensalidade', 'valor' => 10, 'data' => $dataAtual];
-                    DividaRepository::create($data);
-                }
-            }
-
             $dadosRegistroDivida = ['id_membro' => $registrar->id, 'ano' => $dataAtual->year];
-            RegistroDividaRepository::create($dadosRegistroDivida);
-            RegistroDividaRepository::atualizar(intval($registrar->id));
+            RegistroDivida::query()->create($dadosRegistroDivida);
+
+            CreateMonthlyFeeAction::execute($registrar->id);
 
             return redirect(route('membros'));
         }
@@ -67,19 +67,21 @@ class MembrosController extends Controller
 
     public function update(Request $request){
         $idMembro = $request['idMembro'];
+        $acordo = false;
 
         if(!empty($request['acordo']))
         {
             $acordo = $request['acordo'];
         }
-        else
-        {
-            $acordo = false;
-        }
 
-        $dados = ['nome' => $request['nome'], 'apelido' => $request['apelido'], 'ocupação' => $request['ocupação'], 'acordo' => $acordo];
+        $dados = [
+            'nome' => $request['nome'], 
+            'apelido' => $request['apelido'], 
+            'ocupação' => $request['ocupação'], 
+            'acordo' => $acordo
+        ];
         
-        $atualizarDados = MembroRepository::update($idMembro, $dados);
+        $atualizarDados = Membro::updateIdMember($idMembro, $dados);
 
         if($atualizarDados){
             return redirect(route('membros'));
@@ -88,12 +90,10 @@ class MembrosController extends Controller
 
     public function search(Request $request){
         $nomeApelido = $request['nomeApelido'];
+        $LoginAuth = false;
 
         if(Auth::check()){
             $LoginAuth = true;
-        }
-        else{
-            $LoginAuth = false;
         }
 
         if(empty($nomeApelido))
@@ -101,14 +101,22 @@ class MembrosController extends Controller
             $dadosMembros = MembroRepository::findByStatus(true);
             $dadosMembrosInativos = MembroRepository::findByStatus(false);
 
-            return view('conteudo.membros',['LoginAuth' => $LoginAuth, 'dadosMembros' => $dadosMembros, 'dadosMembrosInativos' => $dadosMembrosInativos]);
+            return view('conteudo.membros',[
+                'LoginAuth' => $LoginAuth, 
+                'dadosMembros' => $dadosMembros, 
+                'dadosMembrosInativos' => $dadosMembrosInativos
+            ]);
         }
         else{
             $dadosMembrosInativos = MembroRepository::findByStatus(false);
             $busca = MembroRepository::findByNomeApelido($nomeApelido);
     
             if($busca){
-                return view('conteudo.membros', ['dadosMembros' => $busca, 'dadoMembroInativos' => $dadosMembrosInativos, 'LoginAuth' => $LoginAuth]);
+                return view('conteudo.membros', [
+                    'dadosMembros' => $busca, 
+                    'dadoMembroInativos' => $dadosMembrosInativos, 
+                    'LoginAuth' => $LoginAuth
+                ]);
             }
         }
     }

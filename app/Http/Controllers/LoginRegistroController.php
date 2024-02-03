@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\UserRepository;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,12 +17,18 @@ class LoginRegistroController extends Controller
         return view('conteudo.login');
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @return void
+     */
     public function registrarDiretor(Request $request){
         $datavalidate = $request->all();
 
         $data = ['name' => $datavalidate['nome'], 'email' => $datavalidate['email'], 'password' => $datavalidate['password']];
 
-        $registrar = UserRepository::create($data);
+        $registrar = User::query()->create($data);
 
         if($registrar){
             $credenciais = $request->only('email', 'password');
@@ -35,6 +41,12 @@ class LoginRegistroController extends Controller
         }
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @return void
+     */
     public function logarDiretor(Request $request){
         $data = $request->only('email', 'password');
 

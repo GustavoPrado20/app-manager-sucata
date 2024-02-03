@@ -20,4 +20,12 @@ class RegistroDivida extends Model
     {
         return $this->hasMany(Membro::class, 'id', 'id_membro');
     }
+
+    public static function updateIdMember(int $id, array $attributes = []){
+        return self::query()->where(['id_membro' => $id])->update($attributes);
+    }
+
+    public static function findByIdMembro(int $id){
+        return self::query()->where( ['id_membro' => $id])->first();  
+    }
 }

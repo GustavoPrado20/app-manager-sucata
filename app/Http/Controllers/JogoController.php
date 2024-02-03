@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\UpdateDebtValueAction;
 use App\Repositories\MembroRepository;
 use App\Repositories\RegistroCartaoRepository;
 use App\Repositories\RegistroDividaRepository;
@@ -48,7 +49,11 @@ class JogoController extends Controller
 
     public function registrarFalta(Request $request)
     {
-        $dados = ['data' => $request->input('data'), 'motivo' => $request->input('motivo'), 'jogador' => $request->input('Jogador', [])];
+        $dados = [
+            'data' => $request->input('data'), 
+            'motivo' => $request->input('motivo'), 
+            'jogador' => $request->input('Jogador', [])
+        ];
 
         $registrarFaltas = RegistroFaltaRepository::registrarFalta($dados);
 
@@ -56,7 +61,7 @@ class JogoController extends Controller
         {
             foreach($dados['jogador'] as $idJogador)
             {
-                RegistroDividaRepository::atualizar(intval($idJogador));
+                UpdateDebtValueAction::execute(intval($idJogador));
             }
             return redirect()->back()->with('Registrado com Sucesso');
         }
@@ -64,7 +69,10 @@ class JogoController extends Controller
 
     public function registrarGols(Request $request)
     {
-        $data = ['jogador' => $request->input('Jogador', []), 'gols' => $request->input('gols')];
+        $data = [
+            'jogador' => $request->input('Jogador', []), 
+            'gols' => $request->input('gols')
+        ];
 
         $registrarGols = MembroRepository::registrarGols($data);
 
@@ -76,7 +84,10 @@ class JogoController extends Controller
 
     public function registrarCartoes(Request $request)
     {
-        $data = ['cor' => $request->input('cor'), 'jogador' => $request->input('Jogador', [])];
+        $data = [
+            'cor' => $request->input('cor'), 
+            'jogador' => $request->input('Jogador', [])
+        ];
 
         $registrarCartao = RegistroCartaoRepository::regisrarCatao($data);
 
@@ -84,7 +95,7 @@ class JogoController extends Controller
         {
             foreach($data['jogador'] as $idJogador)
             {
-                RegistroDividaRepository::atualizar(intval($idJogador));
+                UpdateDebtValueAction::execute(intval($idJogador));
             }
             return redirect()->back()->with('Registrado com Sucesso');
         }
@@ -92,7 +103,11 @@ class JogoController extends Controller
 
     public function registrarPartidas(Request $request)
     {
-        $dados = ['placar' => $request['placar'], 'resultado' => $request['resultado'], 'data' => $request['data']];
+        $dados = [
+            'placar' => $request['placar'], 
+            'resultado' => $request['resultado'], 
+            'data' => $request['data']
+        ];
 
         $registrarPartida = RegistroPartidaRepository::registrarPartida($dados);
 

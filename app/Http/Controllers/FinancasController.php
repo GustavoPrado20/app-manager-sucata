@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\CalculateAbsencesPaidMonth;
+use App\Actions\CalculateCardsPaidMonth;
+use App\Actions\CalculateMonthlyPayments;
+use App\Actions\UpdateDebtValueAction;
+use App\Models\Despesa;
+use App\Models\Divida;
+use App\Models\Membro;
+use App\Models\Receita;
 use App\Models\RegistroDivida;
 use App\Repositories\DespesaRepository;
 use App\Repositories\DividaRepository;
-use App\Repositories\MembroRepository;
-use App\Repositories\ReceitaRepository;
-use App\Repositories\RegistroDividaRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,40 +22,38 @@ class FinancasController extends Controller
     public function index()
     {
         $dividas = RegistroDivida::with('NomeMembro')->where('total-divida', '>', 0)->get();
-        $dadosMembros = MembroRepository::findByStatus(True);
-        $dadosReceitas = ReceitaRepository::all();
-        $dadosDespesas = DespesaRepository::all();
+        $dadosMembros = Membro::findByStatus(True);
+        $dadosReceitas = Receita::all();
+        $dadosDespesas = Despesa::all();
 
         // Dividas Pagas No Mês Atual - Receitas Pagas No Mês Atual
-        $mes = Carbon::now()->month;
+        $month = Carbon::now()->month;
 
-        $faltasPagasMes = DividaRepository::FaltasPagaMes($mes);
-        $totalPagoMensalidades = DividaRepository::mensalidadesPagasMes($mes);
-        $totalPagoCartoes = DividaRepository::cartoesPagosMes($mes);
+        $faltasPagasMes = CalculateAbsencesPaidMonth::execute($month);
+        $totalPagoMensalidades = CalculateMonthlyPayments::execute($month);
+        $totalPagoCartoes = CalculateCardsPaidMonth::execute($month);
         //-------------------------------------------------------------
 
-        $totalFuturo = DividaRepository::totalPrevsDez(); // Saldo total previsto para o Mês de Dezembro
+        $totalFuturo = Divida::totalForecastForDecember(); // Saldo total previsto para o Mês de Dezembro
         
-        $receitas = DividaRepository::receitaTotal(); // Valor total recebido até o momento atual
+        $receitas = Divida::totalRevenue(); // Valor total recebido até o momento atual
 
         $despesaTotal = DespesaRepository::despesaTotal(); //Valor total gasto até o momento
 
         //Despesas Do Mes Atual
-        $despesaJuizMes = (DespesaRepository::JuizDespesaMes($mes)->count() * 90); //Despesas Referente ao Pagamento do Juiz
+        $despesaJuizMes = (DespesaRepository::JuizDespesaMes($month)->count() * 90); //Despesas Referente ao Pagamento do Juiz
 
-        $totalOutraDespesaMes = DespesaRepository::totalOutrasDespesasMes($mes);
+        $totalOutraDespesaMes = DespesaRepository::totalOutrasDespesasMes($month);
         //---------------------------------------------------------------------------
 
         // Dividas Pagas No Mês de Janeiro - Receitas Pagas No Mês de Janeiro
-        $totalPagoMeses = DividaRepository::totalRecebidoNosMeses();
+        $totalPagoMeses = Divida::totalReceivedMonths();
         // //----------------------------------------------------------------------------------
 
+        $LoginAuth = false;
         if(Auth::check())
         {
             $LoginAuth = true;
-        }
-        else {
-            $LoginAuth = false;
         }
 
         return view('conteudo.finanças', [
@@ -73,11 +76,15 @@ class FinancasController extends Controller
 
     public function adicionarFinanças(Request $request)
     {
-        $data = ['id_membro' => $request->input('membro'), 'id_dividas' => $request->input('divida', []), 'valor' => $request['valor']];
+        $data = [
+            'id_membro' => $request->input('membro'), 
+            'id_dividas' => $request->input('divida', []), 
+            'valor' => $request['valor']
+        ];
 
-        ReceitaRepository::adicionarReceita($data);
+        Receita::addRecipes($data);
             
-        RegistroDividaRepository::atualizar(intval($data['id_membro']));
+        UpdateDebtValueAction::execute(intval($data['id_membro']));
 
         return redirect()->route('financas');
     }
@@ -86,7 +93,7 @@ class FinancasController extends Controller
     {
         $dados = ['referencia' => $request['referencia'], 'valor' => $request['valor'], 'data' => Carbon::now()];
 
-        DespesaRepository::create($dados);
+        Despesa::query()->create($dados);
 
         return redirect()->route('financas');
     }
