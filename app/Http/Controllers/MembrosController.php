@@ -7,9 +7,7 @@ use App\Actions\CreateMonthlyFeeAction;
 use App\Models\Divida;
 use App\Models\Membro;
 use App\Models\RegistroDivida;
-use App\Repositories\DividaRepository;
 use App\Repositories\MembroRepository;
-use App\Repositories\RegistroDividaRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Stmt\Return_;
@@ -98,8 +96,8 @@ class MembrosController extends Controller
 
         if(empty($nomeApelido))
         {
-            $dadosMembros = MembroRepository::findByStatus(true);
-            $dadosMembrosInativos = MembroRepository::findByStatus(false);
+            $dadosMembros = Membro::findByStatus(true);
+            $dadosMembrosInativos = Membro::findByStatus(false);
 
             return view('conteudo.membros',[
                 'LoginAuth' => $LoginAuth, 
@@ -108,8 +106,8 @@ class MembrosController extends Controller
             ]);
         }
         else{
-            $dadosMembrosInativos = MembroRepository::findByStatus(false);
-            $busca = MembroRepository::findByNomeApelido($nomeApelido);
+            $dadosMembrosInativos = Membro::findByStatus(false);
+            $busca = Membro::findByNomeApelido($nomeApelido);
     
             if($busca){
                 return view('conteudo.membros', [

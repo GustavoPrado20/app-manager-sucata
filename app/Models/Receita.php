@@ -27,7 +27,7 @@ class Receita extends Model
 
         foreach($idsDividas as $idDivida)
         {
-            Divida::updateIdDebt(intval($idDivida),['situação' => 'Paga']);
+            Divida::updateIdDebt(intval($idDivida),['situação' => 'Paga', 'data_paga' => $dataAtual]);
         }
 
         return  self::query()->create([

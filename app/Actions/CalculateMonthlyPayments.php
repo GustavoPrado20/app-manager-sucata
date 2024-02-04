@@ -9,19 +9,19 @@ class CalculateMonthlyPayments
     public static function execute(int $month)
     {
         $januaryPayments = Divida::query()->where('situação', '=', 'Paga')
-        ->whereMonth('data', $month)
+        ->whereMonth('data_paga', $month)
         ->where('referente', '=', 'Mensalidade')
         ->where('valor', '=', 10)
         ->get()->count();
 
         $paidPlayers = Divida::query()->where('situação', '=', 'Paga')
-        ->whereMonth('data', $month)
+        ->whereMonth('data_paga', $month)
         ->where('referente', '=', 'Mensalidade')
         ->where('valor', '=', 40)
         ->get()->count();
 
         $paidPartners  = Divida::query()->where('situação', '=', 'Paga')
-        ->whereMonth('data', $month)
+        ->whereMonth('data_paga', $month)
         ->where('referente', '=', 'Mensalidade')
         ->where('valor', '=', 20)
         ->get()->count();

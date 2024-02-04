@@ -11,8 +11,6 @@ use App\Models\Divida;
 use App\Models\Membro;
 use App\Models\Receita;
 use App\Models\RegistroDivida;
-use App\Repositories\DespesaRepository;
-use App\Repositories\DividaRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +19,7 @@ class FinancasController extends Controller
 {
     public function index()
     {
-        $dividas = RegistroDivida::with('NomeMembro')->where('total-divida', '>', 0)->get();
+        $dividas = RegistroDivida::with('NomeMembro')->where('total-divida', '>', 0)->orderBy('total-divida', 'desc')->get();
         $dadosMembros = Membro::findByStatus(True);
         $dadosReceitas = Receita::all();
         $dadosDespesas = Despesa::all();
@@ -38,12 +36,12 @@ class FinancasController extends Controller
         
         $receitas = Divida::totalRevenue(); // Valor total recebido até o momento atual
 
-        $despesaTotal = DespesaRepository::despesaTotal(); //Valor total gasto até o momento
+        $despesaTotal = Despesa::despesaTotal(); //Valor total gasto até o momento
 
         //Despesas Do Mes Atual
-        $despesaJuizMes = (DespesaRepository::JuizDespesaMes($month)->count() * 90); //Despesas Referente ao Pagamento do Juiz
+        $despesaJuizMes = Despesa::JuizDespesaMes($month); //Despesas Referente ao Pagamento do Juiz
 
-        $totalOutraDespesaMes = DespesaRepository::totalOutrasDespesasMes($month);
+        $totalOutraDespesaMes = Despesa::totalOutrasDespesasMes($month);
         //---------------------------------------------------------------------------
 
         // Dividas Pagas No Mês de Janeiro - Receitas Pagas No Mês de Janeiro

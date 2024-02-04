@@ -19,7 +19,8 @@ class Divida extends Model
         'id_membro',
         'referente',
         'valor',
-        'data'
+        'data',
+        'data_paga'
     ];
 
     public static function pendingDebts(int $memberId)
@@ -115,7 +116,7 @@ class Divida extends Model
             $faltasPagas = CalculateAbsencesPaidMonth::execute($meses[$count]);
             $mensalidadesPagas = CalculateMonthlyPayments::execute($meses[$count]);
             $cartoesPagos = CalculateCardsPaidMonth::execute($meses[$count]);
-
+            
             $totalMeses[$count] = htmlspecialchars(strval($faltasPagas + $mensalidadesPagas + $cartoesPagos), ENT_QUOTES, 'UTF-8');
         }
 

@@ -9,7 +9,7 @@ class CalculateAbsencesPaidMonth
     public static function execute($month)
     {
         $absences = Divida::query()->where('situação', '=', 'Paga')
-        ->whereMonth('data', $month)
+        ->whereMonth('data_paga', $month)
         ->where('referente', '=', 'Falta')
         ->get()->count();
 
