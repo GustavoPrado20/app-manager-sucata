@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('referente');
             $table->integer('valor')->default(0);
             $table->date('data');
+            $table->date('data-paga')->nullable();
             $table->string('situação')->default('Pendente');
             $table->timestamps();
 

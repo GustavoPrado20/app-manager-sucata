@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Repositories\DividaRepository;
+use App\Models\Divida;
 use Livewire\Component;
 
 class ModalAddReceita extends Component
@@ -23,7 +23,7 @@ class ModalAddReceita extends Component
 
     public function render()
     {
-        $this->dadosDividaMembro = DividaRepository::dividasPendentes(intval($this->membro));
+        $this->dadosDividaMembro = Divida::pendingDebts(intval($this->membro));
         return view('livewire.modal-add-receita',['membro' => $this->membro, 'dadosDividaMembro' => $this->dadosDividaMembro]);
     }
 }

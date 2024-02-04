@@ -2,35 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\MembroRepository;
-use App\Repositories\RegistroCartaoRepository;
-use App\Repositories\RegistroDividaRepository;
-use App\Repositories\RegistroFaltaRepository;
-use App\Repositories\RegistroPartidaRepository;
-use App\Repositories\TimeRepository;
+use App\Actions\UpdateDebtValueAction;
+use App\Models\Membro;
+use App\Models\RegistroCartao;
+use App\Models\RegistroFalta;
+use App\Models\RegistroPartida;
+use App\Models\Time;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class JogoController extends Controller
 {
     public function index(){
-        $times = TimeRepository::TimesOrdenado();
+        $times = Time::TimesOrdenado();
         $posicao = 1;
 
-        $dadosJogadores = MembroRepository::allJogadores();
-        $dadosJogadoresTimeAzul = MembroRepository::jogadoresTimeAzul();
-        $dadosJogadoresTimeVermelho = MembroRepository::jogadoresTimeVermelho();
-        $artilheiros = MembroRepository::artilheiros();
-        $jogadorCartoes =MembroRepository::jogadoresComCartoes();
-        $dadosJogadoresTimes = MembroRepository::jogadoresTimes();
-        $ultimosJogos = RegistroPartidaRepository::ultimosJogos();
+        $dadosJogadores = Membro::allJogadores();
+        $dadosJogadoresTimeAzul = Membro::jogadoresTimeAzul();
+        $dadosJogadoresTimeVermelho = Membro::jogadoresTimeVermelho();
+        $artilheiros = Membro::artilheiros();
+        $jogadorCartoes =Membro::jogadoresComCartoes();
+        $dadosJogadoresTimes = Membro::jogadoresTimes();
+        $ultimosJogos = RegistroPartida::ultimosJogos();
 
+        $LoginAuth = false;
         if(Auth::check())
         {
             $LoginAuth = true;
-        }
-        else {
-            $LoginAuth = false;
         }
 
         return view('conteudo.jogos', ['ultimosJogos' => $ultimosJogos, 'dadosJogadoresTimes' => $dadosJogadoresTimes, 'times' => $times, 'posicao' => $posicao, 'LoginAuth' => $LoginAuth, 'dadosJogadores' => $dadosJogadores, 'dadosJogadoresTimeAzul' => $dadosJogadoresTimeAzul, 'dadosJogadoresTimeVermelho' => $dadosJogadoresTimeVermelho, 'artilheiros' => $artilheiros, 'jogadorCartoes' => $jogadorCartoes]);
@@ -39,7 +37,7 @@ class JogoController extends Controller
     public function adicionarJogador(Request $request)
     {
         $data = ['jogador' => $request->input('Jogador', []), 'time' => $request->input('time')];        
-        $adicionarJogador = MembroRepository::adicionarJogadorTime($data);
+        $adicionarJogador = Membro::adicionarJogadorTime($data);
 
         if($adicionarJogador){
            return redirect()->back()->with('Adicionado com Sucesso');
@@ -48,15 +46,19 @@ class JogoController extends Controller
 
     public function registrarFalta(Request $request)
     {
-        $dados = ['data' => $request->input('data'), 'motivo' => $request->input('motivo'), 'jogador' => $request->input('Jogador', [])];
+        $dados = [
+            'data' => $request->input('data'), 
+            'motivo' => $request->input('motivo'), 
+            'jogador' => $request->input('Jogador', [])
+        ];
 
-        $registrarFaltas = RegistroFaltaRepository::registrarFalta($dados);
+        $registrarFaltas = RegistroFalta::registrarFalta($dados);
 
         if($registrarFaltas)
         {
             foreach($dados['jogador'] as $idJogador)
             {
-                RegistroDividaRepository::atualizar(intval($idJogador));
+                UpdateDebtValueAction::execute(intval($idJogador));
             }
             return redirect()->back()->with('Registrado com Sucesso');
         }
@@ -64,9 +66,12 @@ class JogoController extends Controller
 
     public function registrarGols(Request $request)
     {
-        $data = ['jogador' => $request->input('Jogador', []), 'gols' => $request->input('gols')];
+        $data = [
+            'jogador' => $request->input('Jogador', []), 
+            'gols' => $request->input('gols')
+        ];
 
-        $registrarGols = MembroRepository::registrarGols($data);
+        $registrarGols = Membro::registrarGols($data);
 
         if($registrarGols)
         {
@@ -76,15 +81,18 @@ class JogoController extends Controller
 
     public function registrarCartoes(Request $request)
     {
-        $data = ['cor' => $request->input('cor'), 'jogador' => $request->input('Jogador', [])];
+        $data = [
+            'cor' => $request->input('cor'), 
+            'jogador' => $request->input('Jogador', [])
+        ];
 
-        $registrarCartao = RegistroCartaoRepository::regisrarCatao($data);
+        $registrarCartao = RegistroCartao::regisrarCatao($data);
 
         if($registrarCartao)
         {
             foreach($data['jogador'] as $idJogador)
             {
-                RegistroDividaRepository::atualizar(intval($idJogador));
+                UpdateDebtValueAction::execute(intval($idJogador));
             }
             return redirect()->back()->with('Registrado com Sucesso');
         }
@@ -92,9 +100,13 @@ class JogoController extends Controller
 
     public function registrarPartidas(Request $request)
     {
-        $dados = ['placar' => $request['placar'], 'resultado' => $request['resultado'], 'data' => $request['data']];
+        $dados = [
+            'placar' => $request['placar'], 
+            'resultado' => $request['resultado'], 
+            'data' => $request['data']
+        ];
 
-        $registrarPartida = RegistroPartidaRepository::registrarPartida($dados);
+        $registrarPartida = RegistroPartida::registrarPartida($dados);
 
         if($registrarPartida)
         {

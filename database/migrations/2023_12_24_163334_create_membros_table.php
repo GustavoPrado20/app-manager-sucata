@@ -20,8 +20,9 @@ return new class extends Migration
             $table->integer('gols')->default(0);
             $table->integer('cartoes-amarelos')->default(0);
             $table->integer('faltas')->default(0);
+            $table->integer('camisa')->nullable();
             $table->date('data-entrada-time');
-            $table->boolean('status');
+            $table->boolean('status')->default(true);
             $table->boolean('acordo')->default(false);
             $table->timestamps();
 
