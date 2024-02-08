@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use App\Actions\CalculateAbsencesPaidMonth;
-use App\Actions\CalculateCardsPaidMonth;
-use App\Actions\CalculateMonthlyPayments;
+use App\Actions\CalculateAbsencesPaidMonthAction;
+use App\Actions\CalculateCardsPaidMonthAction;
+use App\Actions\CalculateMonthlyPaymentsAction;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -62,7 +62,7 @@ class Divida extends Model
         ->where(function($query){
             $query->where('ocupação', '=', 'Jogador')
             ->orWhere('ocupação', '=', 'Diretor e Jogador');
-        })->whereMonth('data-entrada-time', '=', 1)
+        })->whereMonth('data-entrada-time', 1)
         ->get()
         ->count();
 
@@ -78,11 +78,12 @@ class Divida extends Model
         {
             $date = Carbon::parse($jogador['data-entrada-time'])->month;
 
-            $mesesRestantes = 12 - $date + 1;
+            $mesesRestantes = 11 - $date + 1;
 
             $totalJogadores = ($mesesRestantes * 40) + $totalJogadores;
         }
 
+        
         $socios = Membro::query()->where('status', '=', true)
         ->where(function($query){
             $query->where('ocupação', '=', 'Sócio')
@@ -95,7 +96,7 @@ class Divida extends Model
         {
             $date = Carbon::parse($socio['data-entrada-time'])->month;
 
-            $mesesRestantes = 12 - $date + 1;
+            $mesesRestantes = 11 - $date + 1;
 
             $totalSocio = ($mesesRestantes * 20) + $totalSocio;
         }
@@ -113,9 +114,9 @@ class Divida extends Model
 
         for($count = 0; $count < 12; $count ++)
         {
-            $faltasPagas = CalculateAbsencesPaidMonth::execute($meses[$count]);
-            $mensalidadesPagas = CalculateMonthlyPayments::execute($meses[$count]);
-            $cartoesPagos = CalculateCardsPaidMonth::execute($meses[$count]);
+            $faltasPagas = CalculateAbsencesPaidMonthAction::execute($meses[$count]);
+            $mensalidadesPagas = CalculateMonthlyPaymentsAction::execute($meses[$count]);
+            $cartoesPagos = CalculateCardsPaidMonthAction::execute($meses[$count]);
             
             $totalMeses[$count] = htmlspecialchars(strval($faltasPagas + $mensalidadesPagas + $cartoesPagos), ENT_QUOTES, 'UTF-8');
         }
