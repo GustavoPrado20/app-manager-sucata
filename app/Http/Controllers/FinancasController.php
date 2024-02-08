@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Actions\CalculateAbsencesPaidMonthAction;
 use App\Actions\CalculateCardsPaidMonthAction;
 use App\Actions\CalculateMonthlyPaymentsAction;
+use App\Actions\CalculateTotalForecastForDecemberAction;
 use App\Actions\UpdateDebtValueAction;
 use App\Models\Despesa;
 use App\Models\Divida;
@@ -32,7 +33,7 @@ class FinancasController extends Controller
         $totalPagoCartoes = CalculateCardsPaidMonthAction::execute($month);
         //-------------------------------------------------------------
 
-        $totalFuturo = Divida::totalForecastForDecember(); // Saldo total previsto para o Mês de Dezembro
+        $totalFuturo = CalculateTotalForecastForDecemberAction::execute(); // Saldo total previsto para o Mês de Dezembro
         
         $receitas = Divida::totalRevenue(); // Valor total recebido até o momento atual
 
