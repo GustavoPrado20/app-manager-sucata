@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\CalculateAbsencesPaidMonth;
-use App\Actions\CalculateCardsPaidMonth;
-use App\Actions\CalculateMonthlyPayments;
+use App\Actions\CalculateAbsencesPaidMonthAction;
+use App\Actions\CalculateCardsPaidMonthAction;
+use App\Actions\CalculateMonthlyPaymentsAction;
 use App\Actions\UpdateDebtValueAction;
 use App\Models\Despesa;
 use App\Models\Divida;
@@ -21,15 +21,15 @@ class FinancasController extends Controller
     {
         $dividas = RegistroDivida::with('NomeMembro')->where('total-divida', '>', 0)->orderBy('total-divida', 'desc')->get();
         $dadosMembros = Membro::findByStatus(True);
-        $dadosReceitas = Receita::all();
+        $dadosReceitas = Receita::query()->orderBy('data', 'desc')->get();
         $dadosDespesas = Despesa::all();
 
         // Dividas Pagas No Mês Atual - Receitas Pagas No Mês Atual
         $month = Carbon::now()->month;
 
-        $faltasPagasMes = CalculateAbsencesPaidMonth::execute($month);
-        $totalPagoMensalidades = CalculateMonthlyPayments::execute($month);
-        $totalPagoCartoes = CalculateCardsPaidMonth::execute($month);
+        $faltasPagasMes = CalculateAbsencesPaidMonthAction::execute($month);
+        $totalPagoMensalidades = CalculateMonthlyPaymentsAction::execute($month);
+        $totalPagoCartoes = CalculateCardsPaidMonthAction::execute($month);
         //-------------------------------------------------------------
 
         $totalFuturo = Divida::totalForecastForDecember(); // Saldo total previsto para o Mês de Dezembro

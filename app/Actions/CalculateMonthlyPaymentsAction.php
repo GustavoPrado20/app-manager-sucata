@@ -4,7 +4,7 @@ namespace App\Actions;
 
 use App\Models\Divida;
 
-class CalculateMonthlyPayments
+class CalculateMonthlyPaymentsAction
 {
     public static function execute(int $month)
     {

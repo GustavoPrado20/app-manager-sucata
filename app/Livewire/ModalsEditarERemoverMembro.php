@@ -2,10 +2,9 @@
 
 namespace App\Livewire;
 
-use App\Repositories\MembroRepository;
+use App\Models\Membro;
 use Livewire\Component;
-use Illuminate\Support\Facades\Auth;
-use PhpParser\Node\Stmt\Return_;
+
 
 class ModalsEditarERemoverMembro extends Component
 {
@@ -17,7 +16,7 @@ class ModalsEditarERemoverMembro extends Component
 
     public function abrirModalEditarMembro()
     {
-        $this->dadoMembro = MembroRepository::find($this->idMembro);
+        $this->dadoMembro = Membro::findById($this->idMembro);
 
         $this->showModalEditarMembro =  true;
     }
@@ -38,10 +37,10 @@ class ModalsEditarERemoverMembro extends Component
     }
 
     public function removerMembro(){
-        $this->dadoMembro = MembroRepository::find($this->idMembro);
+        $this->dadoMembro = Membro::findById($this->idMembro);
 
         $status = ['status' => !$this->dadoMembro['status']];
-        $remover = MembroRepository::update($this->idMembro,$status);
+        $remover = Membro::updateId($this->idMembro,$status);
 
         if($remover)
         {

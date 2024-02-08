@@ -72,11 +72,47 @@
                                 <script>
                                     // Dados do gráfico
                                     var data = {
-                                        labels: [@if(!empty($mensalidades)) 'Mensalidades', @endif @if(!empty($FaltasPagasMes)) 'Faltas', @endif @if(!empty($cartoes)) 'Cartoes', @endif],
+                                        labels: [
+                                            @if(!empty($mensalidades)) 
+                                                'Mensalidades', 
+                                            @endif 
+                                            
+                                            @if(!empty($FaltasPagasMes)) 
+                                                'Faltas', 
+                                            @endif 
+                                            
+                                            @if(!empty($cartoes)) 
+                                                'Cartoes', 
+                                            @endif
+                                        ],
                                         datasets: [{
                                             label: 'Valor',
-                                            data: [{{ $mensalidades }}, {{ $FaltasPagasMes }}, {{ $cartoes }}],
-                                            backgroundColor: ['#003F04', '#009309', '#00DC0E'],
+                                            data: [
+                                                @if(!empty($mensalidades)) 
+                                                    {{ $mensalidades }}, 
+                                                @endif 
+                                                
+                                                @if(!empty($FaltasPagasMes)) 
+                                                    {{ $FaltasPagasMes }}, 
+                                                @endif 
+                                                
+                                                @if(!empty($cartoes)) 
+                                                    {{ $cartoes }} 
+                                                @endif
+                                            ],
+                                            backgroundColor: [
+                                                @if(!empty($mensalidades)) 
+                                                    '#003F04', 
+                                                @endif 
+                                                
+                                                @if(!empty($FaltasPagasMes)) 
+                                                    '#009309', 
+                                                @endif 
+                                                
+                                                @if(!empty($cartoes)) 
+                                                    '#00DC0E', 
+                                                @endif
+                                            ],
                                         }]
                                     };
                             
@@ -138,7 +174,15 @@
                                 <script>
                                     // Dados do gráfico
                                     var data = {
-                                        labels: [@if(!empty($despesaJuizMes)) 'Juiz', @endif @if(!empty($totalOutraDespesaMes)) 'Outros', @endif],
+                                        labels: [
+                                            @if(!empty($despesaJuizMes))
+                                                'Juiz', 
+                                             @endif 
+                                             
+                                             @if(!empty($totalOutraDespesaMes)) 
+                                                'Outros', 
+                                             @endif
+                                            ],
                                         datasets: [{
                                             data: [{{ $despesaJuizMes }}, {{ $totalOutraDespesaMes }}],
                                             label: 'Valor',

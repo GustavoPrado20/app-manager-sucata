@@ -4,7 +4,7 @@ namespace App\Actions;
 
 use App\Models\Divida;
 
-class CalculateAbsencesPaidMonth
+class CalculateAbsencesPaidMonthAction
 {
     public static function execute($month)
     {
