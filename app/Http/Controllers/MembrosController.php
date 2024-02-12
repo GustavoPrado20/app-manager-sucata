@@ -59,7 +59,7 @@ class MembrosController extends Controller
 
             CreateMonthlyFeeAction::execute($registrar->id);
 
-            return redirect(route('membros'));
+            return redirect()->back();
         }
     }
 
@@ -82,7 +82,7 @@ class MembrosController extends Controller
         $atualizarDados = Membro::updateIdMember($idMembro, $dados);
 
         if($atualizarDados){
-            return redirect(route('membros'));
+            return redirect()->back();
         }
     }
 
@@ -96,14 +96,7 @@ class MembrosController extends Controller
 
         if(empty($nomeApelido))
         {
-            $dadosMembros = Membro::findByStatus(true);
-            $dadosMembrosInativos = Membro::findByStatus(false);
-
-            return view('conteudo.membros',[
-                'LoginAuth' => $LoginAuth, 
-                'dadosMembros' => $dadosMembros, 
-                'dadosMembrosInativos' => $dadosMembrosInativos
-            ]);
+            return redirect()->back();
         }
         else{
             $dadosMembrosInativos = Membro::findByStatus(false);

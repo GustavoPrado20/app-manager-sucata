@@ -49,10 +49,10 @@
             </section>
         </section>
 
-        @if ($LoginAuth)
+        @if ($LoginAuth and $dadosMembrosInativos->isEmpty() == false)
             <section class="container-1">
                 <section class="table">
-                    <section class="table-header">
+                    <section class="table-header">  
                         <h1>Membros Inativos</h1>
                     </section>
                     

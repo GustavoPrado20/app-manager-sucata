@@ -227,7 +227,8 @@ button{
 }
 
 .table-body{
-    height: 200px;
+    min-height: 200px;
+    max-height: 350px;
     overflow: auto; 
 }
 

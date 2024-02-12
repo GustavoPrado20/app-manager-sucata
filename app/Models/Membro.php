@@ -30,7 +30,7 @@ class Membro extends Model
     }
 
     public static function findById(int $id){
-        return self::query()->where('status', '=', true)->where('id', '=', $id)->first();
+        return self::query()->where('id', '=', $id)->first();
     }
 
     public static function updateId(int $id, array $attributes = [])
