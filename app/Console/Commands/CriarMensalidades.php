@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Actions\CreateMonthlyFeeAction;
-use App\Repositories\MembroRepository;
+use App\Models\Membro;
 use Illuminate\Console\Command;
 
 class CriarMensalidades extends Command
@@ -20,14 +20,14 @@ class CriarMensalidades extends Command
      *
      * @var string
      */
-    protected $description = 'Criar Meensalidade Automaticamente todo dia 01 do mes';
+    protected $description = 'Criar Mensalidade Automaticamente todo dia 01 do mes';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        $membros = MembroRepository::findByStatus(true);
+        $membros = Membro::findByStatus(true);
 
         foreach($membros as $membro)
         {

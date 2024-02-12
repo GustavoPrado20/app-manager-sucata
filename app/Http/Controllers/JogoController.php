@@ -31,7 +31,18 @@ class JogoController extends Controller
             $LoginAuth = true;
         }
 
-        return view('conteudo.jogos', ['ultimosJogos' => $ultimosJogos, 'dadosJogadoresTimes' => $dadosJogadoresTimes, 'times' => $times, 'posicao' => $posicao, 'LoginAuth' => $LoginAuth, 'dadosJogadores' => $dadosJogadores, 'dadosJogadoresTimeAzul' => $dadosJogadoresTimeAzul, 'dadosJogadoresTimeVermelho' => $dadosJogadoresTimeVermelho, 'artilheiros' => $artilheiros, 'jogadorCartoes' => $jogadorCartoes]);
+        return view('conteudo.jogos', [
+            'ultimosJogos' => $ultimosJogos,
+            'dadosJogadoresTimes' => $dadosJogadoresTimes, 
+            'times' => $times, 
+            'posicao' => $posicao, 
+            'LoginAuth' => $LoginAuth, 
+            'dadosJogadores' => $dadosJogadores, 
+            'dadosJogadoresTimeAzul' => $dadosJogadoresTimeAzul, 
+            'dadosJogadoresTimeVermelho' => $dadosJogadoresTimeVermelho, 
+            'artilheiros' => $artilheiros, 
+            'jogadorCartoes' => $jogadorCartoes
+        ]);
     }
 
     public function adicionarJogador(Request $request)

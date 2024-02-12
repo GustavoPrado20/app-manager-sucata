@@ -38,8 +38,8 @@ class ModalsEditarERemoverMembro extends Component
 
     public function removerMembro(){
         $this->dadoMembro = Membro::findById($this->idMembro);
-
-        $status = ['status' => !$this->dadoMembro['status']];
+        
+        $status = ['status' => !$this->dadoMembro['status'], 'id_time' => null];
         $remover = Membro::updateId($this->idMembro,$status);
 
         if($remover)
