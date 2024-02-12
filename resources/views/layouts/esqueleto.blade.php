@@ -18,7 +18,7 @@
 
         @yield('conteudo')
 
-        {{-- @include('footer') --}}
+        @include('layouts.footer')
 
         @yield('scripts')
     </body>

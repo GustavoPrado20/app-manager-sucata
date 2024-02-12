@@ -3,11 +3,15 @@
 
     <nav class="navLinks">
         <ul>
-            <li><a href="{{ route('home') }}">Inicio</a></li>
+            <li><a href="{{ route('home') }}">Regras</a></li>
             <li><a href="{{ route('membros') }}">Membros</a></li>
             <li><a href="{{ route('jogos') }}">Jogo</a></li>
             <li><a href="{{ route('financas') }}">Finanças</a></li>
-            <li><a href="">Estatisticas</a></li>
+            @if ($LoginAuth)
+                <li><a href="{{ route('configurção') }}">Configuração</a></li>
+            @else
+                <li><a href="{{ route('login') }}">Logar</a></li>
+            @endif
         </ul>
     </nav>
 </header>

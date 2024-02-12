@@ -25,18 +25,12 @@ class JogoController extends Controller
         $dadosJogadoresTimes = Membro::jogadoresTimes();
         $ultimosJogos = RegistroPartida::ultimosJogos();
 
-        $LoginAuth = false;
-        if(Auth::check())
-        {
-            $LoginAuth = true;
-        }
-
         return view('conteudo.jogos', [
             'ultimosJogos' => $ultimosJogos,
             'dadosJogadoresTimes' => $dadosJogadoresTimes, 
             'times' => $times, 
             'posicao' => $posicao, 
-            'LoginAuth' => $LoginAuth, 
+            'LoginAuth' => Auth::check(), 
             'dadosJogadores' => $dadosJogadores, 
             'dadosJogadoresTimeAzul' => $dadosJogadoresTimeAzul, 
             'dadosJogadoresTimeVermelho' => $dadosJogadoresTimeVermelho, 

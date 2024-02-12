@@ -11,7 +11,7 @@ body {
     background-color: #e0e0e0;
 }
 
-header {
+header{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -51,4 +51,29 @@ header {
 
 .logo span {
     color: #567ebb;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: #1f1f20;
+}
+
+.social-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-footer figure {
+    margin: 0 10px;
+}
+
+.copy-footer {
+    color: #ffffff;
+    margin: 0 10px;
+    font-size: 1.2rem;
+    margin-top: 15px;
 }

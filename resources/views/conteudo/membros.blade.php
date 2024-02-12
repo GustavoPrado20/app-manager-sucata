@@ -34,7 +34,7 @@
                                     <tr>
                                         <td>{{ $dadoMembro['nome'] }} @if (!empty($dadoMembro['apelido'])) ({{ $dadoMembro['apelido'] }}) @endif</td>
                                         <td>{{ $dadoMembro['ocupação'] }}</td>
-                                        <td>{{ $dadoMembro['data-entrada-time'] }}</td>
+                                        <td>{{ date('d / m / Y', strtotime($dadoMembro['data-entrada-time'])) }}</td>
                                         @if ($LoginAuth)
                                             <td>
                                                 @livewire('ModalsEditarERemoverMembro',['idMembro' => $dadoMembro['id']])

@@ -49,17 +49,11 @@ class FinancasController extends Controller
         $totalPagoMeses = Divida::totalReceivedMonths();
         // //----------------------------------------------------------------------------------
 
-        $LoginAuth = false;
-        if(Auth::check())
-        {
-            $LoginAuth = true;
-        }
-
         return view('conteudo.finanças', [
             'dividas' => $dividas, 
             'dadosMembros' => $dadosMembros, 
             'dadosReceitas' => $dadosReceitas, 
-            'LoginAuth' => $LoginAuth, 
+            'LoginAuth' => Auth::check(), 
             'dadosDespesas' => $dadosDespesas,
             'FaltasPagasMes' => $faltasPagasMes,
             'mensalidades' => $totalPagoMensalidades,

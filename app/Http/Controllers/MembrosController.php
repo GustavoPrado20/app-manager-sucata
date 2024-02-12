@@ -17,16 +17,11 @@ class MembrosController extends Controller
 {
     public function index()
     {
-        $LoginAuth = false;
-        if(Auth::check()){
-            $LoginAuth = true;
-        }
-
         $dadosMembros = Membro::findByStatus(true);
         $dadosMembrosInativos = Membro::findByStatus(false);
 
         return view('conteudo.membros',[
-            'LoginAuth' => $LoginAuth, 
+            'LoginAuth' => Auth::check(), 
             'dadosMembros' => $dadosMembros, 
             'dadosMembrosInativos' => $dadosMembrosInativos
         ]);
@@ -88,11 +83,6 @@ class MembrosController extends Controller
 
     public function search(Request $request){
         $nomeApelido = $request['nomeApelido'];
-        $LoginAuth = false;
-
-        if(Auth::check()){
-            $LoginAuth = true;
-        }
 
         if(empty($nomeApelido))
         {
@@ -106,7 +96,7 @@ class MembrosController extends Controller
                 return view('conteudo.membros', [
                     'dadosMembros' => $busca, 
                     'dadoMembroInativos' => $dadosMembrosInativos, 
-                    'LoginAuth' => $LoginAuth
+                    'LoginAuth' => Auth::check()
                 ]);
             }
         }
