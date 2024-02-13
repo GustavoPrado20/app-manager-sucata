@@ -45,3 +45,15 @@
     <li>Inicie o servidor local: <b>php artisan serve</b></li>
     <li>Acesse a aplicação em seu navegador: <b>http://localhost:8000</b></li>
 </ol>
+
+## Contribuindo
+
+<p>
+    Contribuições são bem-vindas! Sinta-se à vontade para abrir um PR (Pull Request) com melhorias, correções de bugs ou novas funcionalidades.
+</p>
+
+## Licença
+
+<p>
+    Este projeto está licenciado sob a MIT License.
+</p>
