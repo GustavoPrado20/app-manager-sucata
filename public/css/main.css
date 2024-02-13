@@ -74,6 +74,26 @@ footer {
 .copy-footer {
     color: #ffffff;
     margin: 0 10px;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     margin-top: 15px;
+    text-align: center;
+}
+
+.dev-footer {
+    color: #ffffff;
+    margin: 0 10px;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.dev-social-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.dev-social-footer figure {
+    margin: 0 10px;
 }

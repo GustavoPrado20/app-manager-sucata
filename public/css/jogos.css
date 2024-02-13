@@ -1,6 +1,6 @@
 /* tabela de pontos dos times */
 .container-principal-1 {
-    height: 89vh;
+    min-height: 100vh;
     width: 100%;
     background: #e0e0e0;
 }

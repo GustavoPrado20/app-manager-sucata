@@ -2,14 +2,15 @@
     display: flex;
     width: 100%;
     padding: 15px 5%;
-    justify-content: center;
+    justify-items: center;
     align-items: center;
     flex-direction: column;
-    margin: 40px auto;
+    min-height:  100vh;
 }
 
 .container-1 h1 {
     font-size: 3rem;
+    margin-top: 40px;
 }
 
 .container-grid {
@@ -21,7 +22,7 @@
 
 .container-box {
     padding: 40px;
-    text-align: justify;
+    text-align: left;
     font-size: 1.6rem;  
 }
 
@@ -30,6 +31,7 @@
 }
 
 .container-2 {
+    background-color: #ffffff;
     display: flex;
     width: 100%;
     padding: 15px 5%;
@@ -40,7 +42,7 @@
 }
 
 .container-3 {
-    background-color: #ffffff;
+    background-color: #e0e0e0;
     display: flex;
     width: 100%;
     padding: 15px 5%;

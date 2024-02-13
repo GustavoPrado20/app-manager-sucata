@@ -29,6 +29,7 @@ Route::get('/login', [Controllers\LoginRegistroController::class, 'index'])->nam
 Route::prefix('/login')->group(function(){
     Route::post('/singUp', [Controllers\LoginRegistroController::class, 'registrarDiretor'])->name('registrar-diretor');
     Route::post('/singIp', [Controllers\LoginRegistroController::class, 'logarDiretor'])->name('Logar-diretor');
+    Route::get('/singOut', [Controllers\LoginRegistroController::class, 'singOut'])->name('deslogar');
 });
 
 Route::get('/jogos', [Controllers\JogoController::class, 'index'])->name('jogos');
@@ -47,5 +48,3 @@ Route::prefix('/finanças')->group(function(){
     Route::post('/adicionarReceitas', [Controllers\FinancasController::class, 'adicionarFinanças'])->name('adicionarFinanças');
     Route::post('/adicionarDespesas', [Controllers\FinancasController::class, 'adicionarDespesas'])->name('adicionarDespesas');
 });
-
-Route::get('/configuração', [Controllers\ConfiguraçãoController::class, 'index'])->name('configurção');

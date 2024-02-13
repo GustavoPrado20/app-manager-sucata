@@ -49,60 +49,58 @@
                     </figure>
                 </section>
             </section>
+
+            <section class="container-grid">
+                <section class="container-box">
+                   <figure>
+                       <img src="{{ asset('img/figuras/tules cinza.gif') }}" alt="Figura 2">
+                   </figure>
+                </section>
+
+                <section class="container-box">
+                   <h2>Art. 2 - Regras e Condutas:</h2>
+
+                   <br>
+
+                   <h3>2.1 - Respeito ao Árbitro e aos Jogadores:</h3>
+                   <ul>
+                       <li>
+                           <p>
+                               Todos os membros da equipe devem demonstrar respeito e fair play em relação aos colegas de equipe, 
+                               adversários, árbitros e demais envolvidos.
+                           </p>
+                       </li>
+
+                       <li>
+                           <p>
+                               Qualquer comportamento desrespeitoso, incluindo linguagem ofensiva ou gestos inadequados, 
+                               não será tolerado e poderá resultar em penalidades.
+                           </p>
+                       </li>
+                   </ul>
+
+                   <br>
+
+                   <h3>2.2 - Proibição de Brigas e Agressões:</h3>
+                   <ul>
+                       <li>
+                           <p>
+                               É terminantemente proibida qualquer forma de brigas, agressões físicas ou verbais entre os jogadores, 
+                               durante ou fora dos jogos.
+                           </p>
+                       </li>
+
+                       <li>
+                           <p>
+                               Conflitos devem ser resolvidos de forma pacífica e civilizada, priorizando o diálogo e o respeito mútuo.
+                           </p>
+                       </li>
+                   </ul>
+                </section>
+           </section>
         </section>
 
         <section class="container-2">
-            <section class="container-grid">
-                 <section class="container-box">
-                    <figure>
-                        <img src="{{ asset('img/figuras/tules cinza.gif') }}" alt="Figura 2">
-                    </figure>
-                 </section>
-
-                 <section class="container-box">
-                    <h2>Art. 2 - Regras e Condutas:</h2>
-
-                    <br>
-
-                    <h3>2.1 - Respeito ao Árbitro e aos Jogadores:</h3>
-                    <ul>
-                        <li>
-                            <p>
-                                Todos os membros da equipe devem demonstrar respeito e fair play em relação aos colegas de equipe, 
-                                adversários, árbitros e demais envolvidos.
-                            </p>
-                        </li>
-
-                        <li>
-                            <p>
-                                Qualquer comportamento desrespeitoso, incluindo linguagem ofensiva ou gestos inadequados, 
-                                não será tolerado e poderá resultar em penalidades.
-                            </p>
-                        </li>
-                    </ul>
-
-                    <br>
-
-                    <h3>2.2 - Proibição de Brigas e Agressões:</h3>
-                    <ul>
-                        <li>
-                            <p>
-                                É terminantemente proibida qualquer forma de brigas, agressões físicas ou verbais entre os jogadores, 
-                                durante ou fora dos jogos.
-                            </p>
-                        </li>
-
-                        <li>
-                            <p>
-                                Conflitos devem ser resolvidos de forma pacífica e civilizada, priorizando o diálogo e o respeito mútuo.
-                            </p>
-                        </li>
-                    </ul>
-                 </section>
-            </section>
-        </section>
-
-        <section class="container-3">
             <section class="container-grid">
                  <section class="container-box">
                     <h3>2.3 - Cartões Amarelos e Vermelhos:</h3>
@@ -181,7 +179,7 @@
             </section>
         </section>
 
-        <section class="container-1">
+        <section class="container-3">
             <section class="container-grid">
                 <section class="container-box">
                     <h2>Art. 3 - Confraternização:</h2>

@@ -8,7 +8,7 @@
             <li><a href="{{ route('jogos') }}">Jogo</a></li>
             <li><a href="{{ route('financas') }}">Finanças</a></li>
             @if ($LoginAuth)
-                <li><a href="{{ route('configurção') }}">Configuração</a></li>
+                <li><a href="{{ route('deslogar') }}">Deslogar</a></li>
             @else
                 <li><a href="{{ route('login') }}">Logar</a></li>
             @endif

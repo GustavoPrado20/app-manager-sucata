@@ -1,3 +1,7 @@
+main {
+    min-height: 100vh;
+}
+
 .container-1 {
     background-color: #ffffff;
     display: flex;

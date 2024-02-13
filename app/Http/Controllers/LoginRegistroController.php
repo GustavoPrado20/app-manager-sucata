@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Expr\FuncCall;
 
 class LoginRegistroController extends Controller
 {
@@ -59,5 +61,15 @@ class LoginRegistroController extends Controller
             $erroLogin = 'Email ou Senha Incorretos!';
             return view('conteudo.login',['erroLogin' => $erroLogin]);
         }
+    }
+
+    public function singOut(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 }
