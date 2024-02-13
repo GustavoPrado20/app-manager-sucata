@@ -43,6 +43,10 @@ header{
     transition: 0.5s;
 }
 
+#btn-nav {
+    display: none;
+}
+
 .logo {
     color: #ffffff;
     font-size: 2.2rem;
@@ -96,4 +100,78 @@ footer {
 
 .dev-social-footer figure {
     margin: 0 10px;
+}
+
+@media only screen and (max-width: 767px)
+{
+    #btn-nav {
+        display: block;
+    }
+
+    #menu {
+        display: block;
+        position: absolute;
+        width: 100%;
+        top: 65px;
+        right: 0;
+        transition: 0.6s;
+        background-color: #1f1f20;
+        z-index: 1000;
+        visibility: hidden;
+        height: 0px;
+        overflow-y: hidden;
+    }
+
+    #menu li {
+        display: block;
+        padding: 1rem 0;
+        margin: 0 1rem;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+    }
+
+    #nav.active #menu {
+        height: calc(100vh - 65px);
+        visibility: visible;
+        overflow-y: auto;
+    }
+
+    #btn-nav {
+        display: flex;
+        padding: .5rem 1rem;
+        font-size: 1rem;
+        border: none;
+        background: none;
+        cursor: pointer;
+        gap: .5rem;
+    }
+
+    #hamburguer {
+        color: #ffffff;
+        border-top: 2px solid;
+        width: 20px;
+    }
+
+    #hamburguer::after, #hamburguer::before {
+        content: '';
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: currentColor;
+        margin-top: 5px;
+        transition: .5s;
+        position: relative;
+    }
+
+    #nav.active #hamburguer {
+        border-top-color: transparent;
+    }
+
+    #nav.active #hamburguer::before {
+        transform: rotate(135deg);
+    }
+
+    #nav.active #hamburguer::after {
+        transform: rotate(-135deg);
+        top: -7px;
+    }
 }

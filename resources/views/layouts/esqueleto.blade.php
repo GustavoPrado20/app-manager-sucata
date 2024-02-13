@@ -20,6 +20,6 @@
 
         @include('layouts.footer')
 
-        @yield('scripts')
+        <script src="{{ asset('js/header-menu.js') }}"></script>
     </body>
 </html>
