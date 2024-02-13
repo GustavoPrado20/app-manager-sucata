@@ -20,6 +20,10 @@
     Este webapp foi desenvolvido com o propósito de resolver um problema real enfrentado pelo time de futebol amador, que enfrentava dificuldades na organização e gestão dos dados dos jogadores, jogos e finanças. Anteriormente, essas atividades eram realizadas manualmente em planilhas impressas, o que frequentemente resultava na perda de dados e falta de organização. Com esta aplicação, busca-se oferecer uma solução digital que simplifique e agilize o gerenciamento do time, proporcionando maior eficiência e precisão na gestão das informações.
 </p>
 
+<p>
+    Os jogadores terão acesso a algumas informações como o ranking de artilharia e de cartões, as faltas e a tabela de pontos do time. No entanto, somente o administrador ou diretor do time terá permissão para alterar, adicionar ou remover informações.
+</p>
+
 ## Funcionalidades Principais
 
 <ul>
@@ -30,3 +34,14 @@
     <li><b>Resultados dos Jogos:</b> Permite o registro dos resultados de cada partida, incluindo placar final e adversário.</li>
     <li><b>Tabela de Pontuação:</b> Mantém uma tabela atualizada com a pontuação do time ao longo do campeonato ou temporada.</li>
 </ul>
+
+## Instalação
+<ol>
+    <li>Clone este repositório: <b>git clone https://github.com/GustavoPrado20/app-manager-sucata.git</b></li>
+    <li>Instale as dependências do Composer: <b>composer install</b></li>
+    <li>Copie o arquivo <b>.env.example</b> para <b>.env</b> e configure seu ambiente (banco de dados, etc.).</li>
+    <li>Gere uma chave de aplicativo Laravel: <b>php artisan key:generate</b></li>
+    <li>Execute as migrações do banco de dados: <b>php artisan migrate</b></li>
+    <li>Inicie o servidor local: <b>php artisan serve</b></li>
+    <li>Acesse a aplicação em seu navegador: <b>http://localhost:8000</b></li>
+</ol>
