@@ -57,13 +57,22 @@ figure img {
     height: auto;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1024px)
+@media only screen and (max-width: 1024px)
+{
+    body {
+        overflow-x: hidden;
+    }
+}
+
+@media only screen and (max-width: 820px) 
 {
     body {
         overflow-x: hidden;
     }
 
-    
+    .container-figure {
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 767px)

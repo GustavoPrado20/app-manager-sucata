@@ -43,7 +43,7 @@
                     </ul>
                 </section>
                     
-                <section>
+                <section class="container-figure">
                     <figure>
                         <img src="{{ asset('img/figuras/Soccer.gif') }}" alt="Figura 1">
                     </figure>
@@ -52,7 +52,7 @@
 
             <section class="container-grid">
                 <section class="container-box">
-                   <figure>
+                   <figure class="container-figure">
                        <img src="{{ asset('img/figuras/tules cinza.gif') }}" alt="Figura 2">
                    </figure>
                 </section>
@@ -221,7 +221,7 @@
                     </ul>
                 </section>
                     
-                <section>
+                <section class="container-figure">
                     <figure>
                         <img src="{{ asset('img/figuras/Swimsuit party cinza.gif') }}" alt="Figura 3">
                     </figure>
