@@ -8,7 +8,7 @@
             </figure>
     
             <figure>
-                <a href="" target="_blank">
+                <a href="https://www.instagram.com/familiasucata?utm_source=qr&igsh=c3VocXI1YWgycTg3" target="_blank">
                     <img src="{{ asset('img/icones/icons8-instagram-48.png') }}" alt="Icone Instagram">
                 </a>
             </figure>
