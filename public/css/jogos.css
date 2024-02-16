@@ -14,7 +14,7 @@
     padding: 20px;
     width: 90vw;
     margin: 40px auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .table {
@@ -181,7 +181,7 @@ tr:hover td{
     padding: 20px;
     width: 90vw;
     margin: 40px auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .table-header-jogadores{
@@ -393,7 +393,7 @@ tr:hover td{
     padding: 20px;
     width: 100%;
     margin: 40px auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .table-artilharia {
@@ -470,7 +470,7 @@ tr:hover td{
     border-radius: 8px;
     padding: 20px;
     width: 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .main-registro{

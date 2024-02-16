@@ -51,8 +51,8 @@
             </section>
 
             <section class="container-grid">
-                <section class="container-box">
-                   <figure class="container-figure">
+                <section class="container-figure">
+                   <figure>
                        <img src="{{ asset('img/figuras/tules cinza.gif') }}" alt="Figura 2">
                    </figure>
                 </section>
@@ -103,7 +103,7 @@
         <section class="container-2">
             <section class="container-grid">
                  <section class="container-box">
-                    <h3>2.3 - Cartões Amarelos e Vermelhos:</h3>
+                    <h3>2.3 - Cartões:</h3>
                     <ul>
                         <li>
                             <p>
@@ -112,16 +112,16 @@
                             </p>
                         </li>
 
-                        <li>z
+                        <li>
                             <p>
                                 O cartão vermelho resultará em multa de R$25,00, podendo também acarretar em suspensão temporária, 
                                 dependendo da gravidade da infração.
                             </p>
                         </li>
                     </ul>
+                 </section>
 
-                    <br>
-
+                 <section class="container-box">
                     <h3>2.4 - Faltas:</h3>
                     <ul>
                         <li>
@@ -156,9 +156,9 @@
                             </p>
                         </li>
                     </ul>
+                 </section>
 
-                    <br>
-
+                <section class="container-box">
                     <h3>2.6 - Mensalidades e Contribuições:</h3>
                     <ul>
                         <li>
@@ -215,7 +215,7 @@
                         
                         <li>
                             <p>
-                                Convites avulsos para a confraternização poderão ser adquiridos mediante o pagamento de uma taxa de R$ 100,00 por pessoa.
+                                Convites avulsos para a confraternização poderão ser adquiridos mediante o pagamento de uma taxa de R$100,00 por pessoa.
                             </p>
                         </li>
                     </ul>
