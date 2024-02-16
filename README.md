@@ -43,9 +43,9 @@
     <li>Clone este repositório: <b>git clone https://github.com/GustavoPrado20/app-manager-sucata.git</b></li>
     <li>Instale as dependências do Composer: <b>composer install</b></li>
     <li>execute os comandos: <b>npm install</b> && <b>npm install chart.js</b></li>
-    <li>Copie o arquivo <b>.env.example</b> para <b>.env</b> e configure seu ambiente (banco de dados, etc.).</li>
     <li>Gere uma chave de aplicativo Laravel: <b>php artisan key:generate</b></li>
     <li>Acesse o diretório do projeto e execute o comando <b>./vendor/bin/sail up</b> para iniciar o ambiente de desenvolvimento com o Laravel Sail e Docker.</li>
+    <li>Copie o arquivo <b>.env.example</b> para <b>.env</b> e configure seu ambiente (banco de dados, etc.).</li>
     <li>Execute as migrações do banco de dados: <b>php artisan migrate</b></li>
     <li>Acesse a aplicação em seu navegador: <b>http://localhost</b></li>
 </ol>
