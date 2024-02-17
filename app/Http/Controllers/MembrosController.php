@@ -88,17 +88,15 @@ class MembrosController extends Controller
         {
             return redirect()->back();
         }
-        else{
             $dadosMembrosInativos = Membro::findByStatus(false);
             $busca = Membro::findByNomeApelido($nomeApelido);
     
-            if($busca){
-                return view('conteudo.membros', [
-                    'dadosMembros' => $busca, 
-                    'dadoMembroInativos' => $dadosMembrosInativos, 
-                    'LoginAuth' => Auth::check()
-                ]);
-            }
+        if($busca){
+            return view('conteudo.membros', [
+                'dadosMembros' => $busca, 
+                'dadosMembrosInativos' => $dadosMembrosInativos, 
+                'LoginAuth' => Auth::check()
+            ]);
         }
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 class ModalAddMembro extends Component
 {
     public $showModalAddMembro = false;
-    public $showModalBuscarMembro = false;
+    public $showModalSearchMembro = false;
     public $LoginAuth;
  
     public function abrirModalAddMembro(){
@@ -16,6 +16,14 @@ class ModalAddMembro extends Component
 
     public function fecharModalAddMembro(){
         $this->showModalAddMembro = false;
+    }
+
+    public function abrirModalSearchMembro(){
+        $this->showModalSearchMembro = true;
+    }
+
+    public function fecharModalSearchMembro(){
+        $this->showModalSearchMembro = false;
     }
 
     public function render()

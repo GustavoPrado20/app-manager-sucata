@@ -155,8 +155,9 @@ tr:hover td{
 
 .card-jogos {
     display: grid;
-    grid-template-columns: 300px 300px 300px 350px;
-    justify-content: space-evenly;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
 }
 .time-azul {
     margin-right: 20px;
@@ -169,7 +170,7 @@ tr:hover td{
 /* tabela de jogadores em cada time */
 .container-principal-2 {
     background-color: #ffffff;
-    padding: 40px;
+    padding: 40px 0;
 }
 
 .container-2{
@@ -243,6 +244,10 @@ tr:hover td{
 }
 
 #Vermelho {
+    display: none;
+}
+
+#container-time-vermelho {
     display: none;
 }
 
@@ -337,21 +342,17 @@ tr:hover td{
     cursor: pointer;
 }
 
-.container-radio-time {
+.modal-add-jogador form select {
+    width: 100%;
+    padding: 8px;
     margin-top: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-}
-
-.container-radio-time label{
-    color: #000;
-    font-size: 1.1rem;
-}
-
-.container-radio-time label input{
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #000;
+    background: transparent;
     cursor: pointer;
+    outline: none;
 }
 
 .modal-add-jogador form input[type="submit"] {
@@ -515,7 +516,6 @@ tr:hover td{
     overflow: auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    overflow: auto;
 }
 
 .body-registro form label{
@@ -575,4 +575,155 @@ tr:hover td{
 .body-registro form button[type="submit"]:hover {
     background-color: #4167a0;
     cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px)
+{
+    body {
+        overflow-x: hidden;
+    }
+
+    .card-jogos{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .card {
+        margin: 20px 0;
+    }
+
+    .container-principal-3 {
+        flex-direction: column;
+    }
+
+    .container-principal-3 .container-ranks {
+        flex: auto;
+        max-width: 100%;
+    }
+
+    .container-3 {
+        margin: 0;
+    }
+
+    .container-4 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #container-checkbox-registro {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 767px)
+{
+    body {
+        overflow-x: hidden;
+    }
+
+    .modal {
+        max-width: 360px;
+    }
+
+    .header-modal h2 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .container-card-jogos {
+        margin: 70px 0;
+        padding-top: 0;
+    }
+
+    .card-jogos{
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        margin: 20px 0;
+        height: 140px;
+        width: 330px;
+    }
+
+    th:nth-child(4), td:nth-child(4), th:nth-child(5), td:nth-child(5),th:nth-child(6), td:nth-child(6) {
+        display: none;
+    }
+
+    .container-1 table {
+        min-width: 338px;
+    }
+
+    .container-principal-3 {
+        flex-direction: column;
+    }
+
+    .container-principal-3 .container-ranks {
+        flex: auto;
+        max-width: 100%;
+    }
+
+    .container-3 {
+        margin: 0;
+    }
+
+    .table-body-artilharia table {
+        min-width: 142%;
+    }
+    
+    .table-body-artilharia th:nth-child(1) {
+        width: 40%;
+    }
+
+    .table-body-artilharia .table-cartao {
+        min-width: 191%;
+    }
+
+    .btn-tabela {
+        display: none;
+    }
+    
+    #container-time-vermelho {
+        display: flex;
+    }
+
+    #container-time-vermelho .table-header-jogadores {
+        background: #7e2b2b;
+    }
+
+    #container-time-vermelho thead th {
+        background: #806060;
+    }
+
+    #container-time-vermelho .add-jogador {
+        background: #bb5656;
+    }
+
+    #container-time-vermelho .add-jogador:hover {
+        background: transparent;
+    }
+
+    .table-body-jogadores th:nth-child(2), .table-body-jogadores td:nth-child(2) {
+        display: none;
+    }
+
+    .table-body-jogadores table {
+        min-width: 360px;
+    }
+
+    .titulo-table-artilharia h1 {
+        text-align: center;
+        font-size: 1.5rem;
+    }
+
+    .container-4 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header-registro h1 {
+        font-size: 1.5rem;
+    }
+
+    #container-checkbox-registro {
+        grid-template-columns: 1fr;
+    }
 }

@@ -129,6 +129,41 @@
                     </section>
                 </section>
            </section>
+
+            <section class="container-2" id="container-time-vermelho">
+                <section class="table">
+                    <section class="table-header-jogadores" id="color-header-table">
+                        <section class="titulo-table">
+                            <img src="{{ asset('img/icones/icons8-football-player-64.png') }}" alt="">
+                            <h1>Jogadores</h1>
+                        </section>
+
+                        @livewire('ModalAddJogador', ['LoginAuth' => $LoginAuth, 'dadosJogadores' => $dadosJogadores])
+                    </section>
+
+                    <section class="table-body-jogadores">
+                        <table>
+                            <thead id="color-thead-vermelho">
+                                <tr>                               
+                                    <th>Nome</th>
+                                    <th>Gols</th>
+                                    <th>Faltas</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach ($dadosJogadoresTimeVermelho as $dadoJogador)
+                                    <tr>
+                                        <td>{{ $dadoJogador['nome'] }} @if (!empty($dadoJogador['apelido'])) ({{ $dadoJogador['apelido'] }})@endif</td>
+                                        <td>{{ $dadoJogador['gols'] }}</td>
+                                        <td>{{ $dadoJogador['faltas'] }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </section>
+                </section>
+            </section>
         </section>
 
         <section class="container-principal-3">
@@ -176,7 +211,7 @@
                         </section>
                         
                         <section class="table-body-artilharia">
-                            <table>
+                            <table class="table-cartao">
                                 <thead>
                                     <tr>
                                         <th>Jogador</th>                                

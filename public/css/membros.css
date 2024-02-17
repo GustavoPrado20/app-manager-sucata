@@ -366,3 +366,69 @@ tr:hover td{
     width: auto;
     cursor: pointer;
 }
+
+.btn-search {
+    display: none;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px)
+{
+    body {
+        overflow-x: hidden;
+    }
+
+    
+}
+
+@media only screen and (max-width: 767px)
+{
+    body {
+        overflow-x: hidden;
+    }
+
+    .search-box {
+        display: none;
+    }
+
+    .btn-search {
+        display: block;
+        padding: 5px 12px;
+        margin-left: 15px;
+        border-radius: 25px;
+        color: #fefefe;
+        background: #567ebb;
+        cursor: pointer;
+        transition: all 400ms ease;
+        border: none;
+        outline: none;
+    }
+
+    .modal {
+        max-width: 360px;
+    }
+
+    .header-modal h2 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    th:nth-child(3), td:nth-child(3) {
+        display: none;
+    }
+
+    th:nth-child(4), td:nth-child(4) {
+        width: 30%;
+    }
+
+    th:nth-child(1), td:nth-child(1) {
+        width: 50%;
+    }
+
+    th:nth-child(2), td:nth-child(2) {
+        width: 24%;
+    }
+
+    table {
+        min-width: 500px;
+    }
+}

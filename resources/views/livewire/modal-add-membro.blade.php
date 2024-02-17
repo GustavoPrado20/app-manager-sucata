@@ -3,6 +3,8 @@
         <input type="text" placeholder="Buscar Membro" name="nomeApelido" autocomplete="off">
         <button type="submit"><img src="{{ asset('img/icones/icons8-pesquisar-50.png') }}" alt="Pesquisar"></button>
     </form>
+
+    <button class="btn-search" wire:click="abrirModalSearchMembro"><img class="icone" src="{{ asset('img/icones/icons8-pesquisar-20.png') }}" alt="Adicionar Usuario"></button>
     
     @if ($LoginAuth)
         <button class="add-membro" wire:click="abrirModalAddMembro"><img class="icone" src="{{ asset('img/icones/icons8-adicionar-usuário-96.png') }}" alt="Adicionar Usuario"></button>
@@ -45,22 +47,24 @@
         </section>
     @endif
 
-    {{-- @if($showModalLoginAuth)
+   @if ($showModalSearchMembro)
         <section class="modal-fade">
-            <section class="modal-remover-membro modal">
-                <header class="header-modal header-modal-remover">
-                    <h2>Não Autorizado</h2>
+            <section class="modal-add-membro modal">
+                <header class="header-modal">
+                    <h2>Buscar Membro</h2>
+                    <button wire:click="fecharModalSearchMembro">&times;</button>
                 </header>
                 
-                <section class="container-1-modal-remover">
-                    <p>Você precisa estar logado como Diretor para realizar esta função!!</p>
-                </section>
 
-                <section class="container-2-modal-remover">
-                    <button wire:click="fecharModalLoginAuth" class="btn-2-auth">OK</button>
-                </section>
+                <form action="{{ route('buscar-membros') }}" method="GET">
+                    @csrf
+                    <label for="nome">Nome ou Apelido:</label>
+                    <input type="text" id="nome" name="nomeApelido" placeholder="Ex. Eduardo da Silva" autocomplete="off">
+
+                    <input type="submit" name="buscar" value="BUSCAR">
+                </form>
             </section>
         </section>
-    @endif --}}
+   @endif
     
 </div>

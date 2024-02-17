@@ -102,6 +102,21 @@ footer {
     margin: 0 10px;
 }
 
+@media only screen and (min-width: 768px) and (max-width: 1023px)
+{
+    body {
+        overflow-x: hidden;
+    }
+
+    .navLinks {
+        margin-left: 45px;
+    }
+
+    .navLinks ul li {
+        margin-right: 20px;
+    }
+}
+
 @media only screen and (max-width: 767px)
 {
     #btn-nav {
@@ -174,4 +189,5 @@ footer {
         transform: rotate(-135deg);
         top: -7px;
     }
+
 }

@@ -30,18 +30,11 @@
                         @endforeach
                     @endif
                 </section>
-
-                <section class="container-radio-time">
-                    <label for="timeAzul">
-                        <input type="radio" name="time" value="1">
-                        Time Azul
-                    </label>
-
-                    <label for="timeVermelho">
-                        <input type="radio" name="time" value="2">
-                        Time Vermelho
-                    </label>
-                </section>
+                
+                <select name="time" id="time">
+                    <option value="1">Time Azul</option>
+                    <option value="2">Time Vermelho</option>
+                </select>
 
                 <input type="submit" name="adicionar" value="ADICIONAR">
             </form>
