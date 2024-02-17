@@ -26,12 +26,9 @@
     text-align: center;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    justify-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.titulo-card {
-    margin-left: 40px;
 }
 
 .titulo-card h3{
@@ -499,4 +496,192 @@ tr:hover td{
 
 .table-body-dividas-form input[type="checkbox"]{
     cursor: pointer;
+}
+
+#container-card-2 {
+    display: none;
+}
+
+#container-card-despesa-2 {
+    display: none;
+}
+
+#container-receita-mes-2 {
+    display: none;
+}
+
+#container-card-despesa-3 {
+    display: none;
+}
+
+#container-card-3 {
+    display: none;
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1280px)
+{
+    body {
+        overflow-x: hidden;
+    }
+
+    #container-card-1 {
+        display: none;
+    }
+
+    #container-card-2 {
+        display: flex;
+    }
+
+    #container-card-despesa-1 {
+        display: none;
+    }
+
+    #container-card-despesa-2{
+        display: flex;
+    }
+
+    #container-receita-mes-2 {
+        display: flex;
+    }
+
+    #container-receita-mes-1 {
+        display: none;
+    }
+
+    .receitas-mes-body {
+        height: 570px;
+    }
+
+    .container-principal-3 table {
+        min-width: 800px;
+    }
+   
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px)
+{
+    body {
+        overflow-x: hidden;
+    }
+
+    .card-finanças {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        justify-items: center;
+        gap: 2rem;
+    }
+
+    .container-duplo {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #container-card-1 {
+        display: none;
+    }
+
+    #container-card-2 {
+        display: flex;
+    }
+
+    #container-card-despesa-1 {
+        display: none;
+    }
+
+    #container-card-despesa-2 {
+        display: flex;
+    }
+
+    #container-receita-mes-2 {
+        display: flex;
+    }
+
+    #container-receita-mes-1 {
+        display: none;
+    }
+
+    .receitas-mes-body {
+        height: 340px;
+    }
+
+    .container-principal-3 table {
+        min-width: 640px;
+    }
+}
+
+@media only screen and (max-width: 767px)
+{
+    body {
+        overflow-x: hidden;
+    }
+
+    .card-finanças {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+        justify-items: center;
+        gap: 2rem;
+    }
+
+    .container-duplo {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #container-card-1 {
+        display: none;
+    }
+
+    #container-card-3 {
+        display: flex;
+    }
+
+    #container-card-despesa-1 {
+        display: none;
+    }
+
+    #container-card-despesa-3 {
+        display: flex;
+    }
+
+    .titulo-card-receitasDespesas h1 {
+        font-size: 1.2rem;
+    }
+
+    .titulo-table h1 {
+        font-size: 1.5rem;
+    }
+
+    .container-principal-2 {
+        display: none;
+    }
+
+    .container-principal-3 {
+        padding: 40px 0;
+        background: #ffffff;
+    }
+
+    .container-DR {
+        background-color: #e0e0e0;
+    }
+
+    .card-body-receitas {
+        flex-direction: column;
+        height: 320px;
+    }
+
+    .card-body-receitas h2 {
+        color: #168316;
+        margin-top: 15px;
+        font-size: 2rem;
+    }
+
+    #container-card-despesa-3 .card-body-receitas h2 {
+        color: #c21919;
+    }
+
+    .container-principal-3 table {
+        min-width: 650px;
+    }
 }
