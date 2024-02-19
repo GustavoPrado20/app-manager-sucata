@@ -252,7 +252,12 @@ i {
 @media only screen and (max-width: 950px) {
     .container-form
     {
-        width: 85%;
+        width: 90%;
+    }
+
+    .left-container
+    {
+        padding: 20px;
     }
 }
 
@@ -264,7 +269,9 @@ i {
 
     .left-container > h1
     {
-        display: none;
+        display: flex;
+        text-align: center;
+        font-size: 2rem;
     }
 
     .left-container
@@ -281,7 +288,7 @@ i {
 
     .left-img
     {
-        width: 50vw;
+        display: none;
     }
 
     .container-form
