@@ -46,7 +46,7 @@
     <li>Gere uma chave de aplicativo Laravel: <b>php artisan key:generate</b></li>
     <li>Acesse o diretório do projeto e execute o comando <b>./vendor/bin/sail up</b> para iniciar o ambiente de desenvolvimento com o Laravel Sail e Docker.</li>
     <li>Copie o arquivo <b>.env.example</b> para <b>.env</b> e configure seu ambiente (banco de dados, etc.).</li>
-    <li>Crie sua Chave de Autenticação de Registro de Usuario Manualmente em seu arquivo <b>.env</b>.</li>
+    <li>Crie sua Chave de Autenticação(TOKEN_AUTENTICATE_REGISTER) de Registro de Usuario Manualmente em seu arquivo <b>.env</b>.</li>
     <li>Execute as migrações do banco de dados: <b>php artisan migrate</b></li>
     <li>Acesse a aplicação em seu navegador: <b>http://localhost</b></li>
 </ol>
