@@ -110,7 +110,7 @@ form {
 }
 
 /* Estilização dos botoes */
-input[type="submit"] {
+button[type="submit"] {
     background: #2b4c7e;
     color: #ffffff;
     border-radius: 30px;
@@ -124,11 +124,11 @@ input[type="submit"] {
     transition: all 0.2s ease;
 }
 
-input[type="submit"]:active {
+button[type="submit"]:active {
     transform: scale(0.96);
 }
 
-#signUp > input[type="submit"]{
+#signUp > button[type="submit"]{
     margin-top: 25px;
 }
 
@@ -180,19 +180,19 @@ i {
 }
 
 .iUser {
-    top: 37px;
+    top: 23px;
 }
 
 .iEmail2 {
-    top: 98px;
+    top: 84px;
 }
 
 .iPassword1 {
-    top: 156px;
+    top: 142px;
 }
 
 .iPassword2 {
-    top: 215px;
+    top: 201px;
 }
 
 /* Validação Login */
@@ -216,33 +216,33 @@ i {
 .erro-validacao-nome {
     color: #2b4c7e;
     position: absolute; 
-    top: 74px;
+    top: 60px;
     font-size: .8rem;
-    display: none;
+    display: block;
 }
 
 .erro-validacao-email {
     color: #2b4c7e;
     position: absolute;
-    top: 132px;
+    top: 118px;
     font-size: .8rem;
-    display: none;
+    display: block;
 }
 
 .erro-validacao-password {
     color: #2b4c7e;
     position: absolute; 
-    top: 190px;
+    top: 176px;
     font-size: .8rem;
-    display: none;
+    display: block;
 }
 
-.erro-validacao-password-confirmation {
+.erro-validacao-keyauth {
     color: #2b4c7e;
     position: absolute;
-    top: 250px;
+    top: 236px;
     font-size: .8rem;
-    display: none;
+    display: block;
 }
 
 .template{

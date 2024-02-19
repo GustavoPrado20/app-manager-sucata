@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserDirectorRequest;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -25,8 +26,8 @@ class LoginRegistroController extends Controller
      * @param Request $request
      * @return void
      */
-    public function registrarDiretor(Request $request){
-        $datavalidate = $request->all();
+    public function registrarDiretor(StoreUserDirectorRequest $request){
+        $datavalidate = $request->validated();
 
         $data = ['name' => $datavalidate['nome'], 'email' => $datavalidate['email'], 'password' => $datavalidate['password']];
 

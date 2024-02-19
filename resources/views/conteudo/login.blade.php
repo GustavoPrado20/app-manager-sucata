@@ -31,7 +31,7 @@
 
                     <form action="{{ route('Logar-diretor') }}" id="signIn" name="signInF" method="POST">
                         @csrf
-                        <input type="text" placeholder="Email" name="email" class="input-signIn" id="email">
+                        <input type="email" placeholder="Email" name="email" class="input-signIn" id="email" autocomplete="email">
                         <i class="fas fa-envelope iEmail"></i>
                         <span class='erro-validacao msg-email  @if(!empty($erroLogin)) template @endif'>
                             @if (!empty($erroLogin))
@@ -39,7 +39,7 @@
                             @endif
                         </span>
 
-                        <input type="password" placeholder="Password" name="password" class="input-signIn" id="password" autocomplete="on">
+                        <input type="password" placeholder="Password" name="password" class="input-signIn" id="password" autocomplete="password">
                         <i class="fas fa-lock iPassword"></i>
                         <span class='erro-validacao2 msg-password  @if(!empty($erroLogin)) template @endif'>
                             @if(!empty($erroLogin))
@@ -52,40 +52,55 @@
                             <span>Remember Password</span>
                         </section>
 
-                        <input type="submit" name="signIn" value="Sign In">
+                        <button type="submit">Sing In</button>
                     </form>
 
                     <form action="{{ route('registrar-diretor') }}" id="signUp" name="signUpF" method="POST">
                         @csrf
-                        <h6>Função inativa - todos os diretores ja estão registrados!</h6>
-                        <input type="text" placeholder="Nome" name="nome" class="input-signUp" id="nome">
+                        <input type="text" placeholder="Nome" name="nome" class="input-signUp" id="nome" autocomplete="name" value="{{ old('nome') }}">
                         <i class="fas fa-user iUser"></i>
-                        <span class='erro-validacao-nome msg-nome'></span>
+                        @error('nome')
+                            <span class='erro-validacao-nome'>
+                                {{ $errors->first('nome') }}
+                            </span>
+                        @enderror
 
-                        <input type="text" placeholder="Email" name="email" class="input-signUp" id="emailR">
+                        <input type="email" placeholder="Email" name="email" class="input-signUp" id="emailR" autocomplete="email" value="{{ old('email') }}">
                         <i class="fas fa-envelope iEmail2"></i>
-                        <span class='erro-validacao-email msg-emailR'></span>
-
-                        <input type="password" placeholder="Password" name="password" class="input-signUp" id="passwordR" autocomplete="on">
+                        @error('email')
+                        <span class='erro-validacao-email'>
+                            {{ $errors->first('email') }}
+                        </span>
+                        @enderror
+                        
+                        <input type="password" placeholder="Password" name="password" class="input-signUp" id="passwordR" autocomplete="password">
                         <i class="fas fa-lock iPassword1"></i>
-                        <span class='erro-validacao-password msg-passwordR'></span>
+                        @error('password')
+                        <span class='erro-validacao-password'>
+                            {{ $errors->first('password') }}
+                        </span>
+                        @enderror
 
-                        <input type="password" placeholder="Password Confirmation" name="password-confirmation" autocomplete="on" class="input-signUp" id="password-confirmation">
+                        <input type="text" placeholder="Chave de Autenticação" name="keyauth" autocomplete="on" class="input-signUp" id="password-confirmation">
                         <i class="fas fa-lock iPassword2"></i>
-                        <span class='erro-validacao-password-confirmation msg-password-confirmation'></span>
+                        @error('keyauth')
+                        <span class='erro-validacao-keyauth'>
+                            {{ $errors->first('keyauth') }}
+                        </span>
+                        @enderror
 
                         <section class="container-check-register">
                             <input type="checkbox" required/>
                             <span>I accept all <a href="">Terms</a></span>
                         </section>
 
-                        <input type="submit" name="signUp" value="Sign UP">
+                        <button type="submit">Sing Up</button>
                     </form>
                 </section>
             </section>
        </main> 
        <script type="text/javascript" src="{{ asset('js/login.js') }}"></script>
-       <script type="text/javascript" src="{{ asset('js/cadastro-validation.js') }}"></script>
+       
        <script type="text/javascript" src="{{ asset('js/login-validation.js') }}"></script>
     </body>
 </html>
