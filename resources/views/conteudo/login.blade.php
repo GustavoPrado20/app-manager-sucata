@@ -33,6 +33,11 @@
                         @csrf
                         <input type="email" placeholder="Email" name="email" class="input-signIn" id="email" autocomplete="email">
                         <i class="fas fa-envelope iEmail"></i>
+                        @error('email')
+                        <span class='erro-validacao msg-email template'>
+                            {{ $errors->first('email') }}
+                        </span>
+                        @enderror
                         <span class='erro-validacao msg-email  @if(!empty($erroLogin)) template @endif'>
                             @if (!empty($erroLogin))
                                 {{ $erroLogin }}
@@ -41,6 +46,11 @@
 
                         <input type="password" placeholder="Password" name="password" class="input-signIn" id="password" autocomplete="password">
                         <i class="fas fa-lock iPassword"></i>
+                        @error('password')
+                        <span class='erro-validacao msg-email template'>
+                            {{ $errors->first('password') }}
+                        </span>
+                        @enderror
                         <span class='erro-validacao2 msg-password  @if(!empty($erroLogin)) template @endif'>
                             @if(!empty($erroLogin))
 								{{ $erroLogin }}

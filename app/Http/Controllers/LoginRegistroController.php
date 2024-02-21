@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginUserDirectorRequest;
 use App\Http\Requests\StoreUserDirectorRequest;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
@@ -50,7 +51,7 @@ class LoginRegistroController extends Controller
      * @param Request $request
      * @return void
      */
-    public function logarDiretor(Request $request){
+    public function logarDiretor(LoginUserDirectorRequest $request){
         $data = $request->only('email', 'password');
 
         if(Auth::attempt($data)){
