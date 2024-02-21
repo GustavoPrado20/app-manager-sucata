@@ -684,4 +684,13 @@ tr:hover td{
     .container-principal-3 table {
         min-width: 650px;
     }
+
+    .modal {
+        max-width: 360px;
+    }
+
+    .header-modal h2 {
+        font-size: 2rem;
+        text-align: center;
+    }
 }

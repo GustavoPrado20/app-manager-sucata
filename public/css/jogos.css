@@ -239,6 +239,57 @@ tr:hover td{
     transition: .3s;
 }
 
+.btns-opcoes {
+    border: none;
+    box-shadow: none;
+    background: none;
+    width: 30px;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.icone {
+    max-width: 100%;
+    height: auto;
+    width: auto;
+}
+
+/*Modal Remover Jogador*/
+.header-modal-remover {
+    justify-content: center;
+}
+
+.container-1-modal-remover {
+    margin-bottom: 25px;
+    color: #000;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.container-2-modal-remover {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.container-2-modal-remover .btn-1 {
+    background-color: #a50d0d;
+}
+
+.container-2-modal-remover .btn-2 {
+    background-color: #2b4c7e;
+}
+
+.container-2-modal-remover .btn-1:hover {
+    background-color: #830707;
+}
+
+.container-2-modal-remover .btn-2:hover {
+    background-color: #16325e;
+}
+
+
 #Azul {
     left: 25px;
 }
