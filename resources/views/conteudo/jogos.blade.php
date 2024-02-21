@@ -91,6 +91,9 @@
                                     <th>Nome</th>
                                     <th>Gols</th>
                                     <th>Faltas</th>
+                                    @if ($LoginAuth)
+                                        <th>Ação</th>
+                                    @endif
                                 </tr>
                             </thead>
     
@@ -100,6 +103,11 @@
                                         <td>{{ $dadoJogador['nome'] }} @if (!empty($dadoJogador['apelido'])) ({{ $dadoJogador['apelido'] }})@endif</td>
                                         <td>{{ $dadoJogador['gols'] }}</td>
                                         <td>{{ $dadoJogador['faltas'] }}</td>
+                                        @if ($LoginAuth)
+                                            <td>
+                                                @livewire('ModalRemoverJogador', ['id_jogador' => $dadoJogador['id']])
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -113,6 +121,9 @@
                                     <th>Nome</th>
                                     <th>Gols</th>
                                     <th>Faltas</th>
+                                    @if ($LoginAuth)
+                                        <th>Ação</th>
+                                    @endif
                                 </tr>
                             </thead>
     
@@ -122,6 +133,11 @@
                                         <td>{{ $dadoJogador['nome'] }} @if (!empty($dadoJogador['apelido'])) ({{ $dadoJogador['apelido'] }})@endif</td>
                                         <td>{{ $dadoJogador['gols'] }}</td>
                                         <td>{{ $dadoJogador['faltas'] }}</td>
+                                        @if ($LoginAuth)
+                                            <td>
+                                                @livewire('ModalRemoverJogador', ['id_jogador' => $dadoJogador['id']])
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -148,6 +164,9 @@
                                     <th>Nome</th>
                                     <th>Gols</th>
                                     <th>Faltas</th>
+                                    @if ($LoginAuth)
+                                        <th>Ação</th>
+                                    @endif
                                 </tr>
                             </thead>
 
@@ -157,6 +176,11 @@
                                         <td>{{ $dadoJogador['nome'] }} @if (!empty($dadoJogador['apelido'])) ({{ $dadoJogador['apelido'] }})@endif</td>
                                         <td>{{ $dadoJogador['gols'] }}</td>
                                         <td>{{ $dadoJogador['faltas'] }}</td>
+                                        @if ($LoginAuth)
+                                            <td>
+                                                @livewire('ModalRemoverJogador', ['id_jogador' => $dadoJogador['id']])
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>
