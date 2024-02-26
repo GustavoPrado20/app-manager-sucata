@@ -8,7 +8,7 @@ use Livewire\Component;
 class ModalRemoverJogador extends Component
 {
     public $showModalRemoverJogador = false;
-    protected $id_membro;
+    public $id_jogador;
 
     public function abrirModalRemoverJogador()
     {
@@ -22,7 +22,9 @@ class ModalRemoverJogador extends Component
 
     public function removerJogador()
     {
-        Membro::updateId($this->id_membro, ['id_time' => null]);
+        Membro::updateId($this->id_jogador, ['id_time' => null]);
+
+        return redirect(route('jogos'));    
     }
 
     public function render()

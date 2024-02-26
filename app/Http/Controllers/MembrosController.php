@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\CreateJanuaryMonthlyAction;
 use App\Actions\CreateMonthlyFeeAction;
-use App\Models\Divida;
 use App\Models\Membro;
 use App\Models\RegistroDivida;
-use App\Repositories\MembroRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use PhpParser\Node\Stmt\Return_;
 use Carbon\Carbon;
 
 class MembrosController extends Controller
@@ -74,7 +70,7 @@ class MembrosController extends Controller
             'acordo' => $acordo
         ];
         
-        $atualizarDados = Membro::updateIdMember($idMembro, $dados);
+        $atualizarDados = Membro::updateId($idMembro, $dados);
 
         if($atualizarDados){
             return redirect()->back();
@@ -98,5 +94,10 @@ class MembrosController extends Controller
                 'LoginAuth' => Auth::check()
             ]);
         }
+    }
+
+    public function perfil()
+    {
+        return view('conteudo.perfil', ['LoginAuth' => Auth::check()]);
     }
 }

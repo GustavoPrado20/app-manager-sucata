@@ -555,6 +555,19 @@ tr:hover td{
     .container-principal-3 table {
         min-width: 800px;
     }
+
+    .container-duplo {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-finanças {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        justify-items: center;
+        gap: 2rem;
+    }
    
 }
 
@@ -602,7 +615,7 @@ tr:hover td{
     }
 
     .receitas-mes-body {
-        height: 340px;
+        height: 410px;
     }
 
     .container-principal-3 table {
@@ -668,7 +681,7 @@ tr:hover td{
 
     .card-body-receitas {
         flex-direction: column;
-        height: 320px;
+        height: 370px;
     }
 
     .card-body-receitas h2 {
