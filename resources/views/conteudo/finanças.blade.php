@@ -533,7 +533,7 @@
                             
                                     // Opções do gráfico
                                     var options = {
-                                        cutout: '61%', // Define o tamanho do "buraco" no centro
+                                        cutout: '75%', // Define o tamanho do "buraco" no centro
                                         plugins: {
                                             legend: {
                                                 display: true, // Desativa/Ativa a exibição padrão da legenda
