@@ -525,7 +525,7 @@
                                              @endif
                                             ],
                                         datasets: [{
-                                            data: [{{ $despesaJuizMes }}, {{ $totalOutraDespesaMes }}],
+                                            data: [{{ $despesaJuizMes}}, {{ $totalOutraDespesaMes }}],
                                             label: 'Valor',
                                             backgroundColor: ['#910000', '#D10000'],
                                         }]
@@ -533,7 +533,7 @@
                             
                                     // Opções do gráfico
                                     var options = {
-                                        cutout: '75%', // Define o tamanho do "buraco" no centro
+                                        cutout: '60%', // Define o tamanho do "buraco" no centro
                                         plugins: {
                                             legend: {
                                                 display: true, // Desativa/Ativa a exibição padrão da legenda
