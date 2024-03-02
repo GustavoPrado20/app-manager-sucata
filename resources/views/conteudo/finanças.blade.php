@@ -130,8 +130,8 @@
 
                                             onProgress: function(animation) {
                                                 // Desenha o valor no centro do gráfico durante a animação
-                                                var centerX = myDoughnutChart.canvas.width / 2;
-                                                var centerY = myDoughnutChart.canvas.height / 2;
+                                                var centerX = myDoughnutChart.canvas.width /2;
+                                                var centerY = myDoughnutChart.canvas.height /2;
                                                 var centerText = 'R$ {{ ($FaltasPagasMes + $cartoes + $mensalidades) }},00'; // Seu valor desejado
 
                                                 ctx.font = 'bold 40px Josefin Sans';
@@ -369,16 +369,33 @@
                                         labels: [
                                             @if(!empty($despesaJuizMes))
                                                 'Juiz', 
-                                             @endif 
+                                            @endif 
                                              
-                                             @if(!empty($totalOutraDespesaMes)) 
+                                            @if(!empty($totalOutraDespesaMes)) 
                                                 'Outros', 
-                                             @endif
-                                            ],
+                                            @endif
+                                        ],
                                         datasets: [{
-                                            data: [{{ $despesaJuizMes }}, {{ $totalOutraDespesaMes }}],
+                                            data: [
+                                                @if (!empty($despesaJuizMes))
+                                                    {{ $despesaJuizMes }},
+                                                @endif
+                                                
+                                                @if (!empty($totalOutraDespesaMes))
+                                                    {{ $totalOutraDespesaMes }},
+                                                @endif
+                                            ],
+
                                             label: 'Valor',
-                                            backgroundColor: ['#910000', '#D10000'],
+                                            backgroundColor: [
+                                                @if (!empty($despesaJuizMes))
+                                                    '#910000',
+                                                @endif    
+                                                
+                                                @if (!empty($totalOutraDespesaMes))
+                                                    '#D10000',
+                                                @endif
+                                            ],
                                         }]
                                     };
                             
@@ -398,7 +415,7 @@
                                                 // Desenha o valor no centro do gráfico durante a animação
                                                 var centerX = myDoughnutChartDespesas.canvas.width / 2;
                                                 var centerY = myDoughnutChartDespesas.canvas.height / 2;
-                                                var centerText = 'R$ {{ $despesaJuizMes + $totalOutraDespesaMes}},00'; // Seu valor desejado
+                                                var centerText = 'R$ {{ $despesaJuizMes + $totalOutraDespesaMes }},00'; // Seu valor desejado
 
                                                 ctxDespesas.font = 'bold 40px Josefin Sans';
                                                 ctxDespesas.fillStyle = '#c21919'; // Cor do texto
@@ -450,9 +467,25 @@
                                              @endif
                                             ],
                                         datasets: [{
-                                            data: [{{ $despesaJuizMes }}, {{ $totalOutraDespesaMes }}],
+                                            data: [
+                                                @if (!empty($despesaJuizMes))
+                                                    {{ $despesaJuizMes }},
+                                                @endif
+                                                
+                                                @if (!empty($totalOutraDespesaMes))
+                                                    {{ $totalOutraDespesaMes }}
+                                                @endif
+                                            ],
                                             label: 'Valor',
-                                            backgroundColor: ['#910000', '#D10000'],
+                                            backgroundColor: [
+                                                @if (!empty($despesaJuizMes))
+                                                    '#910000',
+                                                @endif    
+                                                
+                                                @if (!empty($totalOutraDespesaMes))
+                                                    '#D10000',
+                                                @endif
+                                            ],
                                         }]
                                     };
                             
@@ -525,9 +558,25 @@
                                              @endif
                                             ],
                                         datasets: [{
-                                            data: [{{ $despesaJuizMes}}, {{ $totalOutraDespesaMes }}],
+                                            data: [
+                                                @if (!empty($despesaJuizMes))
+                                                    {{ $despesaJuizMes }},
+                                                @endif
+                                                
+                                                @if (!empty($totalOutraDespesaMes))
+                                                    {{ $totalOutraDespesaMes }}
+                                                @endif
+                                            ],
                                             label: 'Valor',
-                                            backgroundColor: ['#910000', '#D10000'],
+                                            backgroundColor: [
+                                                @if (!empty($despesaJuizMes))
+                                                    '#910000',
+                                                @endif    
+                                                
+                                                @if (!empty($totalOutraDespesaMes))
+                                                    '#D10000',
+                                                @endif
+                                            ],
                                         }]
                                     };
                             
