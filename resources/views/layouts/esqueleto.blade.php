@@ -23,5 +23,6 @@
         @include('layouts.footer')
 
         <script src="{{ asset('js/header-menu.js') }}"></script>
+        <script src="{{ asset('js/redirect-header.js') }}"></script>
     </body>
 </html>
