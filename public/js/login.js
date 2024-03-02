@@ -12,6 +12,6 @@ document.querySelector('#btnSignIn')
 document.querySelector('#btnSignUp')
   .addEventListener('click', () => {
     formSignin.style.left = "-450px"
-    formSignup.style.left = "25px"
+    formSignup.style.left = "20px"
     btnColor.style.left = "99px"
 })

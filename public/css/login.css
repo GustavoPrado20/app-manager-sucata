@@ -295,4 +295,8 @@ i {
     {
         width: 90%;
     }
+
+    #signIn {
+        left: 20px;
+    }
 }
