@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\CreateMonthlyFeeAction;
+use App\Models\Divida;
 use App\Models\Membro;
 use App\Models\RegistroDivida;
 use Illuminate\Http\Request;
@@ -93,6 +94,99 @@ class MembrosController extends Controller
                 'dadosMembrosInativos' => $dadosMembrosInativos, 
                 'LoginAuth' => Auth::check()
             ]);
+        }
+    }
+
+    public function menssagemDebt()
+    {
+        $membros = Membro::findByStatus(true);
+
+        foreach($membros as $membro)
+        {
+            $mensalidades = Divida::query()->where('id_membro', '=', $membro['id'])
+            ->where('situação', '=', 'Pendente')->where('referente', '=', 'Mensalidade')
+            ->get();
+
+            $faltas = Divida::query()->where('id_membro', '=', $membro['id'])
+            ->where('situação', '=', 'Pendente')->where('referente', '=', 'Falta')
+            ->get();
+
+            $cartaoYellows = Divida::query()->where('id_membro', '=', $membro['id'])
+            ->where('situação', '=', 'Pendente')->where('referente', '=', 'Cartão Amarelo')
+            ->get();
+
+            $cartaoReds = Divida::query()->where('id_membro', '=', $membro['id'])
+            ->where('situação', '=', 'Pendente')->where('referente', '=', 'Cartão Vermelho')
+            ->get();
+
+            if($membro['ocupação'] == 'Jogador' or $membro['ocupação'] == 'Diretor e Jogador')
+            {
+                $totalMensalidade = 0;
+
+                foreach($mensalidades as $mensalidade)
+                {
+                    $totalMensalidade = $mensalidade['valor'] + $totalMensalidade;
+                }
+
+                $totalFalta = 0;
+
+                foreach($faltas as $falta)
+                {
+                    $totalFalta = $falta['valor'] + $totalFalta;
+                }
+
+                $totalYellow = 0;
+
+                foreach($cartaoYellows as $cartaoYellow)
+                {
+                    $totalYellow = $cartaoYellow['valor'] + $totalYellow;
+                }
+
+                $totalRed = 0;
+
+                foreach($cartaoReds as $cartaoRed)
+                {
+                    $totalRed = $cartaoRed['valor'] + $totalRed;
+                }
+
+                if($membro['acordo'] == false)
+                {
+                    echo '<h3>Débito Sucata</h3>
+                    <p>Membro: '.$membro['nome'].'</p>
+                    <p>'.($totalMensalidade / 40).' Mensalidades: R$ '.$totalMensalidade.',00</p>
+                    <p>'.($totalFalta / 30).' Faltas: R$ '.$totalFalta.',00</p>
+                    <p>'.($totalYellow / 20).' Cartões Amarelos: R$ '.$totalYellow.',00</p>
+                    <p>'.($totalRed / 25).' Cartões Vermelhos: R$ '.$totalRed.',00</p>
+                    <p>Valor Total: R$ '.($totalMensalidade + $totalFalta + $totalRed + $totalYellow).',00</p>
+                    <p>Pix: (11) 941809128</p>';
+                }
+                else
+                {
+                    echo '<h3>Débito Sucata</h3>
+                    <p>Membro: '.$membro['nome'].'</p>
+                    <p>'.($totalMensalidade / 20).' Mensalidades: R$ '.$totalMensalidade.',00</p>
+                    <p>'.($totalFalta / 30).' Faltas: R$ '.$totalFalta.',00</p>
+                    <p>'.($totalYellow / 20).' Cartões Amarelos: R$ '.$totalYellow.',00</p>
+                    <p>'.($totalRed / 25).' Cartões Vermelhos: R$ '.$totalRed.',00</p>
+                    <p>Valor Total: R$ '.($totalMensalidade + $totalFalta + $totalRed + $totalYellow).',00</p>
+                    <p>Pix: (11) 941809128</p>';
+                }
+            }
+            else
+            {
+                $totalMensalidade = 0;
+
+                foreach($mensalidades as $mensalidade)
+                {
+                    $totalMensalidade = $mensalidade['valor'] + $totalMensalidade;
+                }
+
+                echo '<h3>Débito Sucata</h3>
+                    <p>Membro: '.$membro['nome'].'</p>
+                    <p>'.($totalMensalidade / 20).' Mensalidades: R$ '.$totalMensalidade.',00</p>
+                    <p>Valor Total: R$ '.$totalMensalidade.',00</p>
+                    <p>Pix: (11) 941809128</p>';
+            }
         }
     }
 

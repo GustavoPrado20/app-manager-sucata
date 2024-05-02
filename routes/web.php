@@ -49,4 +49,4 @@ Route::prefix('/finanças')->group(function(){
     Route::post('/adicionarDespesas', [Controllers\FinancasController::class, 'adicionarDespesas'])->name('adicionarDespesas');
 });
 
-// Route::get('/menssagem', [Controllers\MembrosController::class, 'menssagemDebt']);
+Route::get('/menssagem', [Controllers\MembrosController::class, 'menssagemDebt']);
