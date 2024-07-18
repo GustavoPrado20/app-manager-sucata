@@ -24,6 +24,7 @@ return new class extends Migration
             $table->date('data-entrada-time');
             $table->boolean('status')->default(true);
             $table->boolean('acordo')->default(false);
+            $table->boolean('isento')->default(false);
             $table->timestamps();
 
             //foreign key
