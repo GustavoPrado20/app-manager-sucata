@@ -27,7 +27,7 @@ class CalculateTotalForecastForDecemberAction
         ->count();
 
         $jogadores = Membro::query()->where('status', '=', true)
-        ->where('acordo', '=', false)->where(function($query){
+        ->where('acordo', '=', false)->where('isento', '=', false)->where(function($query){
             $query->where('ocupação', '=', 'Jogador')
             ->orWhere('ocupação', '=', 'Diretor e Jogador');
         })->get();
