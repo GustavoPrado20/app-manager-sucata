@@ -28,7 +28,7 @@ Route::get('/login', [Controllers\LoginRegistroController::class, 'index'])->nam
 
 Route::prefix('/login')->group(function(){
     Route::post('/singUp', [Controllers\LoginRegistroController::class, 'registrarDiretor'])->name('registrar-diretor');
-    Route::post('/singIp', [Controllers\LoginRegistroController::class, 'logarDiretor'])->name('Logar-diretor');
+    Route::post('/singIn', [Controllers\LoginRegistroController::class, 'logarDiretor'])->name('Logar-diretor');
     Route::get('/singOut', [Controllers\LoginRegistroController::class, 'singOut'])->name('deslogar');
 });
 
