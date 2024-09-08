@@ -61,7 +61,7 @@ class CalculateTotalForecastForDecemberAction
             $totalSocio = ($mesesRestantes * 20) + $totalSocio;
         }
 
-        $total = $totalDivida + $totalJogadores + $totalSocio + ($jogadoresEntradaJaneiro * 10);
+        $total = $totalDivida + $totalJogadores + $totalSocio + ($jogadoresEntradaJaneiro * 10) - 1500;
 
         return $total;
     }
