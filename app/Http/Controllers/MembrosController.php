@@ -158,6 +158,9 @@ class MembrosController extends Controller
                     <p>'.($totalYellow / 20).' Cartões Amarelos: R$ '.$totalYellow.',00</p>
                     <p>'.($totalRed / 25).' Cartões Vermelhos: R$ '.$totalRed.',00</p>
                     <p>Valor Total: R$ '.($totalMensalidade + $totalFalta + $totalRed + $totalYellow).',00</p>
+                    <p><b>Atenção<b></p>
+                    <p>Esta sendo enviado/cobrado as mensalidades de Novembro e Dezembro fora as que ja estavam devendo!!!</p>
+                    <p><b>Por Favor Pagaram até o Dia 20 de Novembro para estarmos agilizando a Confraternização, Obrigado!!<b></p>
                     <p>Pix: (11) 941809128</p>';
                 }
                 else
