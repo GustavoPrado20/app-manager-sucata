@@ -6,9 +6,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "genealabs/laravel-caffeine": "*",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^11.0",
-        "laravel/sanctum": "^4.0",
+        "laravel/sanctum": "*",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.3",
         "nesbot/carbon": "^2.72"
@@ -51,7 +52,9 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [
+                "laravel/dusk"
+            ]
         }
     },
     "config": {
