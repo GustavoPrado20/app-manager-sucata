@@ -17,7 +17,7 @@
 
                         <section class="titulo-card">
                             <h3>Saldo Atual</h3>
-                            <p>R$ {{ ($receitas - 4500) - $despesaTotal }},00</p>
+                            <p>R$ {{ ($receitas) - $despesaTotal }},00</p>
                         </section>
                     </section>
 
@@ -28,7 +28,7 @@
 
                         <section class="titulo-card">
                             <h3>Receitas</h3>
-                            <p>R$ {{ $receitas - 4500 }},00</p>
+                            <p>R$ {{ $receitas}},00</p>
                         </section>
                     </section>
 
