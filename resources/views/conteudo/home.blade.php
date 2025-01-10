@@ -107,14 +107,14 @@
                     <ul>
                         <li>
                             <p>
-                                O recebimento de cartões amarelos durante as partidas acarretará em multa de R$20,00. 
+                                O recebimento de cartões amarelos durante as partidas acarretará em multa de R$25,00. 
                                 cuja receita será destinada a melhorias no time.
                             </p>
                         </li>
 
                         <li>
                             <p>
-                                O cartão vermelho resultará em multa de R$25,00, podendo também acarretar em suspensão temporária, 
+                                O cartão vermelho resultará em multa de R$30,00, podendo também acarretar em suspensão temporária, 
                                 dependendo da gravidade da infração.
                             </p>
                         </li>
@@ -126,7 +126,7 @@
                     <ul>
                         <li>
                             <p>
-                                Ausências não justificadas em partidas implicarão em uma taxa de R$30,00. a ser paga pelo jogador ausente.
+                                Ausências não justificadas em partidas implicarão em uma taxa de R$40,00. a ser paga pelo jogador ausente.
                             </p>
                         </li>
 
@@ -144,7 +144,7 @@
                     <ul>
                         <li>
                             <p>
-                                O abandono do campo sem justificativa resultará em multa de R$25,00. 
+                                O abandono do campo sem justificativa resultará em multa de R$30,00. 
                                 a ser paga antes da participação subsequente do jogador.
                             </p>
                         </li>
@@ -163,14 +163,14 @@
                     <ul>
                         <li>
                             <p>
-                                Cada jogador compromete-se a pagar uma mensalidade fixa de R$40,00, 
+                                Cada jogador compromete-se a pagar uma mensalidade fixa de R$50,00, 
                                 destinada a despesas operacionais do time e organização de eventos sociais.
                             </p>
                         </li>
 
                         <li>
                             <p>
-                                Os sócios que não são jogadores deverão contribuir com R$20,00 mensais, tendo direito a benefícios específicos, 
+                                Os sócios que não são jogadores deverão contribuir com R$30,00 mensais, tendo direito a benefícios específicos, 
                                 como ingressos para eventos.
                             </p>
                         </li>
@@ -215,7 +215,7 @@
                         
                         <li>
                             <p>
-                                Convites avulsos para a confraternização poderão ser adquiridos mediante o pagamento de uma taxa de R$100,00 por pessoa.
+                                Convites avulsos para a confraternização poderão ser adquiridos mediante o pagamento de uma taxa de R$150,00 por pessoa.
                             </p>
                         </li>
                     </ul>
