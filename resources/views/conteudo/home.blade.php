@@ -7,7 +7,7 @@
 @section('conteudo')
     <main>
         <section class="container-1">
-            <h1>Estatuto e Regulamento Sucata F.C (2024)</h1>
+            <h1>Estatuto e Regulamento Sucata F.C (2025)</h1>
             <section class="container-grid">
                 <section class="container-box">
                     <h2>Art. 1 - Sobre o jogo</h2>
