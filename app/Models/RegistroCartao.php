@@ -39,12 +39,12 @@ class RegistroCartao extends Model
 
             if($cor == 'Amarelo')
             {
-                $data = ['id_membro' => $idJogador, 'referente' => 'Cartão Amarelo', 'valor' => 20, 'data' => $dataHoje];
+                $data = ['id_membro' => $idJogador, 'referente' => 'Cartão Amarelo', 'valor' => 25, 'data' => $dataHoje];
                 Divida::query()->create($data);
             }
             else
             {
-                $data = ['id_membro' => $idJogador, 'referente' => 'Cartão Vermelho', 'valor' => 25, 'data' => $dataHoje];
+                $data = ['id_membro' => $idJogador, 'referente' => 'Cartão Vermelho', 'valor' => 30, 'data' => $dataHoje];
                 Divida::query()->create($data);
             }
 
