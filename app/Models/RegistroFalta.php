@@ -43,7 +43,7 @@ class RegistroFalta extends Model
 
             if($motivo == 'Atraso' or $motivo == 'Não Justificado')
             {
-                $data = ['id_membro' => $idJogador, 'referente' => 'Falta', 'valor' => 30, 'data' => $date];
+                $data = ['id_membro' => $idJogador, 'referente' => 'Falta', 'valor' => 40, 'data' => $date];
                 Divida::query()->create($data);
             }
 
