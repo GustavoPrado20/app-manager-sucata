@@ -53,7 +53,7 @@ class CreateMonthlyFeeAction
                 $debetData = [
                     'id_membro' => $memberData['id'],
                     'referente' => 'Mensalidade',
-                    'valor' => 25,
+                    'valor' => 50,
                     'data' => $date,
                 ];
             }
