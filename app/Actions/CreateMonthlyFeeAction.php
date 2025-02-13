@@ -43,7 +43,7 @@ class CreateMonthlyFeeAction
             }
         }
 
-        if(! $date->month == 1){
+        if(!$date->month == 1){
 
             if(($memberData['ocupação'] == 'Jogador' or $memberData['ocupação'] == 'Diretor e Jogador') and $memberData['isento'] == false and $memberData['acordo'] == false)
             {
@@ -67,8 +67,9 @@ class CreateMonthlyFeeAction
         }
         
         return [
-            Divida::query()->create($debetData),
-            UpdateDebtValueAction::execute($memberId)
+            dd($debetData)
+            //Divida::query()->create($debetData),
+            //UpdateDebtValueAction::execute($memberId)
         ];
     }
 }
