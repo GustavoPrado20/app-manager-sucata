@@ -13,7 +13,7 @@ class CalculateAbsencesPaidMonthAction
         ->where('referente', '=', 'Falta')
         ->get()->count();
 
-        $total = $absences * 30;
+        $total = $absences * 40;
 
         return $total;
     }
