@@ -11,22 +11,22 @@ class CalculateMonthlyPaymentsAction
         $januaryPayments = Divida::query()->where('situação', '=', 'Paga')
         ->whereMonth('data_paga', $month)
         ->where('referente', '=', 'Mensalidade')
-        ->where('valor', '=', 10)
+        ->where('valor', '=', 25)
         ->get()->count();
 
         $paidPlayers = Divida::query()->where('situação', '=', 'Paga')
         ->whereMonth('data_paga', $month)
         ->where('referente', '=', 'Mensalidade')
-        ->where('valor', '=', 40)
+        ->where('valor', '=', 50)
         ->get()->count();
 
         $paidPartners  = Divida::query()->where('situação', '=', 'Paga')
         ->whereMonth('data_paga', $month)
         ->where('referente', '=', 'Mensalidade')
-        ->where('valor', '=', 20)
+        ->where('valor', '=', 30)
         ->get()->count();
 
-        $total = ($januaryPayments * 10) + ($paidPlayers * 40) + ($paidPartners * 20);
+        $total = ($januaryPayments * 25) + ($paidPlayers * 50) + ($paidPartners * 30);
         
         return $total;
     }
