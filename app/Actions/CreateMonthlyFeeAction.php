@@ -20,6 +20,8 @@ class CreateMonthlyFeeAction
 
         $memberData = Membro::find($memberId);
 
+        $debetData = [];
+
         // Verifica se já existe uma mensalidade para este membro no mês e ano atuais
         $mensalidadeExistente = Divida::where('id_membro', $memberId)
         ->whereMonth('data', $date->month)
@@ -67,9 +69,8 @@ class CreateMonthlyFeeAction
         }
         
         return [
-            dd($debetData)
-            //Divida::query()->create($debetData),
-            //UpdateDebtValueAction::execute($memberId)
+            Divida::query()->create($debetData),
+            UpdateDebtValueAction::execute($memberId)
         ];
     }
 }
