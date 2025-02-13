@@ -164,7 +164,7 @@ class MembrosController extends Controller
                 {
                     echo '<h3>*Débito Sucata*</h3>
                     <p>Membro: '.$membro['nome'].'</p>
-                    <p>'.($totalMensalidade / 25).' Mensalidades: R$ '.$totalMensalidade.',00</p>
+                    <p>'.($totalMensalidade / 30).' Mensalidades: R$ '.$totalMensalidade.',00</p>
                     <p>'.($totalFalta / 40).' Faltas: R$ '.$totalFalta.',00</p>
                     <p>'.($totalYellow / 25).' Cartões Amarelos: R$ '.$totalYellow.',00</p>
                     <p>'.($totalRed / 30).' Cartões Vermelhos: R$ '.$totalRed.',00</p>
