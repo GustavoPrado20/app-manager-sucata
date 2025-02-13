@@ -43,24 +43,27 @@ class CreateMonthlyFeeAction
             }
         }
 
-        if(($memberData['ocupação'] == 'Jogador' or $memberData['ocupação'] == 'Diretor e Jogador') and $memberData['isento'] == false and $memberData['acordo'] == false)
-        {
-            $debetData = [
-                'id_membro' => $memberData['id'],
-                'referente' => 'Mensalidade',
-                'valor' => 25,
-                'data' => $date,
-            ];
-        }
+        if(! $date->month == 1){
 
-        if((($memberData['ocupação'] == 'Jogador' and $memberData['acordo'] == true) or $memberData['ocupação'] == 'Sócio') and $memberData['isento'] == false)
-        {
-            $debetData = [
-                'id_membro' => $memberData['id'],
-                'referente' => 'Mensalidade',
-                'valor' => 30,
-                'data' => $date,
-            ];
+            if(($memberData['ocupação'] == 'Jogador' or $memberData['ocupação'] == 'Diretor e Jogador') and $memberData['isento'] == false and $memberData['acordo'] == false)
+            {
+                $debetData = [
+                    'id_membro' => $memberData['id'],
+                    'referente' => 'Mensalidade',
+                    'valor' => 25,
+                    'data' => $date,
+                ];
+            }
+    
+            if((($memberData['ocupação'] == 'Jogador' and $memberData['acordo'] == true) or $memberData['ocupação'] == 'Sócio') and $memberData['isento'] == false)
+            {
+                $debetData = [
+                    'id_membro' => $memberData['id'],
+                    'referente' => 'Mensalidade',
+                    'valor' => 30,
+                    'data' => $date,
+                ];
+            }
         }
         
         return [
