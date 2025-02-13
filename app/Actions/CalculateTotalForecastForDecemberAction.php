@@ -40,7 +40,7 @@ class CalculateTotalForecastForDecemberAction
 
             $mesesRestantes = 11 - $date + 1;
 
-            $totalJogadores = ($mesesRestantes * 40) + $totalJogadores;
+            $totalJogadores = ($mesesRestantes * 50) + $totalJogadores;
         }
 
         
@@ -58,10 +58,10 @@ class CalculateTotalForecastForDecemberAction
 
             $mesesRestantes = 11 - $date + 1;
 
-            $totalSocio = ($mesesRestantes * 20) + $totalSocio;
+            $totalSocio = ($mesesRestantes * 30) + $totalSocio;
         }
 
-        $total = $totalDivida + $totalJogadores + $totalSocio + ($jogadoresEntradaJaneiro * 10) - 1500;
+        $total = $totalDivida + $totalJogadores + $totalSocio + ($jogadoresEntradaJaneiro * 25);
 
         return $total;
     }
