@@ -18,7 +18,7 @@ class CalculateCardsPaidMonthAction
         ->where('referente', '=', 'Cartão Vermelho')
         ->get()->count();
 
-        $total = ($yellows * 20) + ($reds * 25);
+        $total = ($yellows * 25) + ($reds * 30);
 
         return $total;
     }
