@@ -18,57 +18,54 @@ class CreateMonthlyFeeAction
     {
         $date = Carbon::now();
 
+        $memberData = Membro::find($memberId);
+
+        // Verifica se já existe uma mensalidade para este membro no mês e ano atuais
+        $mensalidadeExistente = Divida::where('id_membro', $memberId)
+        ->whereMonth('data', $date->month)
+        ->exists();
+
+        if($mensalidadeExistente){
+            return null;
+        }
+
         if($date->month == 1)
         {
-            $memberData = Membro::find($memberId);
-
-            if(($memberData['ocupação'] == 'Jogador' or $memberData['ocupação'] == 'Diretor e Jogador') and $memberData['isento'] == true)
+            if($memberData['isento'] == false)
             {
-                $DebtRegistration = [
+                $debetData = [
                     'id_membro' => $memberId,
                     'referente' => 'Mensalidade',
                     'valor' => 25,
                     'data' => $date,
                 ];
 
-                return [
-                    Divida::query()->create($DebtRegistration),
-                    UpdateDebtValueAction::execute($memberId)
-                ];
             }
         }
-        else
+
+        if(($memberData['ocupação'] == 'Jogador' or $memberData['ocupação'] == 'Diretor e Jogador') and $memberData['isento'] == false and $memberData['acordo'] == false)
         {
-            $memberData = Membro::find($memberId);
-
-            if(($memberData['ocupação'] == 'Jogador' or $memberData['ocupação'] == 'Diretor e Jogador') and $memberData['isento'] == false )
-            {
-                $debetData = [
-                    'id_membro' => $memberData['id'],
-                    'referente' => 'Mensalidade',
-                    'valor' => 25,
-                    'data' => $date,
-                ];
-
-                 return [
-                    Divida::query()->create($debetData),
-                    UpdateDebtValueAction::execute($memberId)
-                ];
-            }
-            else
-            {
-                $debetData = [
-                    'id_membro' => $memberData['id'],
-                    'referente' => 'Mensalidade',
-                    'valor' => 30,
-                    'data' => $date,
-                ];
-
-                return [
-                    Divida::query()->create($debetData),
-                    UpdateDebtValueAction::execute($memberId)
-                ];
-            }
+            $debetData = [
+                'id_membro' => $memberData['id'],
+                'referente' => 'Mensalidade',
+                'valor' => 25,
+                'data' => $date,
+            ];
         }
+
+        if((($memberData['ocupação'] == 'Jogador' and $memberData['acordo'] == true) or $memberData['ocupação'] == 'Sócio') and $memberData['isento'] == false)
+        {
+            $debetData = [
+                'id_membro' => $memberData['id'],
+                'referente' => 'Mensalidade',
+                'valor' => 30,
+                'data' => $date,
+            ];
+        }
+        
+        return [
+            Divida::query()->create($debetData),
+            UpdateDebtValueAction::execute($memberId)
+        ];
     }
 }
