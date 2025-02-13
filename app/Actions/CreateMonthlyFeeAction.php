@@ -22,7 +22,7 @@ class CreateMonthlyFeeAction
         {
             $memberData = Membro::find($memberId);
 
-            if($memberData['ocupação'] == 'Jogador' or $memberData['ocupação'] == 'Diretor e Jogador' and $memberData['isento'] == true)
+            if($memberData['ocupação'] == 'Jogador' or $memberData['ocupação'] == 'Diretor e Jogador')
             {
                 $DebtRegistration = [
                     'id_membro' => $memberId,
