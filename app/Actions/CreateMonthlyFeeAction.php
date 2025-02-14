@@ -19,8 +19,11 @@ class CreateMonthlyFeeAction
         $date = Carbon::now();
 
         $memberData = Membro::find($memberId);
+        if (!$memberData) {
+            return null;
+        }
 
-        $debetData = [];
+        $debetData = null;
 
         // // Verifica se já existe uma mensalidade para este membro no mês e ano atuais
         // $mensalidadeExistente = Divida::where('id_membro', $memberId)
@@ -34,7 +37,7 @@ class CreateMonthlyFeeAction
 
         if($date->month == 1)
         {
-            if($memberData['isento'] == false)
+            if(!$memberData['isento'])
             {
                 $debetData = [
                     'id_membro' => $memberId,
@@ -45,10 +48,9 @@ class CreateMonthlyFeeAction
 
             }
         }
+        else {
 
-        if($date->month != 1){
-
-            if(($memberData['ocupação'] == 'Jogador' or $memberData['ocupação'] == 'Diretor e Jogador') and $memberData['isento'] == false and $memberData['acordo'] == false)
+            if(($memberData['ocupação'] == 'Jogador' or $memberData['ocupação'] == 'Diretor e Jogador') and !$memberData['isento'] and !$memberData['acordo'])
             {
                 $debetData = [
                     'id_membro' => $memberData['id'],
@@ -58,7 +60,7 @@ class CreateMonthlyFeeAction
                 ];
             }
     
-            if((($memberData['ocupação'] == 'Jogador' and $memberData['acordo'] == true) or $memberData['ocupação'] == 'Sócio') and $memberData['isento'] == false)
+            if((($memberData['ocupação'] == 'Jogador' and $memberData['acordo']) or $memberData['ocupação'] == 'Sócio') and !$memberData['isento'])
             {
                 $debetData = [
                     'id_membro' => $memberData['id'],
