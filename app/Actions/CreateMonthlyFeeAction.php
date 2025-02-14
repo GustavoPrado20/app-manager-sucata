@@ -22,6 +22,9 @@ class CreateMonthlyFeeAction
         if (!$memberData) {
             return null;
         }
+        if ($memberData['acordo']) {
+            return null;
+        }
 
         $debetData = null;
 
