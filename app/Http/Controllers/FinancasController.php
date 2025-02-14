@@ -20,7 +20,7 @@ class FinancasController extends Controller
 {
     public function index()
     {
-        $dividas = RegistroDivida::with('NomeMembro')->where('total-divida', '>', 0)->orderBy('total-divida', 'desc')->get();
+        $dividas = RegistroDivida::with('NomeMembro')->where('total-divida', '>', 0)->orderBy('total-divida', 'desc')->orderBy('ano', 'desc')->get();
         $dadosMembros = Membro::findByStatus(True);
         $dadosReceitas = Receita::query()->orderBy('data', 'desc')->get();
         $dadosDespesas = Despesa::query()->orderBy('data', 'desc')->get();
