@@ -22,7 +22,7 @@ class CreateMonthlyFeeAction
         if (!$memberData) {
             return null;
         }
-        if ($memberData['acordo']) {
+        if ($memberData['isento']) {
             return null;
         }
 
@@ -40,7 +40,7 @@ class CreateMonthlyFeeAction
 
         if($date->month == 1)
         {
-            if(!$memberData['isento'])
+            if(!$memberData['acordo'])
             {
                 $debetData = [
                     'id_membro' => $memberId,
