@@ -53,7 +53,7 @@ class CreateMonthlyFeeAction
         }
         else {
 
-            if(($memberData['ocupação'] == 'Jogador' or $memberData['ocupação'] == 'Diretor e Jogador') and !$memberData['isento'] and !$memberData['acordo'])
+            if(($memberData['ocupação'] == 'Jogador' or $memberData['ocupação'] == 'Diretor e Jogador') and !$memberData['acordo'])
             {
                 $debetData = [
                     'id_membro' => $memberData['id'],
