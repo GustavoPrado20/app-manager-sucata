@@ -30,6 +30,7 @@ class CreateMonthlyFeeAction
 
         // Verifica se já existe uma mensalidade para este membro no mês e ano atuais
         $mensalidadeExistente = Divida::where('id_membro', $memberId)
+        ->where('referente', 'Mensalidade')
         ->whereYear('data', $date->year)
         ->whereMonth('data', $date->month)
         ->exists();
