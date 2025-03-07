@@ -39,6 +39,7 @@ class CreateMonthlyFeeAction
             return null;
         }
 
+        //Criar Mensalidade em Janeiro
         if($date->month == 1)
         {
             if(!$memberData['isento'])
@@ -53,25 +54,26 @@ class CreateMonthlyFeeAction
             }
         }
 
-            if(($memberData['ocupação'] == 'Jogador' or $memberData['ocupação'] == 'Diretor e Jogador') and $memberData['acordo'] == false)
-            {
-                $debetData = [
-                    'id_membro' => $memberData['id'],
-                    'referente' => 'Mensalidade',
-                    'valor' => 50,
-                    'data' => $date,
-                ];
-            }
-            else{
-                
-                $debetData = [
-                    'id_membro' => $memberData['id'],
-                    'referente' => 'Mensalidade',
-                    'valor' => 30,
-                    'data' => $date,
-                ];
-            }
-        
+        //Criar Mensalidades nos demais Meses
+        if(($memberData['ocupação'] == 'Jogador' or $memberData['ocupação'] == 'Diretor e Jogador') and $memberData['acordo'] == false)
+        {
+            $debetData = [
+                'id_membro' => $memberData['id'],
+                'referente' => 'Mensalidade',
+                'valor' => 50,
+                'data' => $date,
+            ];
+        }
+        else{
+            
+            $debetData = [
+                'id_membro' => $memberData['id'],
+                'referente' => 'Mensalidade',
+                'valor' => 30,
+                'data' => $date,
+            ];
+        }
+    
         return [
             Divida::query()->create($debetData),
             UpdateDebtValueAction::execute($memberId)
