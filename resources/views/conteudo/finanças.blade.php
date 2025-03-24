@@ -28,7 +28,7 @@
 
                         <section class="titulo-card">
                             <h3>Receitas</h3>
-                            <p>R$ {{ $receitas}},00 - 500,00</p>
+                            <p>R$ {{ $receitas - 500,00}},00</p>
                         </section>
                     </section>
 
