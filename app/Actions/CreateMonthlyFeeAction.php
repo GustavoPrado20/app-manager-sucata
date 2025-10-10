@@ -16,10 +16,8 @@ class CreateMonthlyFeeAction
      */
     public static function execute(int $memberId)
     {
-        //$date = Carbon::now();
-
-        $date = Carbon::create(2025, 09, 25);
-
+        $date = Carbon::now();
+        
         $memberData = Membro::find($memberId);
         if (!$memberData) {
             return null;
