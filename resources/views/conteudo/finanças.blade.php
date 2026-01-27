@@ -881,11 +881,13 @@
                             @csrf
                             <button type="submit" id="btn-criar-mensalidade">Mensalidades</button>
                         </form>
-    
-                        <form action="{{ route('resetarAno') }}" name="Resetar Ano" method="POST">
-                            @csrf
-                            <button type="submit" id="btn-resetar-ano">Resetar Ano</button>
-                        </form>
+
+                        @if (now()->month == 12)
+                            <form action="{{ route('resetarAno') }}" name="Resetar Ano" method="POST">
+                                @csrf
+                                <button type="submit" id="btn-resetar-ano">Resetar Ano</button>
+                            </form>
+                        @endif
                     </section>
                </section>
             @endif
