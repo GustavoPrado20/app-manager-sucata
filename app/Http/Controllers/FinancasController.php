@@ -11,6 +11,7 @@ use App\Models\Despesa;
 use App\Models\Divida;
 use App\Models\Membro;
 use App\Models\Receita;
+use App\Models\Time;
 use App\Models\RegistroDivida;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -87,6 +88,44 @@ class FinancasController extends Controller
         $dados = ['referencia' => $request['referencia'], 'valor' => $request['valor'], 'data' => Carbon::now()];
 
         Despesa::query()->create($dados);
+
+        return redirect()->route('financas');
+    }
+
+    public function criarMensalidade()
+    {
+        $membros = Membro::findByStatus(true);
+
+        foreach($membros as $membro)
+        {
+            CreateMonthlyFeeAction::execute(intval($membro['id']));
+        }
+        
+        return redirect()->route('financas');
+    }
+
+    public function resetarAno()
+    {
+        //Reset Gols, Cartões e Times
+        Membro::where('status', 1)->update([
+            'gols' => 0,
+            'cartoes-amarelos' => 0,
+            'faltas' => 0,
+            'id_time' => null
+        ]);
+
+        //Reset tabela de pontos
+        Time::query()->update([
+            'pontos' => 0,
+            'gols marcados' => 0,
+            'gols sofridos' => 0
+        ]);
+
+        //Reset finanças
+        $despesas = Despesa::query()->delete();
+        $receitas = Receita::query()->delete();
+
+        $dividas = Divida::where('situação', 'Paga')->delete();
 
         return redirect()->route('financas');
     }
