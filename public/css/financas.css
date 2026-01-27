@@ -518,6 +518,82 @@ tr:hover td{
     display: none;
 }
 
+.container-anual-btn 
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 40px auto;
+}
+
+.btns-anual
+{
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 2rem;
+    width: 100%;
+    padding: 40px;
+}
+
+#btn-criar-mensalidade
+{
+    cursor: pointer;
+    width: 184px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.125em;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #fff;
+    background: #09ad32;
+    border: 2px solid #168316;
+    border-radius: .75rem;
+    box-shadow: 0 8px 0 #2c723d;
+    transform: skew(-10deg);
+    transition: all .1s ease;
+    filter: drop-shadow(0 15px 20px #1ca73f);
+}
+
+#btn-criar-mensalidade:active
+{
+    letter-spacing: 0px;
+    transform: skew(-10deg) translateY(8px);
+    box-shadow: 0 0 0#1fe951;
+}
+
+#btn-resetar-ano
+{
+    cursor: pointer;
+    width: 184px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.125em;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #fff;
+    background: #c21919;
+    border: 2px solid #831616;
+    border-radius: .75rem;
+    box-shadow: 0 8px 0 #a31616;
+    transform: skew(-10deg);
+    transition: all .1s ease;
+    filter: drop-shadow(0 15px 20px #e91f1f);
+}
+
+#btn-resetar-ano:active
+{
+    letter-spacing: 0px;
+    transform: skew(-10deg) translateY(8px);
+    box-shadow: 0 0 0 #e91f1f;
+}
+
+
 @media only screen and (min-width: 1024px) and (max-width: 1280px)
 {
     body {
@@ -705,5 +781,16 @@ tr:hover td{
     .header-modal h2 {
         font-size: 2rem;
         text-align: center;
+    }
+
+    .btns-anual
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        width: 100%;
+        padding: 40px;
     }
 }
