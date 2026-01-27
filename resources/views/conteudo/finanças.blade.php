@@ -873,6 +873,20 @@
                     </section>
                 </section>
            </section>
+
+            <section class="container-anual-btn">
+                <section class="btns-anual">
+                    <form action="{{ route('criarMensalidade') }}" name="Criar Mensalidades" method="POST">
+                        @csrf
+                        <button type="submit" id="btn-criar-mensalidade">Mensalidades</button>
+                    </form>
+
+                    <form action="{{ route('resetarAno') }}" name="Resetar Ano" method="POST">
+                        @csrf
+                        <button type="submit" id="btn-resetar-ano">Resetar Ano</button>
+                    </form>
+                </section>
+           </section>
         </section>
     </main>
 @endsection
