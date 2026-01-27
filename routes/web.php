@@ -47,6 +47,8 @@ Route::get('/finanças', [Controllers\FinancasController::class, 'index'])->name
 Route::prefix('/finanças')->group(function(){
     Route::post('/adicionarReceitas', [Controllers\FinancasController::class, 'adicionarFinanças'])->name('adicionarFinanças');
     Route::post('/adicionarDespesas', [Controllers\FinancasController::class, 'adicionarDespesas'])->name('adicionarDespesas');
+    Route::post('/criarMensalidade', [Controllers\FinancasController::class, 'criarMensalidade'])->name('criarMensalidade');
+    Route::post('/resetarAno', [Controllers\FinancasController::class, 'resetarAno'])->name('resetarAno');
 });
 
 Route::get('/menssagem', [Controllers\MembrosController::class, 'menssagemDebt']);
