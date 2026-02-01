@@ -7,6 +7,7 @@ use App\Actions\CalculateCardsPaidMonthAction;
 use App\Actions\CalculateMonthlyPaymentsAction;
 use App\Actions\CalculateTotalForecastForDecemberAction;
 use App\Actions\UpdateDebtValueAction;
+use App\Actions\CreateMonthlyFeeAction;
 use App\Models\Despesa;
 use App\Models\Divida;
 use App\Models\Membro;
