@@ -108,7 +108,7 @@ class FinancasController extends Controller
     public function resetarAno()
     {
         //Reset Gols, Cartões e Times
-        Membro::where('status', 1)->update([
+        Membro::query()->update([
             'gols' => 0,
             'cartoes-amarelos' => 0,
             'faltas' => 0,
