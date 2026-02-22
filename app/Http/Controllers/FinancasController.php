@@ -11,6 +11,7 @@ use App\Actions\CreateMonthlyFeeAction;
 use App\Models\Despesa;
 use App\Models\Divida;
 use App\Models\Membro;
+use App\Models\RegistroCartao;
 use App\Models\Receita;
 use App\Models\Time;
 use App\Models\RegistroDivida;
@@ -114,6 +115,9 @@ class FinancasController extends Controller
             'faltas' => 0,
             'id_time' => null
         ]);
+
+        //Reset Cartões temporada
+        RegistroCartao::query()->delete();
 
         //Reset tabela de pontos
         Time::query()->update([
