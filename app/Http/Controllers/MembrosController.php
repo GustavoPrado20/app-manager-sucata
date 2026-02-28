@@ -158,7 +158,6 @@ class MembrosController extends Controller
                     <p>'.($totalYellow / 25).' Cartões Amarelos: R$ '.$totalYellow.',00</p>
                     <p>'.($totalRed / 30).' Cartões Vermelhos: R$ '.$totalRed.',00</p>
                     <p>Valor Total: R$ '.($totalMensalidade + $totalFalta + $totalRed + $totalYellow).',00</p>
-                    <p>*OBS: Ja foi incluidas as mensalidades de Outubro/Novembro/Dezembro, ou seja, esse Mês foi Adicionado as 3 mensalidades de uma vez, pois é o ultimo mes para pagamento!*</p>
                     <p>Pix: (11) 941809128</p>';
                 }
                 else
@@ -170,7 +169,6 @@ class MembrosController extends Controller
                     <p>'.($totalYellow / 25).' Cartões Amarelos: R$ '.$totalYellow.',00</p>
                     <p>'.($totalRed / 30).' Cartões Vermelhos: R$ '.$totalRed.',00</p>
                     <p>Valor Total: R$ '.($totalMensalidade + $totalFalta + $totalRed + $totalYellow).',00</p>
-                    <p>*OBS: Ja foi incluidas as mensalidades de Outubro/Novembro/Dezembro, ou seja, esse Mês foi Adicionado as 3 mensalidades de uma vez, pois é o ultimo mes para pagamento!*</p>
                     <p>Pix: (11) 941809128</p>';
                 }
             }
@@ -187,7 +185,6 @@ class MembrosController extends Controller
                     <p>Membro: '.$membro['nome'].'</p>
                     <p>'.($totalMensalidade / 30).' Mensalidades: R$ '.$totalMensalidade.',00</p>
                     <p>Valor Total: R$ '.$totalMensalidade.',00</p>
-                    <p>*OBS: Ja foi incluidas as mensalidades de Outubro/Novembro/Dezembro, ou seja, esse Mês foi Adicionado as 3 mensalidades de uma vez, pois é o ultimo mes para pagamento!*</p>
                     <p>Pix: (11) 941809128</p>';
             }
         }
